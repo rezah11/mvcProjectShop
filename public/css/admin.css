@@ -1,0 +1,14 @@
+
+body{
+    direction: rtl;
+}
+.container-fluid{
+    padding: 0px;
+
+}
+.navbar-inverse{
+    border-radius: unset;
+}
+.dropdown-menu>li>a{
+    text-align: right;
+}
