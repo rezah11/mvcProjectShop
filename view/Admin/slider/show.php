@@ -55,8 +55,17 @@ if (!empty($data['slider'])){
 
                 <td><?php echo $value['link'];?></td>
                 <td><img src="view/Admin/slider/image/<?php echo $value['image'];?>" width="50px" height="50px"/></td>
-                <td class="text-center"><a href="slider//<?PHP echo $value['id']; ?>" class="btn btn-success">update</a>
-                    <a href="slider/deleteSlider/<?PHP echo $value['id']; ?>/<?php echo $value['image'];?>" class="btn btn-danger">delete</a></td>
+                <td class="text-center" style="display: flex;justify-content: space-evenly;">
+<!--                    <a href="slider/--><?PHP //echo $value['id']; ?><!--" class="btn btn-success">update</a>-->
+                    <form class="" id="deleteForm" action="slider/deleteSlider" method="post">
+                        <input type="hidden" value="<?PHP echo $value['id']; ?>" name="id">
+                        <input type="hidden" value="view/Admin/slider/image/<?php echo $value['image'];?>" name="imagePath">
+                        <img style="cursor: pointer;" width="50px" height="50px" src="public/images/icon/delete-icon-stock-flat-design-vector-31349816.png" onclick="formSubmit()">
+                    </form><form id="deleteForm" action="slider" method="post">
+                        <img style="cursor: pointer;" width="50px" height="50px" src="public/images/icon/deete-icon-stock-flat-design-vector-31349816.png" onclick="formSubmit()">
+                    </form>
+
+                </td>
 <!--                <td></td>-->
             </tr>
         <?php endforeach;?>
@@ -68,4 +77,10 @@ if (!empty($data['slider'])){
 </body>
 <script src="public/javaScript/jquery-3.6.0.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script>
+    function formSubmit(){
+       var form=$('#deleteForm');
+        form.submit();
+    }
+</script>
 </html>

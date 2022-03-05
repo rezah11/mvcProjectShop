@@ -20,10 +20,12 @@ public function showSliderAdmin(){
     $query=$this->modelDb->selectSliderAdmin();
     $data=['slider'=>$query];
     $this->view('Admin/slider/show',$data);
+//    $this->view('Admin/slider/show',$data);
 }
-public function deleteSlider($id,$image){
-    $path="view/Admin/slider/image/".$image;
-    var_dump($path);
+public function deleteSlider(){
+    $id=$_POST['id'];
+    $path=$_POST['imagePath'];
+    unlink($path);
     $this->modelDb->deleteSlider($id);
     Model::backUrl('slider/showSliderAdmin');
 }
