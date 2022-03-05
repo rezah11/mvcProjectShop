@@ -48,7 +48,6 @@ $meta=$data['meta'];}else{
             </tr>
             </thead>
             <tbody>
-
                 <?php
                 foreach ($meta as $value):?>
                 <tr>

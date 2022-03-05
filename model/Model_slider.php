@@ -19,4 +19,11 @@ public function deleteSlider($id){
     $sql='DELETE FROM `slider` WHERE `id`=?';
     $query=$this->doQuery($sql,[$id]);
 }
+public function getSliderId($id){
+    $sql='SELECT * FROM `slider` WHERE `id`=?';
+    $query=$this->doSelect($sql,[$id],true);
+//    $data=['slider'=>$query];
+    return $query;
+//    header();
+}
 }

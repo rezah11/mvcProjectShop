@@ -31,25 +31,50 @@
 </style>
 <body>
 <?php require 'view/Admin/menu.php';?>
+<?php $sliderEdit=$data['slider'];
+$sliderEditId=$data['id'];
+//echo $sliderEditId;
+?>
+<?php if (empty($sliderEdit)): ?>
 <section class="container" style="direction: ltr;">
     <form action="slider/insertSlider" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="caption">caption:</label>
-            <input type="text" class="form-control" id="caption" name="caption">
+            <input type="text" class="form-control" id="caption" name="caption" required>
         </div>
         <div class="form-group">
             <label for="link">link:</label>
-            <input type="text" class="form-control" id="link" name="link">
+            <input type="text" class="form-control" id="link" name="link" required>
         </div>
         <div class="form-group">
             <label for="image">image:</label>
-            <input  class="form-control" id="image" name="image" type="file" />
+            <input  class="form-control" id="image" name="image" type="file" required/>
         </div>
         <button type="submit" class="btn btn-success btn-block">Submit</button>
     </form>
 </section>
-<br>
-<br>
+<?php else:?>
+    <section class="container" style="direction: ltr;">
+        <form action="slider/insertSlider" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="caption">caption:</label>
+                <input type="text" class="form-control" id="caption" value="<?php echo $sliderEdit['caption']?>" name="caption" required>
+            </div>
+            <div class="form-group">
+                <label for="link">link:</label>
+                <input type="text" class="form-control" id="link" value="<?php echo $sliderEdit['caption']?>" name="link" required>
+                <input type="hidden" name="sliderUpdateId"  value="<?php echo $sliderEditId?>">
+            </div>
+            <div class="form-group">
+                <label for="image">image:</label>
+                <input  class="form-control" id="image" name="image" type="file" required/>
+            </div>
+            <button type="submit" class="btn btn-success btn-block">Submit</button>
+
+        </form>
+    </section>
+
+<?php endif; ?>
 </body>
 <script src="public/javaScript/jquery-3.6.0.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>

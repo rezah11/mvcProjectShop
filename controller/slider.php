@@ -29,4 +29,15 @@ public function deleteSlider(){
     $this->modelDb->deleteSlider($id);
     Model::backUrl('slider/showSliderAdmin');
 }
+public function updateSlider(){
+    $id=$_POST['updateSliderId'];
+//    echo 'update'.$id   ;
+//    var_dump($_POST);
+    $query=$this->modelDb->getSliderId($id);
+//    var_dump($query);
+    $data=['slider'=>$query,'id'=>$id];
+//    var_dump($data);
+    $this->view('Admin/slider/index',$data);
+
+}
 }
