@@ -1,20 +1,23 @@
 <?php
-if(Model::getSession('wrong')):?>
+if(!empty(Model::getSession('wrong'))):?>
     <h1 class="text-danger text-center"><?php echo Model::getSession('wrong');
     ?></h1>
 
 
 <div class="container">
+    <?php elseif(!empty(Model::getSession('successAdmin'))): ?>
     <?php
-    endif;
-    if(Model::getSession('successAdmin')){
+
         Model::backUrl('Admin/index');
-    }
+
 //    if(empty(Model::getSession('successAdmin')) && empty(Model::getSession('wrong'))){
 //        Model::backUrl('login/logout');
 //    }
 //    print_r($_SESSION);
     ?>
+    <?php else: ?>
+<?php Model::unsetSession('wrong');?>
+<?php Model::unsetSession('successAdmin');?>
     <div class="d-flex justify-content-center h-100">
         <div class="card">
             <div class="card-header">
@@ -60,3 +63,4 @@ if(Model::getSession('wrong')):?>
         </div>
     </div>
 </div>
+<?php endif;?>

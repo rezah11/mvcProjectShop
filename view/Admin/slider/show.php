@@ -89,10 +89,8 @@ if (!empty($data['slider'])){
 <!--                        <input type="hidden" value="--><?PHP //echo $value['id']; ?><!--" name="id">-->
 <!--                        <input type="hidden" value="view/Admin/slider/image/--><?php //echo $value['image'];?><!--" name="imagePath">-->
                         <img style="cursor: pointer;" width="50px" height="50px" src="public/images/icon/delete-icon-stock-flat-design-vector-31349816.png" onclick="showModal(<?php echo $value['id'].",'view/Admin/slider/image/".$value['image']."'" ?>)">
-                    </form><form id="updateForm" action="slider/updateSlider" method="post">
-                        <input type="hidden" value="<?php echo $value['id']?>" name="updateSliderId">
-                        <img style="cursor: pointer;" width="50px" height="50px" src="public/images/icon/update-icon-png-18.jpg" onclick="formSubmit()">
                     </form>
+                        <a href="slider/index/<?php echo $value['id']?>/edit"><img style="cursor: pointer;" width="50px" height="50px" src="public/images/icon/update-icon-png-18.jpg"></a>
 
                 </td>
 <!--                <td></td>-->
@@ -117,9 +115,6 @@ if (!empty($data['slider'])){
     }
     function closeModal(){
         $('.modal').fadeOut(300);
-    }
-    function formSubmit(){
-        $('#updateForm').submit();
     }
 </script>
 </html>

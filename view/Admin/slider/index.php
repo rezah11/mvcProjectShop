@@ -31,11 +31,10 @@
 </style>
 <body>
 <?php require 'view/Admin/menu.php';?>
-<?php $sliderEdit=$data['slider'];
-$sliderEditId=$data['id'];
+<?php
 //echo $sliderEditId;
 ?>
-<?php if (empty($sliderEdit)): ?>
+<?php if (empty($data)): ?>
 <section class="container" style="direction: ltr;">
     <form action="slider/insertSlider" method="post" enctype="multipart/form-data">
         <div class="form-group">
@@ -53,9 +52,13 @@ $sliderEditId=$data['id'];
         <button type="submit" class="btn btn-success btn-block">Submit</button>
     </form>
 </section>
-<?php else:?>
+<?php elseif($data['edit']=='edit'):?>
+<?php
+    $sliderEdit=$data['slider'];
+    $sliderEditId=$data['id'];
+    ?>
     <section class="container" style="direction: ltr;">
-        <form action="slider/insertSlider" method="post" enctype="multipart/form-data">
+        <form action="slider/updateSlider" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="caption">caption:</label>
                 <input type="text" class="form-control" id="caption" value="<?php echo $sliderEdit['caption']?>" name="caption" required>
@@ -67,7 +70,7 @@ $sliderEditId=$data['id'];
             </div>
             <div class="form-group">
                 <label for="image">image:</label>
-                <input  class="form-control" id="image" name="image" type="file" required/>
+                <input  class="form-control" id="image" name="image" type="file" />
             </div>
             <button type="submit" class="btn btn-success btn-block">Submit</button>
 

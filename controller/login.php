@@ -33,8 +33,8 @@ public function checkAdmin(){
     }
 }
 public function logout(){
-    Model::setSession('successAdmin',null);
-    Model::setSession('wrong',null);
+    Model::unsetSession('successAdmin');
+    Model::unsetSession('wrong');
     Model::backUrl('login/index');
 }
 }

@@ -26,4 +26,14 @@ public function getSliderId($id){
     return $query;
 //    header();
 }
+public function updateSlider($caption,$link,$imageUp,$id){
+    if($imageUp==time()){
+        $query=$this->getSliderId($id);
+        $imageUp=$query['image'];
+        echo 'true'.$imageUp;
+    }
+    $sql='UPDATE `slider` SET `caption`=? , `link`=? , `image`=? WHERE `id`=?';
+    $this->doQuery($sql,[$caption,$link,$imageUp,$id]);
+}
+
 }

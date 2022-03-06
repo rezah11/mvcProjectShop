@@ -64,5 +64,7 @@ class Model
     public static function getSession($name){
         return $_SESSION[$name];
     }
-
+    public static function unsetSession($name){
+        $_SESSION[$name]=null;
+    }
 }
