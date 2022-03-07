@@ -16,8 +16,6 @@ if(!empty(Model::getSession('wrong'))):?>
 //    print_r($_SESSION);
     ?>
     <?php else: ?>
-<?php Model::unsetSession('wrong');?>
-<?php Model::unsetSession('successAdmin');?>
     <div class="d-flex justify-content-center h-100">
         <div class="card">
             <div class="card-header">

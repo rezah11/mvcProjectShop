@@ -1,4 +1,7 @@
-
+<?php
+$slider=$data['slider'];
+//var_dump($slider);
+?>
 <div class="social">
          <ul>
             <li><a href=""><i class="fa fa-instagram"></i></a></li>
@@ -93,16 +96,18 @@
                                 <img src="public/images/template/p20lite-listimage-black.png" class="w-75" >
                             </div>
                         </div>
+                        <?php foreach ($slider as $item=>$value):?>
                         <div class="carousel-item">
                             <div class="col-md-6" style="padding-top: 20px;">
-                                <h4>Huawei Tab G45</h4>
-                                <span>تبلت جی 5 هوآوی</span>
-                                <p>تبلت 10 اینج هوآوی . با قابلیت نصب سه عدد سیمکارت همزمان . دارای شبکه فورجی و اتصال سریع . دارای باتری اتمی و دوربین 13 مگاپیکسل</p>
+                                <h4><?php echo $value['caption']?></h4>
+                                <span><a href="<?php echo $value['link']?>"><?php echo $value['link']?></a></span>
+                                <p>not set</p>
                             </div>
                             <div class="col-md-6">
-                                <img src="public/images/template/p20lite-listimage-black.png" class="w-75" >
+                                <img src="view/Admin/slider/image/<?php echo $value['image']?>" class="w-75" >
                             </div>
                         </div>
+                        <?php endforeach;?>
                     </div>
                 </div>
             </div>

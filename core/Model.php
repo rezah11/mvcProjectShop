@@ -62,9 +62,12 @@ class Model
         $_SESSION[$name]=$value;
     }
     public static function getSession($name){
-        return $_SESSION[$name];
+        if(isset($_SESSION[$name])){
+            return $_SESSION[$name];
+        }
+
     }
     public static function unsetSession($name){
-        $_SESSION[$name]=null;
+        unset($_SESSION[$name]);
     }
 }
