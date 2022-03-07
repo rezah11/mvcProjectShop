@@ -73,39 +73,39 @@
       </div>
       <br>
       <!---------------------------------->
-      <div class="container">
-         <div class="row">
-            <div class="col-md-12">
-               <div class="slider-box">
-                  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                     <ol class="carousel-indicators">
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="slider-box">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                     </ol>
-                     <div class="carousel-inner">
+                    </ol>
+                    <div class="carousel-inner">
                         <div class="carousel-item active">
-                           <div class="col-md-6" style="padding-top: 20px;">
-                              <h4>Canon 638044</h4>
-                              <span>دوربین کانن سری 6</span>
-                              <p>دوربین کانن از سری 6 با لنز همراه.قابلیت تصویر برداری اچ دی.قابلیت تنظیم در حالت شب . دارای دو عدد باتری اضافی</p>
-                           </div>
-                           <div class="col-md-6">
-                              <img src="public/images/template/p20lite-listimage-black.png" class="w-75" >
-                           </div>
+                            <div class="col-md-6" style="padding-top: 20px;">
+                                <h4>Canon 638044</h4>
+                                <span>دوربین کانن سری 6</span>
+                                <p>دوربین کانن از سری 6 با لنز همراه.قابلیت تصویر برداری اچ دی.قابلیت تنظیم در حالت شب . دارای دو عدد باتری اضافی</p>
+                            </div>
+                            <div class="col-md-6">
+                                <img src="public/images/template/p20lite-listimage-black.png" class="w-75" >
+                            </div>
                         </div>
                         <div class="carousel-item">
-                           <div class="col-md-6" style="padding-top: 20px;">
-                              <h4>Huawei Tab G45</h4>
-                              <span>تبلت جی 5 هوآوی</span>
-                              <p>تبلت 10 اینج هوآوی . با قابلیت نصب سه عدد سیمکارت همزمان . دارای شبکه فورجی و اتصال سریع . دارای باتری اتمی و دوربین 13 مگاپیکسل</p>
-                           </div>
-                           <div class="col-md-6">
-                              <img src="public/images/template/p20lite-listimage-black.png" class="w-75" >
-                           </div>
+                            <div class="col-md-6" style="padding-top: 20px;">
+                                <h4>Huawei Tab G45</h4>
+                                <span>تبلت جی 5 هوآوی</span>
+                                <p>تبلت 10 اینج هوآوی . با قابلیت نصب سه عدد سیمکارت همزمان . دارای شبکه فورجی و اتصال سریع . دارای باتری اتمی و دوربین 13 مگاپیکسل</p>
+                            </div>
+                            <div class="col-md-6">
+                                <img src="public/images/template/p20lite-listimage-black.png" class="w-75" >
+                            </div>
                         </div>
-                     </div>
-                  </div>
-               </div>
+                    </div>
+                </div>
+            </div>
                <!--slider-box-->
             </div>
          </div>
