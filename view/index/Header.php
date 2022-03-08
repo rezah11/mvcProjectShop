@@ -17,6 +17,7 @@
     <link href="public/css/owl.carousel.css" rel="stylesheet" type="text/css">
     <link href="public/css/owl.theme.default.css" rel="stylesheet" type="text/css">
     <link href="public/css/style.css" rel="stylesheet" type="text/css">
+    <link href="public/css/toastr.min.css" rel="stylesheet" type="text/css">
 </head>
 <style>
     @font-face {

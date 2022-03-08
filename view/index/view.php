@@ -635,8 +635,8 @@ $slider=$data['slider'];
                <div class="col-md-3">
                   <div class="news-form">
                      <h5>در خبرنامه عضو شوید</h5>
-                     <form action="" >
-                        <input type="email" placeholder="ایمیل خود را وارد کنید" >
+                     <form action="registerNews/insertEmail" method="post" name="regEmail" id="regEmail">
+                        <input type="email" placeholder="ایمیل خود را وارد کنید" name="email" REQUIRED>
                         <button type="submit" ><i class="fa fa-envelope-o"></i></button>
                      </form>
                   </div>
