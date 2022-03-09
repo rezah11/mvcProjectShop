@@ -16,4 +16,9 @@ class Model_index extends Model
         $query=$this->doSelect($sql,[]);
         return $query;
     }
+    public function getCategory(){
+        $sql='SELECT * FROM `category`';
+        $query=$this->doSelect($sql,[]);
+        return $query;
+    }
 }

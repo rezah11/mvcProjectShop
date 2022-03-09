@@ -11,7 +11,8 @@ public function index(){
 //    $data=['x'=>$x];
     $query=$this->modelDb->getMeta();
     $querySlider=$this->modelDb->getSlider();
-    $data=['meta'=>$query,'slider'=>$querySlider];
+    $querycategory=$this->modelDb->getCategory();
+    $data=['meta'=>$query,'slider'=>$querySlider,'category'=>$querycategory];
 //    var_dump($data['slider']);
     $this->Header('index/header',$data);
     $this->view('index/view',$data);
