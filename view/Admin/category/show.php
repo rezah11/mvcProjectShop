@@ -85,11 +85,11 @@ if (!empty($data['category'])){
                     <!--                    <a href="slider/--><?PHP //echo $value['id']; ?><!--" class="btn btn-success">update</a>-->
                         <!--                        <input type="hidden" value="--><?PHP //echo $value['id']; ?><!--" name="id">-->
                         <!--                        <input type="hidden" value="view/Admin/slider/image/--><?php //echo $value['image'];?><!--" name="imagePath">-->
-                        <img style="cursor: pointer;" width="50px" height="50px" src="public/images/icon/delete-icon-stock-flat-design-vector-31349816.png" onclick="showModal(<?php echo $value['id'].",'view/Admin/category/image/".$value['image']."'" ?>)">
-                    <a href="category/index/<?php echo $value['id']?>/edit"><img style="cursor: pointer;" width="50px" height="50px" src="public/images/icon/update-icon-png-18.jpg"></a>
-
+                        <img style="cursor: pointer;" title="حذف" width="50px" height="50px" src="public/images/icon/delete-icon-stock-flat-design-vector-31349816.png" onclick="showModal(<?php echo $value['id'].",'view/Admin/category/image/".$value['image']."'" ?>)">
+                    <a href="category/index/<?php echo $value['id']?>/edit"><img title="آپدیت" style="cursor: pointer;" width="50px" height="50px" src="public/images/icon/update-icon-png-18.jpg"></a>
+                    <a href="product/index/<?php echo $value['id']?>"><img title="اضافه کردن محصول" style="cursor: pointer;" src="public/images/icon/insert-icon-29.jpg" width="50px" height="50px"></a>
+                    <a href="product/getProduct/<?php echo $value['id']?>"><img title="جزئیات محصولات این مجموعه" style="cursor: pointer;" src="public/images/icon/view-details-icon-buy-this-icon-for--0-98-2.png" width="50px" height="50px"></a>
                 </td>
-                <!--                <td></td>-->
             </tr>
         <?php endforeach;?>
 

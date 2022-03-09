@@ -16,8 +16,6 @@
                     <ul class="dropdown-menu">
                         <li><a href="<?php echo URL ?>category/index">وارد کردن اطلاعات دسته بندی محصولات</a></li>
                         <li><a href="<?php echo URL ?>category/showCategoryAdmin">نمایش جزئیات دسته بندی محصولات</a></li>
-                        <li><a href="<?php echo URL ?>product/index">وارد کردن محصول</a></li>
-
                     </ul>
                 </li>
                 <li class="dropdown">

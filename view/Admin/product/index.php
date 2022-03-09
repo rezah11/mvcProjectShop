@@ -82,9 +82,9 @@
             </div>
             <select name="categoryId" class="form-control">
                 <?php $category=$data['category'];?>
-                <?php foreach ($category as $value):?>
-                <option value="<?php echo $value['id']?>"><?php echo $value['title']?></option>
-                <?php endforeach;?>
+<!--                --><?php //foreach ($category as $value):?>
+                <option value="<?php echo $category['id']?>"><?php echo $category['title']?></option>
+<!--                --><?php //endforeach;?>
             </select>
             <br>
             <button type="submit" class="btn btn-success btn-block">Submit</button>

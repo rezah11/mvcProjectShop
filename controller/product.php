@@ -5,8 +5,8 @@ class product extends controller
     public function __construct()
     {
     }
-    public function index(){
-        $query=$this->modelDb->getCategory();
+    public function index($id){
+        $query=$this->modelDb->getCategory($id);
         $data=['category'=>$query];
         $this->view('Admin/product/index',$data);
     }
@@ -28,7 +28,23 @@ class product extends controller
         $categoryId=$_POST['categoryId'];
 //        var_dump($_POST);
         $this->modelDb->insertProduct($title,$summary,$price,$discription,$imageBigNew,$image1New,$image2New,$image3New,$image4New,$categoryId);
-        Model::backUrl('product/index');
+        Model::backUrl('product/index/'.$categoryId);
+    }
+    public function getProduct($id){
+        $query=$this->modelDb->getProduct($id);
+        $data=['product'=>$query];
+        $this->view('Admin/product/show',$data);
+    }
+    public function deleteProduct(){
+        $id=$_POST['id'];
+        $imageBig=$_POST['imagePathB'];
+        $image1=$_POST['imagePath1'];
+        $image2=$_POST['imagePath2'];
+        $image3=$_POST['imagePath3'];
+        $image4=$_POST['imagePath4'];
+        $catId=$_POST['catid'];
+        $query=$this->modelDb->deleteProduct($id,$imageBig,$image1,$image2,$image3,$image4);
+        Model::backUrl('product/getProduct/'.$id);
     }
 
 }
