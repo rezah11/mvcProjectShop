@@ -145,12 +145,26 @@
 
     </div>
     <div>
+
         <ul style="display: flex; width:20%;justify-content: space-between;margin-left: 15px; ">
             <?php $totalPages = $data['totalPages'];
             //            var_dump($products['id']);
             $catId = $data['catId'];
             $pageOn = $data['pageOn'];
+            $prev=$pageOn-1;
+            $next=$pageOn+1;
             ?>
+            <ul>
+                <?php if($prev<1):?>
+                <li style=" text-align: center;color:#9d9d9d;">
+                    <a>prev</a>
+                </li>
+                <?php else:?>
+                    <li style=" text-align: center;color:#2e9ad0;">
+                        <a href="index/products/<?php echo $catId ?>/<?php echo $catTitle ?>/<?php echo $prev ?>">prev</a>
+                    </li>
+                <?php endif;?>
+            </ul>
             <?php for ($i = 1; $i <= $totalPages; $i++): ?>
                 <?php if ($i == $pageOn):?>
                     <li style="border: black solid 1px; width:20px; text-align: center;color:black;background-color: #3c763d">
@@ -162,6 +176,17 @@
                 </li>
                 <?php endif; ?>
             <?php endfor; ?>
+            <ul>
+                <?php if($next>$totalPages):?>
+                    <li style=" text-align: center;color:#9d9d9d;">
+                        <a>next</a>
+                    </li>
+                <?php else:?>
+                    <li style=" text-align: center;color:#2e9ad0;">
+                        <a href="index/products/<?php echo $catId ?>/<?php echo $catTitle ?>/<?php echo $next ?>">next</a>
+                    </li>
+                <?php endif;?>
+            </ul>
         </ul>
     </div>
 </div>
