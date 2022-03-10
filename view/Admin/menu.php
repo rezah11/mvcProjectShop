@@ -10,6 +10,10 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                    <a class=""  href="menu/index">نمایش منو</a>
+
+                </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="slider/index"> دسته بندی محصولات
                         <span class="caret"></span></a>

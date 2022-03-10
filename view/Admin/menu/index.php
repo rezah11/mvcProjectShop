@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -37,27 +38,29 @@
 
 ?>
 <?php if (empty($data['edit'])): ?>
-<section class="container" style="direction: ltr;">
-    <form action="slider/insertSlider" method="post" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="caption">caption:</label>
-            <input type="text" class="form-control" id="caption" name="caption" required>
-        </div>
-        <div class="form-group">
-            <label for="link">link:</label>
-            <input type="text" class="form-control" id="link" name="link" required>
-        </div>
-        <div class="form-group">
-            <label for="image">image:</label>
-            <input  class="form-control" id="image" name="image" type="file" required/>
-        </div>
-        <button type="submit" class="btn btn-success btn-block">Submit</button>
-    </form>
-</section>
+    <section class="container" style="">
+        <form action="slider/insertSlider" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="nameMenu">نام منو:</label>
+                <input type="text" class="form-control" id="nameMenu" name="nameMenu" required>
+            </div>
+            <div class="form-group">
+                <label for="link">لینک منو:</label>
+                <input type="text" class="form-control" id="link" name="link" required>
+            </div>
+            <div class="form-group">
+                <label for="subMenu">زیرمنوها:</label>
+                <select class="form-control" name="subMenu" id="subMenu">
+                    <option value="0">بدون دسته:</option>
+                </select>
+            </div>
+            <input type="submit" class="btn btn-success" value="اضافه کردن">
+            <input type="submit" class="btn btn-danger" value="پاک کردن">
+        </form>
+    </section>
 <?php elseif($data['edit']=='edit'):?>
-<?php
-    $sliderEdit=$data['slider'];
-    $sliderEditId=$data['id'];
+    <?php
+
     ?>
     <section class="container" style="direction: ltr;">
         <form action="slider/updateSlider" method="post" enctype="multipart/form-data">
