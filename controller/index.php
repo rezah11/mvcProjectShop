@@ -25,10 +25,12 @@ class index extends controller
 
     }
 
-    public function products($id, $title)
+    public function products($id, $title,$page=1)
     {
-        $products = $this->modelDb->getProducts($id,$count=0);
-        $data = ['products' => $products, 'catTitle' => $title];
+        $products = $this->modelDb->getProducts($id,$page)[0];
+        $totalPages=$this->modelDb->countProducts($id,$page);
+//        var_dump($totalPages);
+        $data = ['pageOn'=>$page,'catId'=>$id,'products' => $products, 'catTitle' => $title,'totalPages'=>$totalPages];
         $this->view('index/category', $data);
     }
     public function showProduct($id,$catTitle){

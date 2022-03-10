@@ -70,4 +70,11 @@ class Model
     public static function unsetSession($name){
         unset($_SESSION[$name]);
     }
+    public function rowCountProduct($categoryId){
+        $query=self::$sql->prepare('SELECT * FROM `product` where `categoryId`=?');
+        $query->bindValue(1,$categoryId);
+        $query->execute();
+        $result=$query->rowCount();
+        return $result;
+    }
 }

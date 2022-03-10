@@ -21,17 +21,22 @@ class Model_index extends Model
         $query=$this->doSelect($sql,[]);
         return $query;
     }
-    public function getProducts($id,$count){
-        $count=5;
-        $page=3;
-        $rowStart=($count * $page)-$page;
-        $sql='SELECT * FROM category inner join product on category.id=product.categoryId where product.categoryId=?  limit '.$page.' offset '.$rowStart;
+    public function getProducts($id,$page){
+        $perPage=3;// this will be dynamic in admin page
+        $rowStart=($page * $perPage)-$perPage;
+        $sql='SELECT * FROM category inner join product on category.id=product.categoryId where product.categoryId=?  limit '.$perPage.' offset '.$rowStart;
         $query=$this->doSelect($sql,[$id]);
-        return $query;
+        return [$query,$perPage];
     }
     public function showProduct($id){
         $sql='SELECT * FROM `product` WHERE `id`=?';
         $query=$this->doSelect($sql,[$id],true);
         return $query;
+    }
+    public function countProducts($id,$count){
+        $perPage=$this->getProducts($id,$count)[1];
+        $rows=$this->rowCountProduct($id);
+        $totalPage=ceil($rows/$perPage);
+        return $totalPage;
     }
 }
