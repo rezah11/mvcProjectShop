@@ -377,7 +377,7 @@ $slider=$data['slider'];
                   <ul>
                      <li><i class="fa fa-bars"></i>دسته بندی : <?php echo $value['title']?></li>
                   </ul>
-                  <a href="#" class="mybtn"><i class="fa fa-continuous"></i>ادامه مطلب&raquo;</a>
+                  <a href="index/products/<?php echo $value['id']?>/<?php echo $value['title']?>" class="mybtn"><i class="fa fa-continuous"></i>ادامه مطلب&raquo;</a>
                </div>
             </div>
              <?php endforeach;?>
