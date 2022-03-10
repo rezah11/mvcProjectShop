@@ -91,7 +91,7 @@ if (!empty($data['product'])){
                 <td><?php echo $value['title']; ?></td>
                 <td><?php echo $value['summary'];?></td>
                 <td><?php echo $value['price'];?></td>
-                <td><?php echo $value['discription'];?></td>
+                <td style="overflow-wrap: anywhere"><?php echo $value['discription'];?></td>
                 <td><img src="view/Admin/product/imageBig/<?php echo $value['imageBig'];?>" width="50px" height="50px"/></td>
                 <td><img src="view/Admin/product/fancy/<?php echo $value['image1'];?>" width="50px" height="50px"/></td>
                 <td><img src="view/Admin/product/fancy/<?php echo $value['image2'];?>" width="50px" height="50px"/></td>

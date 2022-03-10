@@ -117,7 +117,7 @@
         <div class="col-md-4">
             <div class="blog-content">
                 <figure>
-                    <img src="view/Admin/product/imageBig/<?php echo $value['imageBig']?>" class="w-100">
+                    <img height="300px" src="view/Admin/product/imageBig/<?php echo $value['imageBig']?>" class="w-100">
                 </figure>
                 <h5><i class="fa fa-title"></i><?php echo $value['title']?></h5>
                 <p><?php echo $value['summary']?></p>

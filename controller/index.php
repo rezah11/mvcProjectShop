@@ -27,7 +27,7 @@ class index extends controller
 
     public function products($id, $title)
     {
-        $products = $this->modelDb->getProducts($id);
+        $products = $this->modelDb->getProducts($id,$count=0);
         $data = ['products' => $products, 'catTitle' => $title];
         $this->view('index/category', $data);
     }

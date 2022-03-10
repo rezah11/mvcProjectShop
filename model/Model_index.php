@@ -21,8 +21,11 @@ class Model_index extends Model
         $query=$this->doSelect($sql,[]);
         return $query;
     }
-    public function getProducts($id){
-        $sql='SELECT * FROM category inner join product on category.id=product.categoryId where product.categoryId=?';
+    public function getProducts($id,$count){
+        $count=5;
+        $page=3;
+        $rowStart=($count * $page)-$page;
+        $sql='SELECT * FROM category inner join product on category.id=product.categoryId where product.categoryId=?  limit '.$page.' offset '.$rowStart;
         $query=$this->doSelect($sql,[$id]);
         return $query;
     }
