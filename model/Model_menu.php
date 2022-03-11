@@ -6,4 +6,9 @@ class Model_menu extends Model
     {
         parent::__construct();
     }
+    public function insertMenu($title,$link,$parentId){
+        $sql='INSERT INTO `menu` (`title`,`link`,`parentId`) VALUES (?,?,?)';
+        $this->doQuery($sql,[$title,$link,$parentId]);
+    }
+
 }
