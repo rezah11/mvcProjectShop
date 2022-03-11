@@ -19,6 +19,8 @@ function menu($parentsId=0){
         $query=$sql->prepare('SELECT * FROM `menu` WHERE `id`=?');
         $query->bindValue(1,$id);
         $query->execute();
+        $result=$query->fetchAll();
+        var_dump($result);
         $count=$query->rowCount();
 ?>
     <li><?php echo $value['title']?></li>
