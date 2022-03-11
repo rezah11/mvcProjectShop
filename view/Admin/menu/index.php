@@ -41,24 +41,29 @@
 //echo $data  ;
 ?>
 <?php if (empty($data['edit'])): ?>
-    <section class="container" style="">
-        <form action="<?php echo URL?>menu/insertMenu" method="post" id="formSubMenu">
+    <section class="container col-xs-4" style="float: right">
+<!--        <form action="--><?php //echo URL?><!--menu/insertMenu" method="post" id="formSubMenu" >-->
             <div class="form-group">
                 <label for="title">نام منو:</label>
-                <input type="text" class="form-control" id="title" name="title" required>
+                <input type="text" class="form-control" id="title" name="title">
             </div>
             <div class="form-group">
                 <label for="link">لینک منو:</label>
-                <input type="text" class="form-control" id="link" name="link" required>
+                <input type="text" class="form-control" id="link" name="link">
             </div>
             <div class="form-group" id="subM">
                 <label for="parentId">زیرمنوها:</label>
 
             </div>
-            <input type="submit" class="btn btn-success" value="اضافه کردن" name="subMenu" id="subMenu">
-            <input type="submit" class="btn btn-danger" value="پاک کردن">
-        </form>
+            <button class="btn btn-success" name="subMenuIns" id="subMenuIns">اضافه کردن</button>
+            <button class="btn btn-danger" name="subMenuDel" id="subMenuDel">پاک کردن</button>
+<!--        </form>-->
     </section>
+<section class="col-xs-4" style="float: right">
+    <ul>
+
+    </ul>
+</section>
 <?php elseif ($data['edit'] == 'edit'): ?>
     <?php
 
@@ -93,27 +98,55 @@
     $(document).ready(function () {
         $('#subM').load("<?php echo URL . 'view/Admin/menu/Ajax/ajaxSubMenu.php'?>");
     });
-    $('#subMenu').click(function () {
-        $('#formSubMenu').submit(function (e) {
-            e.preventDefault();
-            var title=$('input[name=title]').val();
-            var link=$('input[name=link]').val();
-            var parentId=$('select[name=parentId]').val();
-            var type='add';
-            var url=$(this).attr('action');
-            var data={'title':title,'link':link,'parentId':parentId,'type':type};
-            $.post(url,data,function (msg){
-               if (msg==1){
-                   $('input[name=title]').val('');
-                   $('input[name=link]').val('');
-                   $('select[name=parentId]').val('');
-                   $('#subM').load("<?php echo URL . 'view/Admin/menu/Ajax/ajaxSubMenu.php'?>");
-                  alert('عملیات موفقیت آمیز بود');
-               }else if (msg==0){
-                   alert('خطایی به وجود آمده است');
-               }
-            });
+    $('#subMenuIns').click(function (e) {
+        e.preventDefault();
+        var title=$('input[name=title]').val();
+        var link=$('input[name=link]').val();
+        var parentId=$('select[name=parentId]').val();
+        var type='add';
+        var url='<?php echo URL.'menu/insertMenu'?>';
+        var data={'title':title,'link':link,'parentId':parentId,'type':type};
+        $.post(url,data,function (msg){
+            if (msg==1){
+                $('input[name=title]').val('');
+                $('input[name=link]').val('');
+                $('select[name=parentId]').val('');
+                $('#subM').load("<?php echo URL . 'view/Admin/menu/Ajax/ajaxSubMenu.php'?>");
+                alert('عملیات موفقیت آمیز بود');
+            }else if (msg==2){
+                alert('خطایی به وجود آمده است');
+            }else if(msg==0){
+                $('input[name=title]').val('');
+                $('input[name=link]').val('');
+                $('select[name=parentId]').val('');
+                $('#subM').load("<?php echo URL . 'view/Admin/menu/Ajax/ajaxSubMenu.php'?>");
+            }
         });
+
+    });
+    $('#subMenuDel').click(function (e) {
+        e.preventDefault();
+        var menuId=$('select[name=parentId]').val();
+        var type='delete';
+        var url='<?php echo URL.'menu/insertMenu'?>';
+        var data={'menuId':menuId,'type':type};
+        $.post(url,data,function (msg2){
+            if (msg2==1){
+                $('input[name=title]').val('');
+                $('input[name=link]').val('');
+                $('select[name=parentId]').val('');
+                $('#subM').load("<?php echo URL . 'view/Admin/menu/Ajax/ajaxSubMenu.php'?>");
+                alert('عملیات موفقیت آمیز بود');
+            }else if (msg2==2){
+                alert('خطایی به وجود آمده است');
+            }else if(msg2==0){
+                $('input[name=title]').val('');
+                $('input[name=link]').val('');
+                $('select[name=parentId]').val('');
+                $('#subM').load("<?php echo URL . 'view/Admin/menu/Ajax/ajaxSubMenu.php'?>");
+            }
+        });
+
     });
 </script>
 </html>
