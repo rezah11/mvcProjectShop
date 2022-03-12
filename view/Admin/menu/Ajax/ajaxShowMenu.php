@@ -20,7 +20,7 @@ function menu($parentsId=0){
         $query->bindValue(1,$id);
         $query->execute();
         $result=$query->fetchAll();
-        var_dump($result);
+//        var_dump($result);
         $count=$query->rowCount();
 ?>
     <li><?php echo $value['title']?></li>

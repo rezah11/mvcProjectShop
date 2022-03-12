@@ -60,7 +60,7 @@
 <!--        </form>-->
     </section>
 <section class="col-xs-4" style="float: right">
-    <ul>
+    <ul id="show">
 
     </ul>
 </section>
@@ -97,6 +97,7 @@
 <script>
     $(document).ready(function () {
         $('#subM').load("<?php echo URL . 'view/Admin/menu/Ajax/ajaxSubMenu.php'?>");
+        $('#show').load("<?php echo URL . 'view/Admin/menu/Ajax/ajaxShowMenu.php'?>");
     });
     $('#subMenuIns').click(function (e) {
         e.preventDefault();
@@ -112,6 +113,7 @@
                 $('input[name=link]').val('');
                 $('select[name=parentId]').val('');
                 $('#subM').load("<?php echo URL . 'view/Admin/menu/Ajax/ajaxSubMenu.php'?>");
+                $('#show').load("<?php echo URL . 'view/Admin/menu/Ajax/ajaxShowMenu.php'?>");
                 alert('عملیات موفقیت آمیز بود');
             }else if (msg==2){
                 alert('خطایی به وجود آمده است');
@@ -120,6 +122,7 @@
                 $('input[name=link]').val('');
                 $('select[name=parentId]').val('');
                 $('#subM').load("<?php echo URL . 'view/Admin/menu/Ajax/ajaxSubMenu.php'?>");
+                $('#show').load("<?php echo URL . 'view/Admin/menu/Ajax/ajaxShowMenu.php'?>");
             }
         });
 
@@ -136,6 +139,7 @@
                 $('input[name=link]').val('');
                 $('select[name=parentId]').val('');
                 $('#subM').load("<?php echo URL . 'view/Admin/menu/Ajax/ajaxSubMenu.php'?>");
+                $('#show').load("<?php echo URL . 'view/Admin/menu/Ajax/ajaxShowMenu.php'?>");
                 alert('عملیات موفقیت آمیز بود');
             }else if (msg2==2){
                 alert('خطایی به وجود آمده است');
@@ -144,6 +148,7 @@
                 $('input[name=link]').val('');
                 $('select[name=parentId]').val('');
                 $('#subM').load("<?php echo URL . 'view/Admin/menu/Ajax/ajaxSubMenu.php'?>");
+                $('#show').load("<?php echo URL . 'view/Admin/menu/Ajax/ajaxShowMenu.php'?>");
             }
         });
 
