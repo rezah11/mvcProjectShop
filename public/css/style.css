@@ -116,77 +116,80 @@ outline:none;
 }
 
 /*-----------------------------*/
+
+
 .main-menu{
     width: 100%;
     background-color: #fdfbfb;
     box-shadow: 0 0 2px #e6dddd;
 }
 .main-menu ul{
-position:relative;
+    position:relative;
 }
-	
+
 .main-menu ul li{
-display:inline-block;
-float:right;
+    display:inline-block;
+    float:right;
 }
 
 .main-menu ul li:hover ul{
-opacity:1;
-visibility:visible;
-transition:all 0.2s;
--webkit-transition:all 0.2s;
--moz-transition:all 0.2s;
--o-transition:all 0.3s;
+    opacity:1;
+    visibility:visible;
+    transition:all 0.2s;
+    -webkit-transition:all 0.2s;
+    -moz-transition:all 0.2s;
+    -o-transition:all 0.3s;
 }
 
-.main-menu ul li a{ 
-display:block;
-padding: 15px 10px;
-color:#616161;
-font-size:12px;
-transition:all 0.2s;
--webkit-transition:all 0.2s;
--moz-transition:all 0.2s;
--o-transition:all 0.2s;
+.main-menu ul li a{
+    display:block;
+    padding: 15px 10px;
+    color:#616161;
+    font-size:12px;
+    transition:all 0.2s;
+    -webkit-transition:all 0.2s;
+    -moz-transition:all 0.2s;
+    -o-transition:all 0.2s;
 }
-.main-menu ul li a:hover{ 
-background-color:rgba(255,255,255,.7);
-transition:all 0.2s;
--webkit-transition:all 0.2s;
--moz-transition:all 0.2s;
--o-transition:all 0.2s;
+.main-menu ul li a:hover{
+    background-color:rgba(255,255,255,.7);
+    transition:all 0.2s;
+    -webkit-transition:all 0.2s;
+    -moz-transition:all 0.2s;
+    -o-transition:all 0.2s;
 }
 
-.main-menu ul li ul{
-position:absolute;
-width:200px;
-color:#616161;
-background-color: #fffbfb;
-z-index:100;
-top:45px;
-opacity:0;
-visibility:hidden;
-transition:all 0.2s;
--webkit-transition:all 0.2s;
--moz-transition:all 0.2s;
--o-transition:all 0.3s;
+.main-menu ul li ul ul{
+    position:absolute;
+    width:200px;
+    color:#616161;
+    background-color: #fffbfb;
+    z-index:100;
+    top:45px;
+    opacity:0;
+    visibility:hidden;
+    transition:all 0.2s;
+    -webkit-transition:all 0.2s;
+    -moz-transition:all 0.2s;
+    -o-transition:all 0.3s;
 }
 .main-menu ul li ul li{
-display:inline-block;
-float:right;
-width:100%;
+    display:inline-block;
+    float:right;
+    width:100%;
 }
-	
+
 .main-menu ul li ul:before{
-content:"";
-position:absolute;
-height:12px;
-width:12px;
-top:-12px;
-border-left:12px solid transparent;
-border-right:12px solid transparent;
-border-bottom:12px solid#fffbfb;
-}	
+    content:"";
+    position:absolute;
+    height:12px;
+    width:12px;
+    top:-12px;
+    border-left:12px solid transparent;
+    border-right:12px solid transparent;
+    border-bottom:12px solid#fffbfb;
+}
+
 /*-----------------------------*/
 .new-producr-title{
 width:100%;

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        margin:0px;
+        padding:0px;
+    }
+
+    #container ul{
+        list-style: none;
+    }
+    #container ul li{
+        width: 150px;
+        height: 50px;
+        background-color: #2e9ad0;
+        float: left;
+    }
+    #container ul ul{
+        display: none;
+            /*position: absolute;*/
+         }
+    #container ul ul ul{
+        /*margin-top:50px;*/
+        margin-left: 150px;
+    }
+    #container ul li:hover{
+        background-color: #9d9d9d;
+        cursor: pointer;
+    }
+    #container ul li:hover > ul{
+        background-color: #9d9d9d;
+        cursor: pointer;
+        display: block;
+    }
+</style>
+<body>
+<div id="container">
+    <ul>
+        <li>a</li>
+        <li>a
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3
+                    <ul>
+                        <li>7</li>
+                        <li>8</li>
+                        <li>9</li>
+                    </ul>
+            </li>
+        </ul>
+        </li>
+        <li>a</li>
+        <li>a</li>
+    </ul>
+</div>
+</body>
+</html>

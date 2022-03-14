@@ -77,4 +77,18 @@ class Model
         $result=$query->rowCount();
         return $result;
     }
+    public function getMenu($level=0){
+        $sql='SELECT * FROM `menu` WHERE `parentId`=?';
+        $query=$this->doSelect($sql,[$level]);
+        foreach ($query as $value){
+            $children=$this->getMenu($value['id']);
+            if( $children!=null && sizeof($children)>0){
+                $value['children']=$children;
+//                print_r(@$children) ;
+            }
+//            print_r(@$value['children']);
+            @$data[]=$value;
+        }
+        return @$data;
+    }
 }
