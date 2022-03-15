@@ -19,8 +19,8 @@ $result = $menu->getMenu();
         <div class="row">
             <div class="col-md-6">
                 <div class="login">
-                    <a href="login/index" class="mybtn"><i class="fa fa-user-plus"></i>ثبت نام</a>
-                    <a href="login/index" class="mybtn"><i class="fa fa-user-o"></i>ورود</a>
+                    <a href="loginUsers/index" class="mybtn"><i class="fa fa-user-plus"></i>ثبت نام</a>
+                    <a href="loginUsers/index" class="mybtn"><i class="fa fa-user-o"></i>ورود</a>
                     <a href="#" class="mybtn"><i class="fa fa-cart-arrow-down"></i>سبد</a>
                 </div>
             </div>
