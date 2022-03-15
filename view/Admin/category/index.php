@@ -34,7 +34,7 @@
 <?php
 //echo $sliderEditId;
 ?>
-<?php if (empty($data)): ?>
+<?php if ($data['edit']==''): ?>
     <section class="container" style="direction: ltr;">
         <form action="category/insertCategory" method="post" enctype="multipart/form-data">
             <div class="form-group">
@@ -50,21 +50,18 @@
     </section>
 <?php elseif($data['edit']=='edit'):?>
     <?php
-    $sliderEdit=$data['slider'];
-    $sliderEditId=$data['id'];
+    $categoryEdit=$data['categoryUpdate'];
+    $categoryId=$data['id'];
     ?>
     <section class="container" style="direction: ltr;">
-        <form action="slider/updateSlider" method="post" enctype="multipart/form-data">
+        <form action="category/updateCategory" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="caption">caption:</label>
-                <input type="text" class="form-control" id="caption" value="<?php echo $sliderEdit['caption']?>" name="caption" required>
+                <label for="title">title:</label>
+                <input type="text" class="form-control" id="title" value="<?php echo $categoryEdit['title']?>" name="title" required>
             </div>
             <div class="form-group">
-                <label for="link">link:</label>
-                <input type="text" class="form-control" id="link" value="<?php echo $sliderEdit['caption']?>" name="link" required>
-                <input type="hidden" name="sliderUpdateId"  value="<?php echo $sliderEditId?>">
-            </div>
-            <div class="form-group">
+                <input type="hidden" name="categoryUpdateId"  value="<?php echo $categoryId?>">
+
                 <label for="image">image:</label>
                 <input  class="form-control" id="image" name="image" type="file" />
             </div>

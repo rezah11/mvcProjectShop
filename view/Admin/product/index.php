@@ -94,26 +94,58 @@
     <?php
     $productEdit = $data['product'];
     $productEditId = $data['id'];
+//    var_dump($data['categories']);
     ?>
     <section class="container" style="direction: ltr;">
         <form action="product/updateProduct" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="caption">caption:</label>
-                <input type="text" class="form-control" id="caption" value="<?php echo $productEdit['caption'] ?>"
-                       name="caption" required>
+                <label for="title">title:</label>
+                <input type="text" class="form-control" id="title" name="title" required value="<?php echo $productEdit['title'];?>">
             </div>
             <div class="form-group">
-                <label for="link">link:</label>
-                <input type="text" class="form-control" id="link" value="<?php echo $productEdit['caption'] ?>"
-                       name="link" required>
-                <input type="hidden" name="sliderUpdateId" value="<?php echo $productEditId ?>">
+                <label for="summary">summary:</label>
+                <input type="text" class="form-control" id="summary" name="summary" required value="<?php echo $productEdit['summary'];?>">
             </div>
             <div class="form-group">
-                <label for="image">image:</label>
-                <input class="form-control" id="image" name="image" type="file"/>
+                <label for="price">price:</label>
+                <input type="text" class="form-control" id="price" name="price" required value="<?php echo $productEdit['price'];?>">
             </div>
-            <button type="submit" class="btn btn-success btn-block">Submit</button>
+            <div class="form-group">
+                <label for="discription">discription:</label>
+                <textarea style="max-height: 500px" class="form-control editor" id="discription" name="discription" required><?php echo $productEdit['discription'];?></textarea>
+            </div>
 
+            <div class="form-group">
+                <label for="imageBig">imageBig:</label>
+                <input class="form-control" id="imageBig" name="imageBig" type="file" />
+            </div>
+            <div class="form-group">
+                <label for="image1">image1:</label>
+                <input class="form-control" id="image1" name="image1" type="file" />
+            </div>
+            <div class="form-group">
+                <label for="image2">image2:</label>
+                <input class="form-control" id="image2" name="image2" type="file" />
+            </div>
+            <div class="form-group">
+                <label for="image3">image3:</label>
+                <input class="form-control" id="image" name="image3" type="file" />
+            </div>
+            <div class="form-group">
+                <label for="image4">image:</label>
+                <input class="form-control" id="image4" name="image4" type="file" />
+            </div>
+            <select name="categoryId" class="form-control">
+                <?php $category=$data['category'];
+                      $categories=$data['categories'];
+                ?>
+                                <?php foreach ($categories as $value):?>
+                <option value="<?php echo $value['id']?>" <?php if($value['id']==$category['id']){echo 'selected';}?>><?php echo $value['title']?></option>
+                                <?php endforeach;?>
+            </select>
+            <br>
+            <input type="hidden" value="<?php echo $productEdit['id']?>" name="id">
+            <button type="submit" class="btn btn-success btn-block">Submit</button>
         </form>
     </section>
 

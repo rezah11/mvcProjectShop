@@ -1,7 +1,5 @@
 <?php
 $slider = $data['slider'];
-//var_dump($slider);
-
 $menu = new Model();
 $result = $menu->getMenu();
 //print_r($result);
@@ -21,8 +19,8 @@ $result = $menu->getMenu();
         <div class="row">
             <div class="col-md-6">
                 <div class="login">
-                    <a href="#" class="mybtn"><i class="fa fa-user-plus"></i>ثبت نام</a>
-                    <a href="#" class="mybtn"><i class="fa fa-user-o"></i>ورود</a>
+                    <a href="login/index" class="mybtn"><i class="fa fa-user-plus"></i>ثبت نام</a>
+                    <a href="login/index" class="mybtn"><i class="fa fa-user-o"></i>ورود</a>
                     <a href="#" class="mybtn"><i class="fa fa-cart-arrow-down"></i>سبد</a>
                 </div>
             </div>
@@ -58,7 +56,7 @@ $result = $menu->getMenu();
                                                     <?php $child2 = $level2['children'] ?>
                                                     <?php foreach ($child2 as $level3): ?>
                                                         <li>
-                                                            <a href="<?php echo $level3['link']; ?>" style="background-color: #d43f3a"><?php echo $level3['title'] ?>
+                                                            <a href="<?php echo $level3['link']; ?>"><?php echo $level3['title'] ?>
                                                             </a>
                                                         </li>
                                                     <?php endforeach; ?>
@@ -76,7 +74,6 @@ $result = $menu->getMenu();
     </div>
 </div>
 <br>
-
 <!---------------------------------->
 <div class="container">
     <div class="row">
@@ -86,6 +83,7 @@ $result = $menu->getMenu();
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">

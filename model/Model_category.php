@@ -19,4 +19,17 @@ class Model_category extends Model
         $sql="DELETE FROM `category` WHERE `id`=?";
         $this->doQuery($sql,[$id]);
     }
+    public function getCategory($id){
+        $sql="SELECT * FROM `category` WHERE `id`=?";
+        $query=$this->doSelect($sql,[$id],true);
+        return $query;
+    }
+    public function updateCategory($id,$title,$imageUp){
+        if($imageUp==time()){
+            $query=$this->getCategory($id);
+            $imageUp=$query['image'];
+        }
+        $sql="UPDATE `category` SET `title`=? ,`image`=? WHERE `id`=?";
+        $this->doQuery($sql,[$title,$imageUp,$id]);
+    }
 }

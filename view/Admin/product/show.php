@@ -102,7 +102,7 @@ if (!empty($data['product'])){
                     <!--                        <input type="hidden" value="--><?PHP //echo $value['id']; ?><!--" name="id">-->
                     <!--                        <input type="hidden" value="view/Admin/slider/image/--><?php //echo $value['image'];?><!--" name="imagePath">-->
                     <img style="cursor: pointer;" width="50px" height="50px" src="public/images/icon/delete-icon-stock-flat-design-vector-31349816.png" onclick="showModal(<?php echo $value['id'].",'view/Admin/product/imageBig/".$value['imageBig']."'".",'view/Admin/product/fancy/".$value['image1']."'".",'view/Admin/product/fancy/".$value['image2']."'".",'view/Admin/product/fancy/".$value['image3']."'".",'view/Admin/product/fancy/".$value['image4']."'".",".$value['categoryId'] ?>)">
-                    <a href="product/index/<?php echo $value['id']?>/edit"><img style="cursor: pointer;" width="50px" height="50px" src="public/images/icon/update-icon-png-18.jpg"></a>
+                    <a href="product/index/<?php echo $value['categoryId']?>/<?php echo $value['id']?>/edit"><img style="cursor: pointer;" width="50px" height="50px" src="public/images/icon/update-icon-png-18.jpg"></a>
 
                 </td>
                 <!--                <td></td>-->

@@ -29,4 +29,34 @@ class Model_product extends Model
         unlink($image3);
         unlink($image4);
     }
+    public function getProductUp($id){
+        $sql='SELECT * FROM `product` WHERE `id`=?';
+        $query=$this->doSelect($sql,[$id],true);
+        return $query;
+    }
+    public function getAllCategories(){
+        $sql='SELECT * FROM `category`';
+        $query=$this->doSelect($sql,[]);
+        return $query;
+    }
+    public function updateProduct($id,$title,$summary,$price,$discription,$imageBigNew,$image1New,$image2New,$image3New,$image4New,$categoryId){
+        $product=$this->getProductUp($id);
+        if($imageBigNew==time()){
+            $imageBigNew=$product['imageBig'];
+        }
+        if($image1New==time()){
+            $image1New=$product['image1'];
+        }
+        if($image2New==time()){
+            $image2New=$product['image2'];
+        }
+        if($image3New==time()){
+            $image3New=$product['image3'];
+        }
+        if($image4New==time()){
+            $image4New=$product['image4'];
+        }
+        $sql='UPDATE `product` SET `title`=?,`summary`=?,`price`=?,`discription`=?,`imageBig`=?,`image1`=?,`image2`=?,`image3`=?,`image4`=?,`categoryId`=? WHERE `id`=?';
+        $this->doQuery($sql,[$title,$summary,$price,$discription,$imageBigNew,$image1New,$image2New,$image3New,$image4New,$categoryId,$id]);
+    }
 }
