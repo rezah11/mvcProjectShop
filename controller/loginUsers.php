@@ -4,11 +4,13 @@ class loginUsers extends controller
 {
     public function __construct()
     {
+        Model::initSession();
     }
 
     public function index()
     {
         $this->view('index/Users/index');
+
     }
     public function signUp(){
         if (isset($_POST['signUpSubmit'])){
@@ -23,15 +25,23 @@ class loginUsers extends controller
             Model::backUrl('loginUsers/index');
         }
     }
+    public function logOut(){
+        Model::unsetSession('userLogined');
+        Model::unsetSession('userWrong');
+        Model::backUrl('index/index');
+    }
     public function login(){
         $email=$_POST['email'];
         $pass=$_POST['password'];
         $query=$this->modelDb->login($email,$pass);
-        if(empty($query)){
-            echo 'ورود ناموفق بود'ک
+        if($query[0]==true){
+//            echo $query[1];
+            Model::setSession('userLogined',$query[1]);
+            $user=$this->modelDb->getUser($email);
+            Model::backUrl('index/index/'.$user['id'].'/'.$user['name']);
         }else{
-            var_dump($query);
+            Model::setSession('userWrong',$query[1]);
+            Model::backUrl('loginUsers/index');
         }
-
     }
 }

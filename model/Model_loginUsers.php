@@ -56,6 +56,7 @@ class Model_loginUsers extends Model
         }
         return $result;
     }
+
     public function checkEmailLogin($email)
     {
         $result;
@@ -72,12 +73,29 @@ class Model_loginUsers extends Model
         }
         return $result;
     }
+    public function getUser($email){
+        $sql='SELECT * FROM `users` WHERE `email`=?';
+        $query=$this->doSelect($sql,[$email],true);
+        return $query;
+    }
     public function login($email, $pass)
     {
-        $userLogin=$this->checkEmailLogin($email);
-        if($userLogin!=false){
-            $hashPass=password_verify($pass,$userLogin['password']);
-
+        $msg = '';
+        $result;
+        $userLogin = $this->checkEmailLogin($email);
+        if ($userLogin != false) {
+            $hashPass = password_verify($pass, $userLogin['password']);
+            if ($hashPass) {
+                $msg = 'ورود شما موفقیت آمیز بود';
+                $result = true;
+            } else {
+                $msg = 'رمز نامعتبر است';
+                $result = false;
+            }
+        } else {
+            $msg = 'ایمیل شما ثبت نشده است';
+            $result = false;
         }
+        return [$result,$msg];
     }
 }

@@ -7,14 +7,15 @@ class index extends controller
 
     }
 
-    public function index()
+    public function index($id=0,$name='')
     {
 //    $x=10;
 //    $data=['x'=>$x];
+//        var_dump($name);
         $query = $this->modelDb->getMeta();
         $querySlider = $this->modelDb->getSlider();
         $querycategory = $this->modelDb->getCategory();
-        $data = ['meta' => $query, 'slider' => $querySlider, 'category' => $querycategory];
+        $data = ['meta' => $query, 'slider' => $querySlider, 'category' => $querycategory,'id'=>$id,'name'=>$name];
 //    var_dump($data['slider']);
         $this->Header('index/header', $data);
         $this->view('index/view', $data);
