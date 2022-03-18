@@ -39,7 +39,7 @@
 $user=$data['user'];
 ?>
 <section class="container" style="direction: ltr;">
-    <form class="rtl-d" action="" method="post">
+    <form class="rtl-d" action="user/update" method="post">
         <div class="form-group">
             <label for="name">نام و نام خانوادگی:</label>
             <input type="text" class="form-control" id="name" name="name" value="<?php echo $user['name']?>">

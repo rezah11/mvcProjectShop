@@ -13,9 +13,11 @@ class Model_loginUsers extends Model
             $hashedpass = password_hash($pass, PASSWORD_DEFAULT);
             $sql = 'INSERT INTO `users`(`name`,`email`,`tel`,`password`) VALUES (?,?,?,?)';
             $this->doQuery($sql, [$name, $email, $tel, $hashedpass]);
+            $msg='عملیات موفق آمیز بود';
         } else {
-            echo 'متاسفانه عملیات ناموفق بود';
+            $msg='متاسفانه عملیات ناموفق بود';
         }
+        return $msg;
     }
 
     public function checkEmail($email)

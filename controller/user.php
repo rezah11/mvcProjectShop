@@ -16,5 +16,14 @@ class user extends controller
         $data=['user'=>$query];
         $this->view('index/Users/userPanel',$data);
     }
+    public function update(){
+        $name=$_POST['name'];
+        $email=$_POST['email'];
+        $tel=$_POST['tel'];
+        $pass=$_POST['pass'];
+        $rePass=$_POST['rePass'];
+        $query=$this->modelDb->updateUser($this->id,$name,$email,$tel,$pass,$rePass);
+        Model::backUrl('user/index');
+    }
 
 }
