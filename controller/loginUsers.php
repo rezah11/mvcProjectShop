@@ -27,7 +27,9 @@ class loginUsers extends controller
     }
     public function logOut(){
         Model::unsetSession('userLogined');
+        Model::unsetSession('userName');
         Model::unsetSession('userWrong');
+        Model::unsetSession('userId');
         Model::backUrl('index/index');
     }
     public function login(){
@@ -38,7 +40,9 @@ class loginUsers extends controller
 //            echo $query[1];
             Model::setSession('userLogined',$query[1]);
             $user=$this->modelDb->getUser($email);
-            Model::backUrl('index/index/'.$user['id'].'/'.$user['name']);
+            Model::setSession('userName',$user['name']);
+            Model::setSession('userId',$user['id']);
+            Model::backUrl('index/index/');
         }else{
             Model::setSession('userWrong',$query[1]);
             Model::backUrl('loginUsers/index');

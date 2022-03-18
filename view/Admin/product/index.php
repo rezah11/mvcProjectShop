@@ -158,8 +158,5 @@
 <script>
     // $( 'textarea.editor' ).ckeditor();
     $( 'textarea.editor' ).ckeditor();
-
-
-
 </script>
 </html>

@@ -15,6 +15,8 @@ if(!empty(Model::getSession('wrong'))):?>
 //    }
 //    print_r($_SESSION);
     ?>
+<?php elseif(!empty(Model::getSession('userLogined'))):?>
+<?php Model::backUrl('index/index');?>
     <?php else: ?>
     <div class="d-flex justify-content-center h-100">
         <div class="card">

@@ -21,10 +21,10 @@ Model::initSession();
             <div class="col-md-6">
                 <div class="login">
                     <?php if (!empty(Model::getSession('userLogined'))):?>
-                        <?php $user=$data['name'];
+                        <?php $user=Model::getSession('userName');
 //                        echo Model::getSession('userLogined');
                         ?>
-                        <a href="#" class="mybtn"><i class="fa fa-user-o"></i>عزیز خوش آمدید<?php echo $user;?></a>
+                        <a href="user/index" class="mybtn"><i class="fa fa-user-o"></i>عزیز خوش آمدید<?php echo $user;?></a>
                         <a href="loginUsers/logOut" class="mybtn"><i class="fa fa-sign-out"></i>خروج</a>
                         <a href="#" class="mybtn"><i class="fa fa-cart-arrow-down"></i>سبد</a>
                     <?php else:?>
