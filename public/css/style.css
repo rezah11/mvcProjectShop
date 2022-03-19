@@ -1,4 +1,8 @@
-
+@font-face {
+    font-family: 'Vazir';
+    src: url('public/fonts/Vazir-Medium-FD.woff') format('woff');
+    font-weight: normal;
+}
 body{
 direction:rtl;
 text-align:right;
@@ -116,6 +120,7 @@ outline:none;
 }
 
 /*-----------------------------*/
+
 .main-menu{
     width: 100%;
     background-color: #fdfbfb;
@@ -187,6 +192,11 @@ outline:none;
     border-right:12px solid transparent;
     border-bottom:12px solid#fffbfb;
 }
+
+/**{*/
+/*    margin: 0px;*/
+/*    padding: 0px;*/
+/*}*/
 
 /*-----------------------------*/
 .new-producr-title{
@@ -825,6 +835,7 @@ transition:all 0.3s ease;
 .single-box .btn-single a{
 color:#fff;
 display:block;
+
 }
 
 .single-box .btn-single:hover{

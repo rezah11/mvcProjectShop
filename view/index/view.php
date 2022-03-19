@@ -1,7 +1,6 @@
 <?php
 $slider = $data['slider'];
-$menu = new Model();
-$result = $menu->getMenu();
+
 //print_r($result);
 Model::initSession();
 //var_dump($data['name']);
@@ -26,7 +25,7 @@ Model::initSession();
                         ?>
                         <a href="user/index" class="mybtn"><i class="fa fa-user-o"></i>عزیز خوش آمدید<?php echo $user;?></a>
                         <a href="loginUsers/logOut" class="mybtn"><i class="fa fa-sign-out"></i>خروج</a>
-                        <a href="#" class="mybtn"><i class="fa fa-cart-arrow-down"></i>سبد</a>
+                        <a href="cart/index" class="mybtn"><i class="fa fa-cart-arrow-down"></i>سبد</a>
                     <?php else:?>
                         <a href="loginUsers/index" class="mybtn"><i class="fa fa-user-plus"></i>ثبت نام</a>
                         <a href="loginUsers/index" class="mybtn"><i class="fa fa-user-o"></i>ورود</a>
@@ -44,46 +43,9 @@ Model::initSession();
     </div>
 </div>
 </div><!--top2-->
-<!---------------------------------->
-<div class="main-menu">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <ul>
-                    <?php foreach ($result as $level1): ?>
-                        <li>
-                            <a href="<?php echo $level1['link'] ?>"><?php echo $level1['title'] ?> </a>
-                            <ul>
-                                <?php if (!empty($level1['children'])): ?>
-
-                                    <?php $child1 = $level1['children'] ?>
-                                    <?php foreach ($child1 as $level2): ?>
-                                        <!--                                --><?php //print_r($level2)?>
-                                        <li >
-                                            <a href="<?php echo $level2['link']; ?>"><?php echo $level2['title'] ?></a>
-                                            <?php if (!empty($level2['children'])): ?>
-                                                <ul>
-                                                    <?php $child2 = $level2['children'] ?>
-                                                    <?php foreach ($child2 as $level3): ?>
-                                                        <li>
-                                                            <a href="<?php echo $level3['link']; ?>"><?php echo $level3['title'] ?>
-                                                            </a>
-                                                        </li>
-                                                    <?php endforeach; ?>
-                                                </ul>
-                                            <?php endif; ?>
-                                        </li>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
-                            </ul>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-<br>
+<!--------------menu-------------------->
+<?php
+require 'view/menuIndex.php';?>
 <!---------------------------------->
 <div class="container">
     <div class="row">

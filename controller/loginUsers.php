@@ -6,11 +6,9 @@ class loginUsers extends controller
     {
         Model::initSession();
     }
-
     public function index()
     {
         $this->view('index/Users/index');
-
     }
     public function signUp(){
         if (isset($_POST['signUpSubmit'])){

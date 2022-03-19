@@ -2,13 +2,15 @@
 <html>
 <head>
     <?php
-    $product=$data['product'];
-    $catTitle=$data['catTitle'];
+    if (!empty($data['product'])) {
+        $product = $data['product'];
+    }
+    $catTitle = $data['catTitle'];
     //    var_dump($meta);
     ?>
-    <base href="<?php echo URL?>">
+    <base href="<?php echo URL ?>">
     <meta charset="utf-8">
-    <title><?php echo $product['title'];?></title>
+    <title><?php echo $product['title']; ?></title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
@@ -20,22 +22,44 @@
     <link href="public/css/toastr.min.css" rel="stylesheet" type="text/css">
 </head>
 <style>
-    @font-face {
-        font-family: 'Vazir';
-        src: url('public/fonts/Vazir-Medium-FD.woff') format('woff');
-        font-weight: normal;
+    /*@font-face {*/
+    /*    font-family: 'Vazir';*/
+    /*    src: url('public/fonts/Vazir-Medium-FD.woff') format('woff');*/
+    /*    font-weight: normal;*/
+    /*}*/
+    /*.slider-box{*/
+    /*    background:url(public/images/template/slider-cover.jpg);*/
+    /*    width:100%;*/
+    /*    min-height:200px;*/
+    /*    color:#fff;*/
+    /*    padding:20px;*/
+    /*    text-align:center;*/
+    /*    background-size:cover;*/
+    /*    position:relative;*/
+    /*    margin-bottom:40px;*/
+    /*    line-height: 2.5;*/
+    /*}*/
+    .main-menu ul li a:hover {
+        background-color: rgba(255, 255, 255, .7);
+        transition: all 0.2s;
+        -webkit-transition: all 0.2s;
+        -moz-transition: all 0.2s;
+        -o-transition: all 0.2s;
     }
-    .slider-box{
-        background:url(public/images/template/slider-cover.jpg);
-        width:100%;
-        min-height:200px;
-        color:#fff;
-        padding:20px;
-        text-align:center;
-        background-size:cover;
-        position:relative;
-        margin-bottom:40px;
-        line-height: 2.5;
+
+    .main-menu ul li ul {
+        position: absolute;
+        width: 200px;
+        color: #616161;
+        background-color: #fffbfb;
+        z-index: 100;
+        top: 45px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.2s;
+        -webkit-transition: all 0.2s;
+        -moz-transition: all 0.2s;
+        -o-transition: all 0.3s;
     }
 </style>
 <body>
@@ -59,9 +83,9 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <form action="" >
+                <form action="">
                     <input type="text" placeholder="کالای مورد نظر را جستجو کنید">
-                    <button type="submit" ><i class="fa fa-search"></i></button>
+                    <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
             </div>
         </div>
@@ -69,41 +93,7 @@
 </div>
 </div><!--top2-->
 <!---------------------------------->
-<div class="main-menu">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <ul>
-                    <li>
-                        <a href="#">کالای دیجیتال</a>
-                        <ul>
-                            <li><a href="#">گوشی موبایل</a></li>
-                            <li><a href="#">تبلت</a></li>
-                            <li><a href="#">لپ تاپ</a></li>
-                            <li><a href="#">نمایشگر</a></li>
-                            <li><a href="#">دوربین عکاسی</a></li>
-                            <li><a href="#">لوازم جانبی رایانه</a></li>
-                            <li><a href="#">لوازم جانبی موبایل</a></li>
-                            <li><a href="#">سایر</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">آرایشی و بهداشتی</a></li>
-                    <li>
-                        <a href="#">مد و پوشاک</a>
-                        <ul>
-                            <li><a href="#">لباس فصل</a></li>
-                            <li><a href="#">ساعت  مچی</a></li>
-                            <li><a href="#">بدلیجات</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">خانه و آشپزخانه</a></li>
-                    <li><a href="#">ابزار اداری</a></li>
-                    <li><a href="#">اسباب بازی</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+<?php require 'view/menuIndex.php'; ?>
 <!---------------------------------->
 <div class="container">
     <div class="row">
@@ -111,79 +101,101 @@
             <div class="single-box">
                 <div class="row">
                     <div class="col-md-7">
-                        <h5><?php echo $product['title']?></h5>
-                        <h6><?php echo $product['summary']?></h6>
+                        <h5><?php echo $product['title'] ?></h5>
+                        <h6><?php echo $product['summary'] ?></h6>
                         <hr>
                         <div class="row">
                             <div class="col-md-7">
                                 <div class="single-content-right">
                                     <ul class="brand-ul">
-<!--                                        <li>برند : <a href="#">هوآوی</a></li>-->
-                                        <li>دسته بندی : <a href="#"><?php echo $catTitle?></a></li>
+                                        <!--                                        <li>برند : <a href="#">هوآوی</a></li>-->
+                                        <li>دسته بندی : <a href="#"><?php echo $catTitle ?></a></li>
                                     </ul>
                                     <br>
                                     <span>مشخصات  محصول :</span><br>
                                     <ul class="product-ul">
                                         <li style="overflow-wrap: break-word">
-                                            <?php echo $product['discription']?>
+                                            <?php echo $product['discription'] ?>
                                         </li>
-<!--                                        <li>اندازه نمایشگر 10 اینچ</li>-->
-<!--                                        <li>دارای شبکه 4G</li>-->
-<!--                                        <li>دارای دو سیم کارت</li>-->
-<!--                                        <li>حافظه داخلی 32G</li>-->
-<!--                                        <li>دارای بدنه فلزی در عین حال سبک</li>-->
-<!--                                        <li>درای تنوع رنگ</li>-->
+                                        <!--                                        <li>اندازه نمایشگر 10 اینچ</li>-->
+                                        <!--                                        <li>دارای شبکه 4G</li>-->
+                                        <!--                                        <li>دارای دو سیم کارت</li>-->
+                                        <!--                                        <li>حافظه داخلی 32G</li>-->
+                                        <!--                                        <li>دارای بدنه فلزی در عین حال سبک</li>-->
+                                        <!--                                        <li>درای تنوع رنگ</li>-->
                                     </ul>
                                 </div>
                             </div>
-<!--                            <div class="col-md-5">-->
-<!--                                <div class="single-content-left">-->
-<!--                                    <ul>-->
-<!--                                        <span>وضعیت : موجود در انبار</span><br><br>-->
-<!--                                        <li>گارانتی : Huawei</li>-->
-<!--                                        <br>-->
-<!--                                        <li>-->
-<!--                                            رنگ بندی :-->
-<!--                                            <ul>-->
-<!--                                                <li><i class="fa fa-square white"></i>سفید</li>-->
-<!--                                                <li><i class="fa fa-square black"></i>مشکی</li>-->
-<!--                                                <li><i class="fa fa-square silver"></i>نقره ای</li>-->
-<!--                                                <li><i class="fa fa-square gold"></i>طلایی</li>-->
-<!--                                            </ul>-->
-<!--                                        </li>-->
-<!--                                    </ul>-->
-<!--                                </div>-->
-<!--                            </div>-->
+                            <!--                            <div class="col-md-5">-->
+                            <!--                                <div class="single-content-left">-->
+                            <!--                                    <ul>-->
+                            <!--                                        <span>وضعیت : موجود در انبار</span><br><br>-->
+                            <!--                                        <li>گارانتی : Huawei</li>-->
+                            <!--                                        <br>-->
+                            <!--                                        <li>-->
+                            <!--                                            رنگ بندی :-->
+                            <!--                                            <ul>-->
+                            <!--                                                <li><i class="fa fa-square white"></i>سفید</li>-->
+                            <!--                                                <li><i class="fa fa-square black"></i>مشکی</li>-->
+                            <!--                                                <li><i class="fa fa-square silver"></i>نقره ای</li>-->
+                            <!--                                                <li><i class="fa fa-square gold"></i>طلایی</li>-->
+                            <!--                                            </ul>-->
+                            <!--                                        </li>-->
+                            <!--                                    </ul>-->
+                            <!--                                </div>-->
+                            <!--                            </div>-->
                         </div>
                         <hr>
-                        <h3><?php echo $product['price']?></h3>
-                        <div  class="btn-single">
-                            <a href="#"><i class="fa fa-cart-plus"></i>خرید آنلاین</a>
+                        <h3><?php echo $product['price'] ?></h3>
+                        <div style="display: flex;align-items: center;flex-direction: row-reverse;">
+                            <div class="btn-single">
+                                <a href="#" style="font-size: 15px"><i class="fa fa-money"></i>خرید آنلاین</a>
+                            </div>
+                            <form action="cart/insertCart" name="insertCart" method="post">
+                                <div class="btn-single">
+                                    <input type="hidden" name="productId" value="<?php echo $product['id']?>"/>
+                                    <a href="#" style="font-size: 15px" id="insertCart" ><i class="fa fa-cart-plus"></i>اضافه کردن به سبد
+                                        خرید</a>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <div class="col-md-5">
                         <div class="single-img">
                             <figure>
-                                <img src="view/Admin/product/imageBig/<?php echo $product['imageBig']?>" class="w-100 s-img" data-zoom-image="img/single-tablet.jpg">
+                                <img src="view/Admin/product/imageBig/<?php echo $product['imageBig'] ?>"
+                                     class="w-100 s-img" data-zoom-image="img/single-tablet.jpg">
                             </figure>
                         </div>
                         <div class="single-img-slider">
                             <div class="owl-carousel owl-theme ov-single">
                                 <div class="item">
-                                    <a data-fancybox="gallery"  href="view/Admin/product/fancy/<?php echo $product['image1']?>"><img src="view/Admin/product/fancy/<?php echo $product['image1']?>" class="w-100"></a>
+                                    <a data-fancybox="gallery"
+                                       href="view/Admin/product/fancy/<?php echo $product['image1'] ?>"><img
+                                                src="view/Admin/product/fancy/<?php echo $product['image1'] ?>"
+                                                class="w-100"></a>
                                 </div>
                                 <div class="item">
-                                    <a data-fancybox="gallery"  href="view/Admin/product/fancy/<?php echo $product['image2']?>"><img src="view/Admin/product/fancy/<?php echo $product['image2']?>" class="w-100"></a>
+                                    <a data-fancybox="gallery"
+                                       href="view/Admin/product/fancy/<?php echo $product['image2'] ?>"><img
+                                                src="view/Admin/product/fancy/<?php echo $product['image2'] ?>"
+                                                class="w-100"></a>
                                 </div>
                                 <div class="item">
-                                    <a data-fancybox="gallery"  href="view/Admin/product/fancy/<?php echo $product['image3']?>"><img src="view/Admin/product/fancy/<?php echo $product['image3']?>" class="w-100"></a>
+                                    <a data-fancybox="gallery"
+                                       href="view/Admin/product/fancy/<?php echo $product['image3'] ?>"><img
+                                                src="view/Admin/product/fancy/<?php echo $product['image3'] ?>"
+                                                class="w-100"></a>
                                 </div>
                                 <div class="item">
-                                    <a data-fancybox="gallery"  href="view/Admin/product/fancy/<?php echo $product['image4']?>"><img src="view/Admin/product/fancy/<?php echo $product['image4']?>" class="w-100"></a>
+                                    <a data-fancybox="gallery"
+                                       href="view/Admin/product/fancy/<?php echo $product['image4'] ?>"><img
+                                                src="view/Admin/product/fancy/<?php echo $product['image4'] ?>"
+                                                class="w-100"></a>
                                 </div>
-<!--                                <div class="item">-->
-<!--                                    <a data-fancybox="gallery"  href="img/single-tablet.jpg"><img src="img/single-tablet.jpg" class="w-100"></a>-->
-<!--                                </div>-->
+                                <!--                                <div class="item">-->
+                                <!--                                    <a data-fancybox="gallery"  href="img/single-tablet.jpg"><img src="img/single-tablet.jpg" class="w-100"></a>-->
+                                <!--                                </div>-->
                             </div>
                         </div>
                     </div>
@@ -202,70 +214,70 @@
                 <div class="owl-carousel owl-theme ov-single-two">
                     <div class="item">
                         <figure>
-                            <a href=""><img src="img/Canon_EOS_400D.png" class="w-100" /></a>
+                            <a href=""><img src="img/Canon_EOS_400D.png" class="w-100"/></a>
                         </figure>
                         <h5>Samsung 500</h5>
                         <span>1,200,000 تومان</span>
                     </div>
                     <div class="item">
                         <figure>
-                            <a href=""><img src="img/Canon_EOS_400D.png" class="w-100" /></a>
+                            <a href=""><img src="img/Canon_EOS_400D.png" class="w-100"/></a>
                         </figure>
                         <h5>Samsung 500</h5>
                         <span>1,200,000 تومان</span>
                     </div>
                     <div class="item">
                         <figure>
-                            <a href=""><img src="img/Canon_EOS_400D.png" class="w-100" /></a>
+                            <a href=""><img src="img/Canon_EOS_400D.png" class="w-100"/></a>
                         </figure>
                         <h5>Samsung 500</h5>
                         <span>1,200,000 تومان</span>
                     </div>
                     <div class="item">
                         <figure>
-                            <a href=""><img src="img/Canon_EOS_400D.png" class="w-100" /></a>
+                            <a href=""><img src="img/Canon_EOS_400D.png" class="w-100"/></a>
                         </figure>
                         <h5>Samsung 500</h5>
                         <span>1,200,000 تومان</span>
                     </div>
                     <div class="item">
                         <figure>
-                            <a href=""><img src="img/Canon_EOS_400D.png" class="w-100" /></a>
+                            <a href=""><img src="img/Canon_EOS_400D.png" class="w-100"/></a>
                         </figure>
                         <h5>Samsung 500</h5>
                         <span>1,200,000 تومان</span>
                     </div>
                     <div class="item">
                         <figure>
-                            <a href=""><img src="img/Canon_EOS_400D.png" class="w-100" /></a>
+                            <a href=""><img src="img/Canon_EOS_400D.png" class="w-100"/></a>
                         </figure>
                         <h5>Samsung 500</h5>
                         <span>1,200,000 تومان</span>
                     </div>
                     <div class="item">
                         <figure>
-                            <a href=""><img src="img/Canon_EOS_400D.png" class="w-100" /></a>
+                            <a href=""><img src="img/Canon_EOS_400D.png" class="w-100"/></a>
                         </figure>
                         <h5>Samsung 500</h5>
                         <span>1,200,000 تومان</span>
                     </div>
                     <div class="item">
                         <figure>
-                            <a href=""><img src="img/Canon_EOS_400D.png" class="w-100" /></a>
+                            <a href=""><img src="img/Canon_EOS_400D.png" class="w-100"/></a>
                         </figure>
                         <h5>Samsung 500</h5>
                         <span>1,200,000 تومان</span>
                     </div>
                     <div class="item">
                         <figure>
-                            <a href=""><img src="img/Canon_EOS_400D.png" class="w-100" /></a>
+                            <a href=""><img src="img/Canon_EOS_400D.png" class="w-100"/></a>
                         </figure>
                         <h5>Samsung 500</h5>
                         <span>1,200,000 تومان</span>
                     </div>
                     <div class="item">
                         <figure>
-                            <a href=""><img src="img/Canon_EOS_400D.png" class="w-100" /></a>
+                            <a href=""><img src="img/Canon_EOS_400D.png" class="w-100"/></a>
                         </figure>
                         <h5>Samsung 500</h5>
                         <span>1,200,000 تومان</span>
@@ -337,7 +349,7 @@
                     <h5>در خبرنامه عضو شوید</h5>
                     <form action="registerNews/insertEmail" method="post" name="regEmail" id="regEmail">
                         <input type="email" placeholder="ایمیل خود را وارد کنید" name="email" REQUIRED>
-                        <button type="submit" ><i class="fa fa-envelope-o"></i></button>
+                        <button type="submit"><i class="fa fa-envelope-o"></i></button>
                     </form>
                 </div>
             </div>
@@ -366,23 +378,47 @@
 <script src="public/javaScript/js.js" type="text/javascript"></script>
 <script src="public/javaScript/toastr.min.js" type="text/javascript"></script>
 <script>
-    $('#regEmail').submit(function (e){
+    $('#regEmail').submit(function (e) {
         e.preventDefault();
-        var url=$(this).attr('action');
-        var email=$('input[name=email]').val();
-        var data={'email':email};
+        var url = $(this).attr('action');
+        var email = $('input[name=email]').val();
+        var data = {'email': email};
         // alert(data['email']);
-        $.post(url,data,function (msg){
-            if(msg==1){
-                email='';
+        $.post(url, data, function (msg) {
+            if (msg == 1) {
+                email = '';
                 toastr.success('شما عضو شدید');
-            }else if (msg==2){
+            } else if (msg == 2) {
                 toastr.warning('این ایمیل قبلا ثبت شده است');
-            }
-            else {
+            } else {
                 toastr.error('عضویت موفقیت آمیز نبود');
             }
         })
-    })
+    });
+    // $(document).on('click', '#insertCart', function(e) {
+    //     $('form[name=insertCart]').submit();
+    //     // e.preventDefault();
+    //
+    // });
+    $('#insertCart').click(function (e){
+        e.preventDefault();
+        var idproduct=$('input[name=productId]').val();
+        // alert (idproduct);
+        var url='<?php echo URL.'cart/insertCart'?>';
+        var data={'productId':idproduct}
+        $.post(url,data,function (msg){
+           if (msg==1){
+               toastr.success('محصول به سبد اضافه شد');
+           }else if(msg==0){
+               toastr.error('عملیات ناموفق بود');
+           }
+        });
+        // $('form[name=insertCart]').submit();
+    });
+
+    // function formInsert(e){
+    //     e.preventDefault();
+    //     $('#insertCart').submit();
+    // }
 </script>
 </html>

@@ -26,11 +26,25 @@ class Model
             $query->bindValue($key+1,$item);
         }
         $query->execute();
-        if($fetch==false){
-            return $query->fetchAll();
-        }else{
+//        if($fetch==false){
+//            return $query->fetchAll();
+//        }
+//        elseif ($fetch=='test') {
+//            return $query->rowCount();
+//        }
+//        else if ($fetch==true){
+//            return $query->fetch();
+//        }
+        if($fetch==true){
             return $query->fetch();
         }
+        elseif ($fetch=='rowCount') {
+            return $query->rowCount();
+        }
+        else{
+            return $query->fetchAll();
+        }
+
     }
     public static function backUrl($path){
         header('location:'.URL.$path);

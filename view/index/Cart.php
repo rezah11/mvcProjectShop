@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <base href="<?php echo URL;?>">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -9,6 +10,11 @@
     <link href="public/css/bootstrap.css" rel="stylesheet" type="text/css">
 </head>
 <style>
+    @font-face {
+        font-family: 'Vazir';!important;
+        src: url('public/fonts/Vazir-Medium-FD.woff') format('woff');!important;
+        font-weight: normal;
+    }
     @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,400italic|Montserrat:400,700);
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -102,13 +108,13 @@
     }
 
     .projTitle {
-        font-family: "Montserrat", sans-serif;
+        font-family: "Vazir";
         font-weight: bold;
         text-align: center;
         font-size: 2em;
         padding: 1em 0;
         border-bottom: 1px solid #dadada;
-        letter-spacing: 3px;
+        /*letter-spacing: 3px;*/
         text-transform: uppercase;
     }
     .projTitle span {
@@ -452,11 +458,16 @@
     }
 </style>
 <body>
+<?php
+$username=$data['userName'];
+//var_dump($data['carts']);
+$carts=$data['carts'];
+?>
 <div class="wrap cf">
-    <h1 class="projTitle">Responsive Table<span>-Less</span> Shopping Cart</h1>
+    <h1 class="projTitle">سبد خرید</h1>
     <div class="heading cf">
-        <h1>My Cart</h1>
-        <a href="#" class="continue">Continue Shopping</a>
+        <h1><?php echo $username?></h1>
+        <a href="index/index" class="continue">ادامه خرید</a>
     </div>
     <div class="cart">
         <!--    <ul class="tableHead">
@@ -466,17 +477,18 @@
                <li>Remove</li>
             </ul>-->
         <ul class="cartWrap">
-            <li class="items odd">
 
+                <?php foreach ($carts as $key=>$values):?>
+                        <li class="items <?php echo (($key+1)%2==0) ? 'even' : 'odd';?>">
                 <div class="infoWrap">
                     <div class="cartSection">
                         <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />
-                        <p class="itemNumber">#QUE-007544-002</p>
-                        <h3>Item Name 1</h3>
+                        <p class="itemNumber">0000</p>
+                        <h3>عنوان محصول</h3>
 
-                        <p> <input type="text"  class="qty" placeholder="3"/> x $5.00</p>
+                        <p> <input type="number"  class="qty" placeholder="3"/> x هزینه</p>
 
-                        <p class="stockStatus"> In Stock</p>
+                        <p class="stockStatus">موجود</p>
                     </div>
 
 
@@ -488,77 +500,79 @@
                     </div>
                 </div>
             </li>
-            <li class="items even">
+                <?php endforeach;?>
 
-                <div class="infoWrap">
-                    <div class="cartSection">
-
-                        <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />
-                        <p class="itemNumber">#QUE-007544-002</p>
-                        <h3>Item Name 1</h3>
-
-                        <p> <input type="text"  class="qty" placeholder="3"/> x $5.00</p>
-
-                        <p class="stockStatus"> In Stock</p>
-                    </div>
-
-
-                    <div class="prodTotal cartSection">
-                        <p>$15.00</p>
-                    </div>
-                    <div class="cartSection removeWrap">
-                        <a href="#" class="remove">x</a>
-                    </div>
-                </div>
-            </li>
-
-            <li class="items odd">
-                <div class="infoWrap">
-                    <div class="cartSection">
-
-                        <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />
-                        <p class="itemNumber">#QUE-007544-002</p>
-                        <h3>Item Name 1</h3>
-
-                        <p> <input type="text"  class="qty" placeholder="3"/> x $5.00</p>
-
-                        <p class="stockStatus out"> Out of Stock</p>
-                    </div>
-
-
-                    <div class="prodTotal cartSection">
-                        <p>$15.00</p>
-                    </div>
-                    <div class="cartSection removeWrap">
-                        <a href="#" class="remove">x</a>
-                    </div>
-                </div>
-            </li>
-            <li class="items even">
-                <div class="infoWrap">
-                    <div class="cartSection info">
-
-                        <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />
-                        <p class="itemNumber">#QUE-007544-002</p>
-                        <h3>Item Name 1</h3>
-
-                        <p> <input type="text"  class="qty" placeholder="3"/> x $5.00</p>
-
-                        <p class="stockStatus"> In Stock</p>
-
-                    </div>
-
-
-                    <div class="prodTotal cartSection">
-                        <p>$15.00</p>
-                    </div>
-
-                    <div class="cartSection removeWrap">
-                        <a href="#" class="remove">x</a>
-                    </div>
-                </div>
-                <div class="special"><div class="specialContent">Free gift with purchase!, gift wrap, etc!!</div></div>
-            </li>
+<!--            <li class="items even">-->
+<!---->
+<!--                <div class="infoWrap">-->
+<!--                    <div class="cartSection">-->
+<!---->
+<!--                        <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />-->
+<!--                        <p class="itemNumber">#QUE-007544-002</p>-->
+<!--                        <h3>Item Name 1</h3>-->
+<!---->
+<!--                        <p> <input type="text"  class="qty" placeholder="3"/> x $5.00</p>-->
+<!---->
+<!--                        <p class="stockStatus"> In Stock</p>-->
+<!--                    </div>-->
+<!---->
+<!---->
+<!--                    <div class="prodTotal cartSection">-->
+<!--                        <p>$15.00</p>-->
+<!--                    </div>-->
+<!--                    <div class="cartSection removeWrap">-->
+<!--                        <a href="#" class="remove">x</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </li>-->
+<!---->
+<!--            <li class="items odd">-->
+<!--                <div class="infoWrap">-->
+<!--                    <div class="cartSection">-->
+<!---->
+<!--                        <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />-->
+<!--                        <p class="itemNumber">#QUE-007544-002</p>-->
+<!--                        <h3>Item Name 1</h3>-->
+<!---->
+<!--                        <p> <input type="text"  class="qty" placeholder="3"/> x $5.00</p>-->
+<!---->
+<!--                        <p class="stockStatus out">  ناموجود</p>-->
+<!--                    </div>-->
+<!---->
+<!---->
+<!--                    <div class="prodTotal cartSection">-->
+<!--                        <p>$15.00</p>-->
+<!--                    </div>-->
+<!--                    <div class="cartSection removeWrap">-->
+<!--                        <a href="#" class="remove">x</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="items even">-->
+<!--                <div class="infoWrap">-->
+<!--                    <div class="cartSection info">-->
+<!---->
+<!--                        <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />-->
+<!--                        <p class="itemNumber">#QUE-007544-002</p>-->
+<!--                        <h3>Item Name 1</h3>-->
+<!---->
+<!--                        <p> <input type="text"  class="qty" placeholder="3"/> x $5.00</p>-->
+<!---->
+<!--                        <p class="stockStatus"> In Stock</p>-->
+<!---->
+<!--                    </div>-->
+<!---->
+<!---->
+<!--                    <div class="prodTotal cartSection">-->
+<!--                        <p>$15.00</p>-->
+<!--                    </div>-->
+<!---->
+<!--                    <div class="cartSection removeWrap">-->
+<!--                        <a href="#" class="remove">x</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                    <div class="special"><div class="specialContent">Free gift with purchase!, gift wrap, etc!!</div></div>-->
+<!--            </li>-->
 
 
             <!--<li class="items even">Item 2</li>-->
@@ -566,18 +580,18 @@
         </ul>
     </div>
 
-    <div class="promoCode"><label for="promo">Have A Promo Code?</label><input type="text" name="promo" placholder="Enter Code" />
+    <div class="promoCode"><label for="promo">کد تخفیف</label><input type="text" name="promo" placholder="Enter Code" />
         <a href="#" class="btn"></a></div>
 
     <div class="subtotal cf">
         <ul>
-            <li class="totalRow"><span class="label">Subtotal</span><span class="value">$35.00</span></li>
+            <li class="totalRow"><span class="label">مجموع</span><span class="value">$35.00</span></li>
 
-            <li class="totalRow"><span class="label">Shipping</span><span class="value">$5.00</span></li>
+            <li class="totalRow"><span class="label">هزینه حمل</span><span class="value">$5.00</span></li>
 
-            <li class="totalRow"><span class="label">Tax</span><span class="value">$4.00</span></li>
-            <li class="totalRow final"><span class="label">Total</span><span class="value">$44.00</span></li>
-            <li class="totalRow"><a href="#" class="btn continue">Checkout</a></li>
+            <li class="totalRow"><span class="label">مالیات</span><span class="value">$4.00</span></li>
+            <li class="totalRow final"><span class="label">کل </span><span class="value">$44.00</span></li>
+            <li class="totalRow"><a href="#" class="btn continue">پرداخت</a></li>
         </ul>
     </div>
 </div>

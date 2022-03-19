@@ -5,7 +5,7 @@ class product extends controller
     public function __construct()
     {
     }
-    public function index($id,$updateId,$edit=''){
+    public function index($id,$updateId=0,$edit=''){
         $query=$this->modelDb->getCategory($id);
         $updateRec=$this->modelDb->getProductUp($updateId);
         $categories=$this->modelDb->getAllCategories();

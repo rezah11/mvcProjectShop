@@ -49,6 +49,28 @@
         /*text-decoration: none;*/
         color: inherit;
     }
+    .main-menu ul li a:hover{
+        background-color:rgba(255,255,255,.7);
+        transition:all 0.2s;
+        -webkit-transition:all 0.2s;
+        -moz-transition:all 0.2s;
+        -o-transition:all 0.2s;
+    }
+
+    .main-menu ul li ul{
+        position:absolute;
+        width:200px;
+        color:#616161;
+        background-color: #fffbfb;
+        z-index:100;
+        top:45px;
+        opacity:0;
+        visibility:hidden;
+        transition:all 0.2s;
+        -webkit-transition:all 0.2s;
+        -moz-transition:all 0.2s;
+        -o-transition:all 0.3s;
+    }
 </style>
 <body>
 <div class="social">
