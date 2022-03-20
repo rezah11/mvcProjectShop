@@ -639,8 +639,8 @@ $carts = $data['carts'];
             <!--<li class="items even">Item 2</li>-->
             </ul>
     </div>
-    <div class="promoCode"><label for="promo">کد تخفیف</label><input type="text" name="promo" placholder="Enter Code"/>
-        <a href="#" class="btn"></a></div>
+<!--    <div class="promoCode"><label for="promo">کد تخفیف</label><input type="text" name="promo" placholder="Enter Code"/>-->
+<!--        <a href="#" class="btn"></a></div>-->
 
     <div class="subtotal cf">
         <ul>
@@ -650,7 +650,7 @@ $carts = $data['carts'];
 
             <li class="totalRow"><span class="label">مالیات</span><span class="value" id="tax"></span></li>
             <li class="totalRow final"><span class="label">کل </span><span class="value" id="tt"></span></li>
-            <li class="totalRow"><a href="#" class="btn continue">پرداخت</a></li>
+            <li class="totalRow"><a href="cart/pay" id="pay" class="btn continue">پرداخت</a></li>
         </ul>
     </div>
 </div>
@@ -735,6 +735,16 @@ $carts = $data['carts'];
         $('#totalCartP').text(sum);
         $('#tax').text(sum * 0.09);
         $('#tt').text(sum + parseInt($('#tax').text()));
+        var data={'rowId':idCurent,'count':countCart};
+        var url='<?php echo URL.'cart/updateCart'?>';
+        $.post(url,data,function (msg){
+           if(msg==1){
+               alert('yeah Ok');
+           }else if(msg==0){
+               alert('oops');
+           }
+
+        });
         // console.log(sum);
         // console.log();
         // $('#priceProduct'+idCurent).html( $('#priceProduct'+idCurent).html() * countCart);
@@ -745,7 +755,12 @@ $carts = $data['carts'];
     $('a.btn.continue').click(function () {
         $('li.items').show(400);
     });
-
+    //$('#pay').click(function (){
+    //   $url= <?php //echo URL.'cart/paid'?>//;
+    //   $.post($url,function (){
+    //       // if()
+    //   })
+    //})
 
 </script>
 

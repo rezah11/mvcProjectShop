@@ -49,6 +49,25 @@ class cart extends controller
         }else{
 //            Model::backUrl('cart/index');
             echo 0;
+
         }
     }
+    public function updateCart(){
+        if (isset($_POST['rowId']) && isset($_POST['count'])){
+            try {
+                $id=$_POST['rowId'];
+                $count=$_POST['count'];
+                $this->modelDb->updateCart($id,$count);
+                echo 1;
+            }catch (Exception $e){
+                echo 0;
+            }
+        }else{
+            Model::backUrl('cart/index');
+            echo 0;
+        }
+    }
+//    public function pay(){
+////        if()
+//    }
 }

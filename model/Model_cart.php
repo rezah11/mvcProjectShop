@@ -22,9 +22,10 @@ class Model_cart extends Model
     {
         $result=$this->checkRows($userId,$productId);
         if($result[0]==true){
+            $state='notPaid';
             $count=1;
-            $sql='INSERT INTO `cart`(`userId`,`productId`,`count`) VALUES (?,?,?)';
-            $this->doQuery($sql,[$userId,$productId,$count]);
+            $sql='INSERT INTO `cart`(`userId`,`productId`,`count`,`state`,`created_at`,`updated_at`) VALUES (?,?,?,?,now(),now())';
+            $this->doQuery($sql,[$userId,$productId,$count,$state]);
         }
         else{
             $count=$result[1]+1;
@@ -37,11 +38,15 @@ class Model_cart extends Model
         return $query;
     }
     public function updateCount($userId,$productId,$count){
-        $sql='UPDATE `cart` SET `count`=? WHERE `userId`=? AND `productId`=?';
+        $sql='UPDATE `cart` SET `count`=?,`updated_at`=now() WHERE `userId`=? AND `productId`=?';
         $query=$this->doQuery($sql,[$count,$userId,$productId]);
     }
     public function delCart($cartId){
         $sql='DELETE FROM `cart` WHERE `id`=?';
         $query=$this->doQuery($sql,[$cartId]);
+    }
+    public function updateCart($id,$count){
+        $sql='UPDATE `cart` SET `count`=?,`updated_at`=now() WHERE `id`=?';
+        $query=$this->doQuery($sql,[$count,$id]);
     }
 }
