@@ -400,21 +400,24 @@
     //     // e.preventDefault();
     //
     // });
-    $('#insertCart').click(function (e){
-        e.preventDefault();
-        var idproduct=$('input[name=productId]').val();
-        // alert (idproduct);
-        var url='<?php echo URL.'cart/insertCart'?>';
-        var data={'productId':idproduct}
-        $.post(url,data,function (msg){
-           if (msg==1){
-               toastr.success('محصول به سبد اضافه شد');
-           }else if(msg==0){
-               toastr.error('عملیات ناموفق بود');
-           }
+    $(document).ready(function (){
+        $('#insertCart').click(function (e){
+            e.preventDefault();
+            var idproduct=$('input[name=productId]').val();
+            // alert (idproduct);
+            var url='<?php echo URL.'cart/insertCart'?>';
+            var data={'productId':idproduct}
+            $.post(url,data,function (msg){
+                if (msg==1){
+                    toastr.success('محصول به سبد اضافه شد');
+                }else if(msg==0){
+                    toastr.error('عملیات ناموفق بود');
+                }
+            });
+            // $('form[name=insertCart]').submit();
         });
-        // $('form[name=insertCart]').submit();
     });
+
 
     // function formInsert(e){
     //     e.preventDefault();

@@ -37,8 +37,11 @@ class Model_cart extends Model
         return $query;
     }
     public function updateCount($userId,$productId,$count){
-
         $sql='UPDATE `cart` SET `count`=? WHERE `userId`=? AND `productId`=?';
         $query=$this->doQuery($sql,[$count,$userId,$productId]);
+    }
+    public function delCart($cartId){
+        $sql='DELETE FROM `cart` WHERE `id`=?';
+        $query=$this->doQuery($sql,[$cartId]);
     }
 }

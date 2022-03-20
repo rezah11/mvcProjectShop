@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <base href="<?php echo URL;?>">
+    <base href="<?php echo URL; ?>">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -15,6 +15,7 @@
         src: url('public/fonts/Vazir-Medium-FD.woff') format('woff');!important;
         font-weight: normal;
     }
+
     @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,400italic|Montserrat:400,700);
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -59,6 +60,7 @@
     q, blockquote {
         quotes: none;
     }
+
     q:before, q:after, blockquote:before, blockquote:after {
         content: "";
         content: none;
@@ -117,6 +119,7 @@
         /*letter-spacing: 3px;*/
         text-transform: uppercase;
     }
+
     .projTitle span {
         font-family: "Droid Serif", serif;
         font-weight: normal;
@@ -129,11 +132,13 @@
         padding: 1em 0;
         border-bottom: 1px solid #D0D0D0;
     }
+
     .heading h1 {
         font-family: "Droid Serif", serif;
         font-size: 2em;
         float: left;
     }
+
     .heading a.continue:link, .heading a.continue:visited {
         text-decoration: none;
         font-family: "Montserrat", sans-serif;
@@ -152,6 +157,7 @@
         -o-transition: all 0.25s linear;
         transition: all 0.25s linear;
     }
+
     .heading a.continue:after {
         content: "\276f";
         padding: .5em;
@@ -163,9 +169,11 @@
         -o-transition: all 0.15s linear;
         transition: all 0.15s linear;
     }
+
     .heading a.continue:hover, .heading a.continue:focus, .heading a.continue:active {
         background: #f69679;
     }
+
     .heading a.continue:hover:after, .heading a.continue:focus:after, .heading a.continue:active:after {
         right: -10px;
     }
@@ -176,11 +184,13 @@
         font-family: "Montserrat", sans-serif;
         font-size: .75em;
     }
+
     .tableHead li {
         display: table-cell;
         padding: 1em 0;
         text-align: center;
     }
+
     .tableHead li.prodHeader {
         text-align: left;
     }
@@ -188,6 +198,7 @@
     .cart {
         padding: 1em 0;
     }
+
     .cart .items {
         display: block;
         width: 100%;
@@ -195,22 +206,27 @@
         padding: 1.5em;
         border-bottom: 1px solid #fafafa;
     }
+
     .cart .items.even {
         background: #fafafa;
     }
+
     .cart .items .infoWrap {
         display: table;
         width: 100%;
     }
+
     .cart .items .cartSection {
         display: table-cell;
         vertical-align: middle;
     }
+
     .cart .items .cartSection .itemNumber {
         font-size: .75em;
         color: #777;
         margin-bottom: .5em;
     }
+
     .cart .items .cartSection h3 {
         font-size: 1em;
         font-family: "Montserrat", sans-serif;
@@ -218,36 +234,44 @@
         text-transform: uppercase;
         letter-spacing: .025em;
     }
+
     .cart .items .cartSection p {
         display: inline-block;
         font-size: .85em;
         color: #777777;
         font-family: "Montserrat", sans-serif;
     }
+
     .cart .items .cartSection p .quantity {
         font-weight: bold;
         color: #333;
     }
+
     .cart .items .cartSection p.stockStatus {
         color: #82CA9C;
         font-weight: bold;
         padding: .5em 0 0 1em;
         text-transform: uppercase;
     }
+
     .cart .items .cartSection p.stockStatus.out {
         color: #F69679;
     }
+
     .cart .items .cartSection .itemImg {
         width: 4em;
         float: left;
     }
+
     .cart .items .cartSection.qtyWrap, .cart .items .cartSection.prodTotal {
         text-align: center;
     }
+
     .cart .items .cartSection.qtyWrap p, .cart .items .cartSection.prodTotal p {
         font-weight: bold;
         font-size: 1.25em;
     }
+
     .cart .items .cartSection input.qty {
         width: 2em;
         text-align: center;
@@ -255,6 +279,7 @@
         padding: .25em;
         margin: 1em .5em 0 0;
     }
+
     .cart .items .cartSection .itemImg {
         width: 8em;
         display: inline;
@@ -265,12 +290,14 @@
         display: block;
         font-family: "Montserrat", sans-serif;
     }
+
     .special .specialContent {
         padding: 1em 1em 0;
         display: block;
         margin-top: .5em;
         border-top: 1px solid #dadada;
     }
+
     .special .specialContent:before {
         content: "\21b3";
         font-size: 1.5em;
@@ -296,6 +323,7 @@
         -o-transition: all 0.25s linear;
         transition: all 0.25s linear;
     }
+
     a.remove:hover {
         background: #f30;
     }
@@ -306,6 +334,7 @@
         width: 35%;
         padding: 2%;
     }
+
     .promoCode label {
         display: block;
         width: 100%;
@@ -314,6 +343,7 @@
         margin-bottom: .5em;
         letter-spacing: -.025em;
     }
+
     .promoCode input {
         width: 85%;
         font-size: 1em;
@@ -321,9 +351,11 @@
         float: left;
         border: 1px solid #dadada;
     }
+
     .promoCode input:active, .promoCode input:focus {
         outline: 0;
     }
+
     .promoCode a.btn {
         float: left;
         width: 15%;
@@ -332,6 +364,7 @@
         text-align: center;
         border: 1px solid #82ca9c;
     }
+
     .promoCode a.btn:hover {
         border: 1px solid #f69679;
         background: #f69679;
@@ -355,6 +388,7 @@
         -o-transition: all 0.25s linear;
         transition: all 0.25s linear;
     }
+
     .btn:after {
         content: "\276f";
         padding: .5em;
@@ -366,12 +400,15 @@
         -o-transition: all 0.15s linear;
         transition: all 0.15s linear;
     }
+
     .btn:hover, .btn:focus, .btn:active {
         background: #f69679;
     }
+
     .btn:hover:after, .btn:focus:after, .btn:active:after {
         right: -10px;
     }
+
     .promoCode .btn {
         font-size: .85em;
         paddding: .5em 2em;
@@ -382,25 +419,30 @@
         float: right;
         width: 35%;
     }
+
     .subtotal .totalRow {
         padding: .5em;
         text-align: right;
     }
+
     .subtotal .totalRow.final {
         font-size: 1.25em;
         font-weight: bold;
     }
+
     .subtotal .totalRow span {
         display: inline-block;
         padding: 0 0 0 1em;
         text-align: right;
     }
+
     .subtotal .totalRow .label {
         font-family: "Montserrat", sans-serif;
         font-size: .85em;
         text-transform: uppercase;
         color: #777;
     }
+
     .subtotal .totalRow .value {
         letter-spacing: -.025em;
         width: 35%;
@@ -427,12 +469,14 @@
             display: block;
             float: left;
         }
+
         .cart .items .cartSection.qtyWrap {
             width: 10%;
             text-align: center;
             padding: .5em 0;
             float: right;
         }
+
         .cart .items .cartSection.qtyWrap:before {
             content: "QTY";
             display: block;
@@ -440,9 +484,11 @@
             padding: .25em;
             font-size: .75em;
         }
+
         .cart .items .cartSection.prodTotal, .cart .items .cartSection.removeWrap {
             display: none;
         }
+
         .cart .items .cartSection .itemImg {
             width: 25%;
         }
@@ -456,17 +502,30 @@
             text-align: center;
         }
     }
+
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
 </style>
 <body>
 <?php
-$username=$data['userName'];
+$username = $data['userName'];
 //var_dump($data['carts']);
-$carts=$data['carts'];
+$carts = $data['carts'];
+//var_dump($carts);
 ?>
 <div class="wrap cf">
     <h1 class="projTitle">سبد خرید</h1>
     <div class="heading cf">
-        <h1><?php echo $username?></h1>
+        <h1><?php echo $username ?></h1>
         <a href="index/index" class="continue">ادامه خرید</a>
     </div>
     <div class="cart">
@@ -478,138 +537,215 @@ $carts=$data['carts'];
             </ul>-->
         <ul class="cartWrap">
 
-                <?php foreach ($carts as $key=>$values):?>
-                        <li class="items <?php echo (($key+1)%2==0) ? 'even' : 'odd';?>">
-                <div class="infoWrap">
-                    <div class="cartSection">
-                        <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />
-                        <p class="itemNumber">0000</p>
-                        <h3>عنوان محصول</h3>
 
-                        <p> <input type="number"  class="qty" placeholder="3"/> x هزینه</p>
 
-                        <p class="stockStatus">موجود</p>
+            <!--            <li class="items even">-->
+            <!---->
+            <!--                <div class="infoWrap">-->
+            <!--                    <div class="cartSection">-->
+            <!---->
+            <!--                        <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />-->
+            <!--                        <p class="itemNumber">#QUE-007544-002</p>-->
+            <!--                        <h3>Item Name 1</h3>-->
+            <!---->
+            <!--                        <p> <input type="text"  class="qty" placeholder="3"/> x $5.00</p>-->
+            <!---->
+            <!--                        <p class="stockStatus"> In Stock</p>-->
+            <!--                    </div>-->
+            <!---->
+            <!---->
+            <!--                    <div class="prodTotal cartSection">-->
+            <!--                        <p>$15.00</p>-->
+            <!--                    </div>-->
+            <!--                    <div class="cartSection removeWrap">-->
+            <!--                        <a href="#" class="remove">x</a>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </li>-->
+            <!---->
+            <!--            <li class="items odd">-->
+            <!--                <div class="infoWrap">-->
+            <!--                    <div class="cartSection">-->
+            <!---->
+            <!--                        <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />-->
+            <!--                        <p class="itemNumber">#QUE-007544-002</p>-->
+            <!--                        <h3>Item Name 1</h3>-->
+            <!---->
+            <!--                        <p> <input type="text"  class="qty" placeholder="3"/> x $5.00</p>-->
+            <!---->
+            <!--                        <p class="stockStatus out">  ناموجود</p>-->
+            <!--                    </div>-->
+            <!---->
+            <!---->
+            <!--                    <div class="prodTotal cartSection">-->
+            <!--                        <p>$15.00</p>-->
+            <!--                    </div>-->
+            <!--                    <div class="cartSection removeWrap">-->
+            <!--                        <a href="#" class="remove">x</a>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </li>-->
+            <!--            <li class="items even">-->
+            <!--                <div class="infoWrap">-->
+            <!--                    <div class="cartSection info">-->
+            <!---->
+            <!--                        <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />-->
+            <!--                        <p class="itemNumber">#QUE-007544-002</p>-->
+            <!--                        <h3>Item Name 1</h3>-->
+            <!---->
+            <!--                        <p> <input type="text"  class="qty" placeholder="3"/> x $5.00</p>-->
+            <!---->
+            <!--                        <p class="stockStatus"> In Stock</p>-->
+            <!---->
+            <!--                    </div>-->
+            <!---->
+            <!---->
+            <!--                    <div class="prodTotal cartSection">-->
+            <!--                        <p>$15.00</p>-->
+            <!--                    </div>-->
+            <!---->
+            <!--                    <div class="cartSection removeWrap">-->
+            <!--                        <a href="#" class="remove">x</a>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--                    <div class="special"><div class="specialContent">Free gift with purchase!, gift wrap, etc!!</div></div>-->
+            <!--            </li>-->
+
+            <?php foreach ($carts as $key => $values): ?>
+                <li class="items <?php echo (($key + 1) % 2 == 0) ? 'even' : 'odd'; ?>">
+                    <div class="infoWrap">
+                        <div class="cartSection">
+                            <input type="hidden" value="<?php echo $values['0']; ?>" name="idCart">
+                            <!--                            <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg"/>-->
+                            <p class="itemNumber">0000</p>
+                            <h3><?php echo $values['title']; ?></h3>
+                            <p  id="priceProduct<?php echo $values['0'];?>"><input  id="<?php echo $values['0'];?>" type="number" class="qty countCart"
+                                      value="<?php echo $values['count'] ?>"/> <?php echo $values['price'] ?> <span>x هزینه</span>
+                            </p>
+                            <p class="stockStatus">موجود</p>
+                        </div>
+
+
+                        <div class="prodTotal cartSection">
+                            <p class="totalP" id="priceP<?php echo $values['0'];?>" ><?php echo $values['price']*$values['count']; ?> </p>
+                        </div>
+                        <div class="cartSection removeWrap">
+                            <a href="#" class="remove" onclick="del(<?php echo $values['0'];?>)">x</a>
+<!--                            <input type="number" id="countCart1">-->
+                        </div>
                     </div>
-
-
-                    <div class="prodTotal cartSection">
-                        <p>$15.00</p>
-                    </div>
-                    <div class="cartSection removeWrap">
-                        <a href="#" class="remove">x</a>
-                    </div>
-                </div>
-            </li>
-                <?php endforeach;?>
-
-<!--            <li class="items even">-->
-<!---->
-<!--                <div class="infoWrap">-->
-<!--                    <div class="cartSection">-->
-<!---->
-<!--                        <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />-->
-<!--                        <p class="itemNumber">#QUE-007544-002</p>-->
-<!--                        <h3>Item Name 1</h3>-->
-<!---->
-<!--                        <p> <input type="text"  class="qty" placeholder="3"/> x $5.00</p>-->
-<!---->
-<!--                        <p class="stockStatus"> In Stock</p>-->
-<!--                    </div>-->
-<!---->
-<!---->
-<!--                    <div class="prodTotal cartSection">-->
-<!--                        <p>$15.00</p>-->
-<!--                    </div>-->
-<!--                    <div class="cartSection removeWrap">-->
-<!--                        <a href="#" class="remove">x</a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </li>-->
-<!---->
-<!--            <li class="items odd">-->
-<!--                <div class="infoWrap">-->
-<!--                    <div class="cartSection">-->
-<!---->
-<!--                        <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />-->
-<!--                        <p class="itemNumber">#QUE-007544-002</p>-->
-<!--                        <h3>Item Name 1</h3>-->
-<!---->
-<!--                        <p> <input type="text"  class="qty" placeholder="3"/> x $5.00</p>-->
-<!---->
-<!--                        <p class="stockStatus out">  ناموجود</p>-->
-<!--                    </div>-->
-<!---->
-<!---->
-<!--                    <div class="prodTotal cartSection">-->
-<!--                        <p>$15.00</p>-->
-<!--                    </div>-->
-<!--                    <div class="cartSection removeWrap">-->
-<!--                        <a href="#" class="remove">x</a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </li>-->
-<!--            <li class="items even">-->
-<!--                <div class="infoWrap">-->
-<!--                    <div class="cartSection info">-->
-<!---->
-<!--                        <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />-->
-<!--                        <p class="itemNumber">#QUE-007544-002</p>-->
-<!--                        <h3>Item Name 1</h3>-->
-<!---->
-<!--                        <p> <input type="text"  class="qty" placeholder="3"/> x $5.00</p>-->
-<!---->
-<!--                        <p class="stockStatus"> In Stock</p>-->
-<!---->
-<!--                    </div>-->
-<!---->
-<!---->
-<!--                    <div class="prodTotal cartSection">-->
-<!--                        <p>$15.00</p>-->
-<!--                    </div>-->
-<!---->
-<!--                    <div class="cartSection removeWrap">-->
-<!--                        <a href="#" class="remove">x</a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                    <div class="special"><div class="specialContent">Free gift with purchase!, gift wrap, etc!!</div></div>-->
-<!--            </li>-->
-
-
+                </li>
+            <?php endforeach; ?>
             <!--<li class="items even">Item 2</li>-->
-
-        </ul>
+            </ul>
     </div>
-
-    <div class="promoCode"><label for="promo">کد تخفیف</label><input type="text" name="promo" placholder="Enter Code" />
+    <div class="promoCode"><label for="promo">کد تخفیف</label><input type="text" name="promo" placholder="Enter Code"/>
         <a href="#" class="btn"></a></div>
 
     <div class="subtotal cf">
         <ul>
-            <li class="totalRow"><span class="label">مجموع</span><span class="value">$35.00</span></li>
+            <li class="totalRow"><span class="label">مجموع</span><span class="value" id="totalCartP"></span></li>
 
-            <li class="totalRow"><span class="label">هزینه حمل</span><span class="value">$5.00</span></li>
+<!--            <li class="totalRow"><span class="label">هزینه حمل</span><span class="value">$5.00</span></li>-->
 
-            <li class="totalRow"><span class="label">مالیات</span><span class="value">$4.00</span></li>
-            <li class="totalRow final"><span class="label">کل </span><span class="value">$44.00</span></li>
+            <li class="totalRow"><span class="label">مالیات</span><span class="value" id="tax"></span></li>
+            <li class="totalRow final"><span class="label">کل </span><span class="value" id="tt"></span></li>
             <li class="totalRow"><a href="#" class="btn continue">پرداخت</a></li>
         </ul>
     </div>
 </div>
 </body>
+
 <script src="public/javaScript/jquery-3.3.1.js" type="text/javascript"></script>
 <script src="public/javaScript/bootstrap.js" type="text/javascript"></script>
+<script src="public/javaScript/toastr.min.js"></script>
 <script>
     // Remove Items From Cart
-    $('a.remove').click(function(){
+    // $(document).bind('DOMSubtreeModified', function () {
+    //     var totalPp=0;
+    //     $('.totalP').each(function (){
+    //         totalPp += parseInt($(this).text());
+    //     });
+    //     $('#totalCartP').text(totalPp);
+    //     console.log(totalPp);
+    // });
+    $('a.remove').click(function () {
         event.preventDefault();
-        $( this ).parent().parent().parent().hide( 400 );
+        $(this).parent().parent().parent().hide(400);
 
-    })
+    });
+    //
+    $(document).ready(function (){
+        //$('#countCart').val(<?//php?>//)
+        var totalP=0;
+        $('.totalP').each(function (){
+             totalP += parseInt($(this).text());
+        });
+        $('#totalCartP').text(totalP);
+        $('#tax').text(totalP * 0.09);
+        $('#tt').text(totalP + parseInt($('#tax').text()));
 
+    });
+    function del(id){
+        var url='<?php echo URL.'cart/delCart'?>';
+        var data={'id':id};
+        var totalPp=0;
+
+        $.post(url,data,function (msg){
+            if(msg==1){
+                // alert('yeah');
+
+                var priceProductTmp=$('#priceProduct'+id).text();
+                var priceProduct=priceProductTmp.replace(' x هزینه','');//price productDelete
+                // console.log(parseInt(priceProduct));
+                var totalCurent=parseInt($('#totalCartP').text())-(parseInt(priceProduct) * parseInt($('#'+id).val())) ;//total price
+                var taxCurrent=parseInt(totalCurent) * 0.09;
+                $('#totalCartP').text(totalCurent);
+                $('#tax').text(taxCurrent);
+                $('#tt').text(parseInt(totalCurent) + parseInt(taxCurrent));
+                console.log(totalCurent);
+                // $('#totalCartP').text(totalPp);
+                // $('.countCart').keyup();
+                // $('#tax').text(totalP * 0.09);
+                // $('#tt').text(totalP + parseInt($('#tax').text()));
+                // toastr.success('رکورد با موفقیت حذف شد');
+
+            }else if(msg==0){
+                toastr.error('عملیات حذف ناموفق بود');
+            }
+        });
+
+    }
+// function change(){
+//     // $('#countCart1').on('input',function(){
+//         alert('Changed!');
+//     // });
+// }
+    $('.countCart').keyup(function (){
+        var countCart=$(this).val();
+        var idCurent=$(this).attr('id');
+        var priceProductTmp=$('#priceProduct'+idCurent).text();
+        var priceProduct=priceProductTmp.replace(' x هزینه','');
+        $('#priceP'+idCurent).text(countCart * parseInt(priceProduct));
+        var sum=0;
+        $tax=0;
+        $('.totalP').each(function (){
+            sum+=parseInt($(this).text());
+        });
+        $('#totalCartP').text(sum);
+        $('#tax').text(sum * 0.09);
+        $('#tt').text(sum + parseInt($('#tax').text()));
+        // console.log(sum);
+        // console.log();
+        // $('#priceProduct'+idCurent).html( $('#priceProduct'+idCurent).html() * countCart);
+        // alert($(this).val());
+        // alert(idCurent);
+    });
     // Just for testing, show all items
-    $('a.btn.continue').click(function(){
+    $('a.btn.continue').click(function () {
         $('li.items').show(400);
-    })
+    });
+
 
 </script>
 

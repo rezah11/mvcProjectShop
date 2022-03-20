@@ -33,6 +33,21 @@ class cart extends controller
                 echo 0;
             }
         }else {
+            Model::backUrl('index/index');
+        }
+    }
+    public function delCart(){
+        if(isset($_POST['id'])){
+            try {
+                $cartId=$_POST['id'];
+                $this->modelDb->delCart($cartId);
+                echo 1;
+            }catch (Exception $e){
+                echo 0;
+            }
+
+        }else{
+//            Model::backUrl('cart/index');
             echo 0;
         }
     }
