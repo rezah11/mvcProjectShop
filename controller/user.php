@@ -25,5 +25,14 @@ class user extends controller
         $query=$this->modelDb->updateUser($this->id,$name,$email,$tel,$pass,$rePass);
         Model::backUrl('user/index');
     }
-
+    public function paid(){
+        $query=$this->modelDb->getProPaid($this->id);
+        $data=['paid'=>$query,'id'=>$this->id];
+        $this->view('index/Users/cart/paid',$data);
+    }
+    public function notPaid(){
+        $query=$this->modelDb->getProNpaid($this->id);
+        $data=['Npaid'=>$query,'id'=>$this->id];
+        $this->view('index/Users/cart/notPaid',$data);
+    }
 }

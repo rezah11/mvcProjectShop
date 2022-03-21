@@ -31,12 +31,21 @@
 <!--                    </ul>-->
 <!--                </li>-->
                 <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="slider/index">تاریخچه سفارشات
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<?php echo URL ?>user/paid">سفارشات خریداری شده</a></li>
+                        <li><a href="<?php echo URL ?>user/notPaid">سفارشات پرداخت نشده</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="user/index">صفحه کاربری
                         <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="<?php echo URL ?>user/index">ویرایش اطلاعات کاربری</a></li>
                     </ul>
                 </li>
+
             </ul>
         </div>
     </nav>

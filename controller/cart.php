@@ -67,7 +67,8 @@ class cart extends controller
             echo 0;
         }
     }
-//    public function pay(){
-////        if()
-//    }
+    public function pay(){
+        $this->modelDb->updateState($this->id);
+        Model::backUrl('index/index');
+    }
 }
