@@ -61,6 +61,55 @@
         -moz-transition: all 0.2s;
         -o-transition: all 0.3s;
     }
+/**********Comments*************/
+    body{
+        margin-top:20px;
+        background:#eee;
+    }
+    @media (min-width: 0) {
+        .g-mr-15 {
+            margin-right: 1.07143rem !important;
+        }
+    }
+    @media (min-width: 0){
+        .g-mt-3 {
+            margin-top: 0.21429rem !important;
+        }
+    }
+
+    .g-height-50 {
+        height: 50px;
+    }
+
+    .g-width-50 {
+        width: 50px !important;
+    }
+
+    @media (min-width: 0){
+        .g-pa-30 {
+            padding: 2.14286rem !important;
+        }
+    }
+
+    .g-bg-secondary {
+        background-color: #fafafa !important;
+    }
+
+    .u-shadow-v18 {
+        box-shadow: 0 5px 10px -6px rgba(0, 0, 0, 0.15);
+    }
+
+    .g-color-gray-dark-v4 {
+        color: #777 !important;
+    }
+
+    .g-font-size-12 {
+        font-size: 0.85714rem !important;
+    }
+
+    .media-comment {
+        margin-top:20px
+    }
 </style>
 <body>
 <div class="social">
@@ -154,7 +203,7 @@
                             <form action="cart/insertCart" name="insertCart" method="post">
                                 <div class="btn-single">
                                     <input type="hidden" name="productId" value="<?php echo $product['id']?>"/>
-                                    <a href="#" style="font-size: 15px" id="insertCart" ><i class="fa fa-cart-plus"></i>اضافه کردن به سبد
+                                    <a href="" style="font-size: 15px" id="insertCart" ><i class="fa fa-cart-plus"></i>اضافه کردن به سبد
                                         خرید</a>
                                 </div>
                             </form>
@@ -311,8 +360,82 @@
                         <p class="bg-light"><span>گارد:</span>ندارد</p>
                     </div>
                     <div id="two" class="tab-pane fade">
-                        نظری وجود ندارد...
-                    </div>
+                        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="media g-mb-30 media-comment">
+                                        <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Image Description">
+                                        <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
+                                            <div class="g-mb-15">
+                                                <h5 class="h5 g-color-gray-dark-v1 mb-0">John Doe</h5>
+                                                <span class="g-color-gray-dark-v4 g-font-size-12">5 days ago</span>
+                                            </div>
+
+                                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue
+                                                felis in faucibus ras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+
+                                            <ul class="list-inline d-sm-flex my-0">
+                                                <li class="list-inline-item g-mr-20">
+                                                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+                                                        <i class="fa fa-thumbs-up g-pos-rel g-top-1 g-mr-3"></i>
+                                                        178
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item g-mr-20">
+                                                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+                                                        <i class="fa fa-thumbs-down g-pos-rel g-top-1 g-mr-3"></i>
+                                                        34
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item ml-auto">
+                                                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+                                                        <i class="fa fa-reply g-pos-rel g-top-1 g-mr-3"></i>
+                                                        Reply
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-8">
+                                    <div class="media g-mb-30 media-comment">
+                                        <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Image Description">
+                                        <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
+                                            <div class="g-mb-15">
+                                                <h5 class="h5 g-color-gray-dark-v1 mb-0">John Doe</h5>
+                                                <span class="g-color-gray-dark-v4 g-font-size-12">5 days ago</span>
+                                            </div>
+
+                                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue
+                                                felis in faucibus ras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+
+                                            <ul class="list-inline d-sm-flex my-0">
+                                                <li class="list-inline-item g-mr-20">
+                                                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+                                                        <i class="fa fa-thumbs-up g-pos-rel g-top-1 g-mr-3"></i>
+                                                        178
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item g-mr-20">
+                                                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+                                                        <i class="fa fa-thumbs-down g-pos-rel g-top-1 g-mr-3"></i>
+                                                        34
+                                                    </a>
+                                                </li>
+                                                <li class="list-inline-item ml-auto">
+                                                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover" href="#!">
+                                                        <i class="fa fa-reply g-pos-rel g-top-1 g-mr-3"></i>
+                                                        Reply
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                    </div>
                 </div>
             </div>
         </div>
@@ -368,52 +491,64 @@
     </div>
 </div>
 <!---------------------------------->
-
+<!--lorem-->
+<!--<div>i</div>-->
 </body>
 
-<script src="public/javaScript/jquery-3.3.1.js" type="text/javascript"></script>
-<script src="public/javaScript/jquery.simple.timer.js" type="text/javascript"></script>
-<script src="public/javaScript/bootstrap.js" type="text/javascript"></script>
-<script src="public/javaScript/owl.carousel.min.js" type="text/javascript"></script>
-<script src="public/javaScript/js.js" type="text/javascript"></script>
-<script src="public/javaScript/toastr.min.js" type="text/javascript"></script>
+<script src="<?php echo URL;?>public/javaScript/jquery-3.3.1.js" type="text/javascript"></script>
+<script src="<?php echo URL;?>public/javaScript/jquery.simple.timer.js" type="text/javascript"></script>
+<script src="<?php echo URL;?>public/javaScript/bootstrap.js" type="text/javascript"></script>
+<script src="<?php echo URL;?>public/javaScript/owl.carousel.min.js" type="text/javascript"></script>
+<script src="<?php echo URL;?>public/javaScript/js.js" type="text/javascript"></script>
+<script src="<?php echo URL;?>public/javaScript/toastr.min.js" type="text/javascript"></script>
 <script>
-    $('#regEmail').submit(function (e) {
-        e.preventDefault();
-        var url = $(this).attr('action');
-        var email = $('input[name=email]').val();
-        var data = {'email': email};
-        // alert(data['email']);
-        $.post(url, data, function (msg) {
-            if (msg == 1) {
-                email = '';
-                toastr.success('شما عضو شدید');
-            } else if (msg == 2) {
-                toastr.warning('این ایمیل قبلا ثبت شده است');
-            } else {
-                toastr.error('عضویت موفقیت آمیز نبود');
-            }
-        })
-    });
+
     // $(document).on('click', '#insertCart', function(e) {
     //     $('form[name=insertCart]').submit();
     //     // e.preventDefault();
     //
     // });
     $(document).ready(function (){
+        $('#regEmail').submit(function (e) {
+            e.preventDefault();
+            var url = $(this).attr('action');
+            var email = $('input[name=email]').val();
+            var data = {'email': email};
+            // alert(data['email']);
+            $.post(url, data, function (msg) {
+                if (msg == 1) {
+                    // email = '';
+                    // console.log(mag);
+                    toastr.success('شما عضو شدید');
+                } else if (msg == 2) {
+                    toastr.warning('این ایمیل قبلا ثبت شده است');
+                } else {
+                    toastr.error('عضویت موفقیت آمیز نبود');
+                }
+            })
+        });
         $('#insertCart').click(function (e){
             e.preventDefault();
             var idproduct=$('input[name=productId]').val();
-            // alert (idproduct);
-            var url='<?php echo URL.'cart/insertCart'?>';
-            var data={'productId':idproduct}
-            $.post(url,data,function (msg){
-                if (msg==1){
+            console.log(idproduct);
+            var url="<?php echo URL.'cart/insertCart'?>";
+            console.log(url);
+            var data = {'productId': idproduct};
+            $.post(url, data, function (msg){
+                if (msg == 1) {
+                    // console.log('true');
                     toastr.success('محصول به سبد اضافه شد');
-                }else if(msg==0){
-                    toastr.error('عملیات ناموفق بود');
+                }else if(msg == 0) {
+                    // console.log('false');
+                    toastr.warning('عملیات ناموفق بود');
+                }else {
+                    toastr.error('test');
                 }
             });
+            //     .done(function( msg ) {
+            //     alert( "Data Loaded: " + msg );
+            //
+            // });
             // $('form[name=insertCart]').submit();
         });
     });

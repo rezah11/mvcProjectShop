@@ -48,14 +48,14 @@
 //if (!empty($data['paid'])){
 $Npaid=$data['Npaid'];
 $id=$data['id'];
-    var_dump($Npaid);
+//    var_dump($Npaid);
 //    var_dump($id);
 //}
 //else{
 //    Model::backUrl('slider/index');
 //}
 ?>
-
+<h1 class="h5"> سفارشات پرداخت نشده</h1>
 <section class="container" style="direction: rtl;">
     <table class="table table-striped">
         <thead >
@@ -110,6 +110,7 @@ $id=$data['id'];
 
         </tbody>
     </table>
+    <div class="text-center" style="width: 100%"><a href="<?php echo URL?>cart/index" class="btn btn-success" >عملیات خرید</a></div>
 </section>
 
 </body>
