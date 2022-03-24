@@ -2,9 +2,16 @@
 
 class index extends controller
 {
+    public $id;
+    public $username;
     public function __construct()
     {
-
+//        @Model::initSession();
+//        if (empty(Model::getSession('userLogined'))) {
+//            Model::backUrl('index/index');
+//        }
+        $this->id = Model::getSession('userId');
+        $this->username = Model::getSession('userName');
     }
 
     public function index($id=0,$name='')
@@ -36,7 +43,8 @@ class index extends controller
     }
     public function showProduct($id,$catTitle){
         $query=$product=$this->modelDb->showProduct($id);
-        $data=['product'=>$query,'catTitle'=>$catTitle];
+//        var_dump($this->username);
+        $data=['product'=>$query,'catTitle'=>$catTitle,'productId'=>$id, 'userName' => $this->username,'id'=>$this->id];
         $this->view('index/product',$data);
     }
 }
