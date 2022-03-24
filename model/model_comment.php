@@ -14,11 +14,19 @@ class model_comment extends Model
         $query = $this->doQuery($sql, [$comment, $status, $parentId, $uId, $pId]);
     }
 
-    public function getComment()
-    {
-        $sql = 'SELECT * FROM ((`comment` INNER JOIN `users` on `comment`.`userId`=`users`.`id`)INNER JOIN `product` on `comment`.`productId`=`product`.`id`)';
-        $query=$this->doSelect($sql,[]);
-        return $query;
+//    public function getComment()
+//    {
+//        $sql = 'SELECT * FROM ((`comment` INNER JOIN `users` on `comment`.`userId`=`users`.`id`)INNER JOIN `product` on `comment`.`productId`=`product`.`id`)';
+//        return $this->doSelect($sql,[]);
+//    }
+    public function confirmComment($id){
+        $status='confirm';
+        $sql='UPDATE `comment` SET `status`=? WHERE `id`=?';
+        $this->doQuery($sql,[$status,$id]);
     }
-
+    public function rejectComment($id){
+        $status='reject';
+        $sql='UPDATE `comment` SET `status`=? WHERE `id`=?';
+        $this->doQuery($sql,[$status,$id]);
+    }
 }

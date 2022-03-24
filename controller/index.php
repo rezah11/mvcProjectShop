@@ -6,19 +6,20 @@ class index extends controller
     public $username;
     public function __construct()
     {
-//        @Model::initSession();
-//        if (empty(Model::getSession('userLogined'))) {
+        @Model::initSession();
+        parent::__construct();
+//        if (!empty(Model::getSession('userLogined'))) {
 //            Model::backUrl('index/index');
+            $this->id = Model::getSession('userId');
+            $this->username = Model::getSession('userName');
 //        }
-        $this->id = Model::getSession('userId');
-        $this->username = Model::getSession('userName');
     }
 
     public function index($id=0,$name='')
     {
 //    $x=10;
 //    $data=['x'=>$x];
-//        var_dump($name);
+//        var_dump($this->username);
         $query = $this->modelDb->getMeta();
         $querySlider = $this->modelDb->getSlider();
         $querycategory = $this->modelDb->getCategory();
@@ -44,7 +45,9 @@ class index extends controller
     public function showProduct($id,$catTitle){
         $query=$product=$this->modelDb->showProduct($id);
 //        var_dump($this->username);
-        $data=['product'=>$query,'catTitle'=>$catTitle,'productId'=>$id, 'userName' => $this->username,'id'=>$this->id];
+        $comments=$this->modelDb->commentsProduct($id,$level=0);
+        var_dump($comments);
+        $data=['product'=>$query,'catTitle'=>$catTitle,'productId'=>$id,'username'=>$this->username,'id'=>$this->id,'comments'=>$comments];
         $this->view('index/product',$data);
     }
 }

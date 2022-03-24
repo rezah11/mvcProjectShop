@@ -1,11 +1,8 @@
-<?php
-if(!empty(Model::getSession('wrong'))):?>
-    <h1 class="text-danger text-center"><?php echo Model::getSession('wrong');
-    ?></h1>
+
 
 
 <div class="container">
-    <?php elseif(!empty(Model::getSession('successAdmin'))): ?>
+    <?php if(!empty(Model::getSession('successAdmin'))): ?>
     <?php
 
         Model::backUrl('Admin/index');
@@ -18,6 +15,10 @@ if(!empty(Model::getSession('wrong'))):?>
 <?php elseif(!empty(Model::getSession('userLogined'))):?>
 <?php Model::backUrl('index/index');?>
     <?php else: ?>
+    <?php if(!empty(Model::getSession('wrong'))):?>
+    <h1 class="text-danger text-center"><?php echo Model::getSession('wrong');
+        ?></h1>
+    <?php endif;?>
     <div class="d-flex justify-content-center h-100">
         <div class="card">
             <div class="card-header">

@@ -40,7 +40,7 @@ class loginUsers extends controller
             $user=$this->modelDb->getUser($email);
             Model::setSession('userName',$user['name']);
             Model::setSession('userId',$user['id']);
-            Model::backUrl('index/index/');
+            Model::backUrl('index/index');
         }else{
             Model::setSession('userWrong',$query[1]);
             Model::backUrl('loginUsers/index');

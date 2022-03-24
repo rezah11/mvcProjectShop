@@ -39,4 +39,18 @@ class Model_index extends Model
         $totalPage=ceil($rows/$perPage);
         return $totalPage;
     }
+    public function commentsProduct($id,$level=0){
+        $status='confirm';
+        $sql='SELECT * FROM ((`comment` INNER JOIN `users` on `comment`.`userId`=`users`.`id`)INNER JOIN `product` on `comment`.`productId`=`product`.`id`) where `comment`.`productId`=? AND `comment`.`status`=? AND `comment`.`parentId`=?';
+        $query=$this->doSelect($sql,[$id,$status,$level]);
+        foreach ($query as $value){
+            $children=$this->commentsProduct($value['id'],$value[0]);
+            if($children!=null && sizeof($children)>0){
+                $value['children']=$children;
+            }
+            @$data[]=$value;
+        }
+//        $query1=$this->doSelect($sql,[$id,$status,$level]);
+        return @$data;
+    }
 }
