@@ -17,10 +17,13 @@ class Model_user extends Model
 
     public function updateUser($id, $name, $email, $tel, $pass, $rePass)
     {
-        if ($this->checkPassword($pass, $rePass) != false && $this->checkMail($email) != false) {
+        if ($this->checkPassword($pass, $rePass) != false && $this->checkMail($email) != false && !empty($pass)) {
             $hashpass = password_hash($pass, PASSWORD_DEFAULT);
             $sql = 'UPDATE `users` SET `name`=?,`email`=?,`tel`=?,`password`=?  WHERE `id`=?';
             $this->doQuery($sql, [$name, $email, $tel, $hashpass, $id]);
+        }else if(empty($pass) && $this->checkMail($email) != false){
+            $sql = 'UPDATE `users` SET `name`=?,`email`=?,`tel`=?  WHERE `id`=?';
+            $this->doQuery($sql, [$name, $email, $tel, $id]);
         }
 
     }

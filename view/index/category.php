@@ -87,9 +87,18 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="login">
-                    <a href="#" class="mybtn"><i class="fa fa-user-plus"></i>ثبت نام</a>
-                    <a href="#" class="mybtn"><i class="fa fa-user-o"></i>ورود</a>
-                    <a href="#" class="mybtn"><i class="fa fa-cart-arrow-down"></i>سبد</a>
+                    <?php if (!empty(Model::getSession('userLogined'))):?>
+                        <?php $user=Model::getSession('userName');
+//                        echo Model::getSession('userLogined');
+                        ?>
+                        <a href="user/index" class="mybtn"><i class="fa fa-user-o"></i>عزیز خوش آمدید<?php echo $user;?></a>
+                        <a href="loginUsers/logOut" class="mybtn"><i class="fa fa-sign-out"></i>خروج</a>
+                        <a href="cart/index" class="mybtn"><i class="fa fa-cart-arrow-down"></i>سبد</a>
+                    <?php else:?>
+                        <a href="loginUsers/index" class="mybtn"><i class="fa fa-user-plus"></i>ثبت نام</a>
+                        <a href="loginUsers/index" class="mybtn"><i class="fa fa-user-o"></i>ورود</a>
+                        <a href="#" class="mybtn"><i class="fa fa-cart-arrow-down"></i>سبد</a>
+                    <?php endif;?>
                 </div>
             </div>
             <div class="col-md-6">

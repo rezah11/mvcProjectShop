@@ -70,7 +70,7 @@ class Model
         return $image_new;
     }
     public static function initSession(){
-        session_start();
+        @session_start();
     }
     public static function setSession($name,$value){
         $_SESSION[$name]=$value;

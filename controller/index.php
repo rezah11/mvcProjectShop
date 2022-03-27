@@ -6,7 +6,7 @@ class index extends controller
     public $username;
     public function __construct()
     {
-        @Model::initSession();
+        Model::initSession();
         parent::__construct();
 //        if (!empty(Model::getSession('userLogined'))) {
 //            Model::backUrl('index/index');
@@ -46,7 +46,7 @@ class index extends controller
         $query=$product=$this->modelDb->showProduct($id);
 //        var_dump($this->username);
         $comments=$this->modelDb->commentsProduct($id,$level=0);
-        var_dump($comments);
+//        var_dump($comments);
         $data=['product'=>$query,'catTitle'=>$catTitle,'productId'=>$id,'username'=>$this->username,'id'=>$this->id,'comments'=>$comments];
         $this->view('index/product',$data);
     }

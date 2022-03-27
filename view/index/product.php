@@ -130,9 +130,18 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="login">
-                    <a href="#" class="mybtn"><i class="fa fa-user-plus"></i>ثبت نام</a>
-                    <a href="#" class="mybtn"><i class="fa fa-user-o"></i>ورود</a>
-                    <a href="#" class="mybtn"><i class="fa fa-cart-arrow-down"></i>سبد</a>
+                    <?php if (!empty(Model::getSession('userLogined'))):?>
+                        <?php $user=Model::getSession('userName');
+//                        echo Model::getSession('userLogined');
+                        ?>
+                        <a href="user/index" class="mybtn"><i class="fa fa-user-o"></i>عزیز خوش آمدید<?php echo $user;?></a>
+                        <a href="loginUsers/logOut" class="mybtn"><i class="fa fa-sign-out"></i>خروج</a>
+                        <a href="cart/index" class="mybtn"><i class="fa fa-cart-arrow-down"></i>سبد</a>
+                    <?php else:?>
+                        <a href="loginUsers/index" class="mybtn"><i class="fa fa-user-plus"></i>ثبت نام</a>
+                        <a href="loginUsers/index" class="mybtn"><i class="fa fa-user-o"></i>ورود</a>
+                        <a href="#" class="mybtn"><i class="fa fa-cart-arrow-down"></i>سبد</a>
+                    <?php endif;?>
                 </div>
             </div>
             <div class="col-md-6">
@@ -343,180 +352,7 @@
 </div>
 <!---------------------------------->
 <!--test comment-->
-<?php
-//if (!empty($data['username']) && !empty($data['userId'])) {
-//Model::initSession();
-//    $username = $data['username'];
-//    $userId = $data['userId'];
-//Model::initSession();
-//Model::getSession('userName');
-$username = $data['username'];
-//echo $username;
-$userId = $data['id'];
-$productId = $data['productId'];
-//    var_dump($productId);
-//print_r($_SESSION,true);
-//}
-?>
-<div class="container">
-    <div class="row">
-        <!--comment send-->
-        <?php if ($username != null && $userId != null): ?>
-            <div class="col-md-8">
-                <div style="background-color: #fafafa;display: flex;flex-direction: column">
-                    <span><?php echo $username; ?></span>
-                    <form action="comment/sendComment" method="post" style="width: 100%">
-                        <div class="form-group">
-                            <input type="hidden" name="uId" value="<?php echo $userId ?>">
-                            <input type="hidden" name="pId" value="<?php echo $productId ?>">
-                            <input type="hidden" name="parentId" value="0">
-                            <label for="comment"><i class="fa fa-comment"> </i>ارسال نظر:</label>
-                            <textarea class="form-control" id="comment" name="comment" required></textarea>
-                        </div>
-                        <div style="float: left;">
-                            <button class="btn btn-primary" id="sendCommnet" name="sendCommnet">ارسال</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <?php $comments = $data['comments'];
-        endif; ?>
-        <!--commets show-->
-        <?php
-        //print_r($comments);
-        foreach ($comments as $level1):
-            ?>
-            <div class="col-md-8">
-                <div class="media g-mb-30 media-comment" style="display: flex;flex-direction: column;">
 
-                    <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15"
-                         src="https://bootdey.com/img/Content/avatar/avatar7.png"
-                         alt="Image Description">
-                    <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30 col-md-12">
-                        <div class="g-mb-15">
-                            <h5 class="h5 g-color-gray-dark-v1 mb-0"><?php echo $level1 ['name'] ?></h5>
-                            <span class="g-color-gray-dark-v4 g-font-size-12"><?php echo $level1 ['created_at'] ?></span>
-                        </div>
-                        <p><?php echo $level1['description'] ?></p>
-
-                        <ul class="list-inline d-sm-flex my-0">
-                            <li class="list-inline-item g-mr-20">
-                                <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover"
-                                   href="#!">
-                                    <i class="fa fa-thumbs-up g-pos-rel g-top-1 g-mr-3"></i>
-                                    178
-                                </a>
-                            </li>
-                            <li class="list-inline-item g-mr-20">
-                                <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover"
-                                   href="#!">
-                                    <i class="fa fa-thumbs-down g-pos-rel g-top-1 g-mr-3"></i>
-                                    33
-
-                                </a>
-                            </li>
-                            <li class="list-inline-item ml-auto">
-                                <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover reply"
-                                   href="#!" id="<?php echo $level1[0] ?>">
-                                    <i class="fa fa-reply g-pos-rel g-top-1 g-mr-3"></i>
-                                    Reply
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <?php if ($username != null && $userId != null): ?>
-                        <div class="col-md-12 replyShow" id="reply<?php echo $level1[0] ?>"
-                             style="display: none; position: relative; width: 100%;padding: 0px;">
-                            <div style="background-color: #fafafa;display: flex;">
-                                <form action="comment/sendComment" method="post" style="width: 100%">
-                                    <div class="form-group">
-                                        <input type="hidden" name="uId" value="<?php echo $userId ?>">
-                                        <input type="hidden" name="pId" value="<?php echo $productId ?>">
-                                        <input type="hidden" name="parentId" value="<?php echo $level1[0] ?>">
-                                        <label for="comment"><i class="fa fa-comment"> </i>ارسال
-                                            جواب <?php echo $level1['name'] ?>:</label>
-                                        <textarea class="form-control" id="comment" name="comment"></textarea>
-                                    </div>
-                                    <div style="float: left;">
-                                        <button class="btn btn-primary" id="replyCommnet" name="sendCommnet">ارسال
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <?php if (!empty($level1['children'])): ?>
-                            <?php $child1 = $level1['children'];?>
-                            <?php foreach ($child1 as $level2): ?>
-                    <div class="media g-mb-30 media-comment" style="display: flex;flex-direction: column; position: relative;background-color: #d43f3a;top: -10%; right: 5%">
-
-                        <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15"
-                             src="https://bootdey.com/img/Content/avatar/avatar7.png"
-                             alt="Image Description">
-                        <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30 col-md-12">
-                            <div class="g-mb-15">
-                                <h5 class="h5 g-color-gray-dark-v1 mb-0"><?php echo $level2 ['name'] ?></h5>
-                                <span class="g-color-gray-dark-v4 g-font-size-12"><?php echo $level2 ['created_at'] ?></span>
-                            </div>
-                            <p><?php echo $level2['description'] ?></p>
-
-                            <ul class="list-inline d-sm-flex my-0">
-                                <li class="list-inline-item g-mr-20">
-                                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover"
-                                       href="#!">
-                                        <i class="fa fa-thumbs-up g-pos-rel g-top-1 g-mr-3"></i>
-                                        178
-                                    </a>
-                                </li>
-                                <li class="list-inline-item g-mr-20">
-                                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover"
-                                       href="#!">
-                                        <i class="fa fa-thumbs-down g-pos-rel g-top-1 g-mr-3"></i>
-                                        33
-
-                                    </a>
-                                </li>
-                                <li class="list-inline-item ml-auto">
-                                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover reply"
-                                       href="#!" id="<?php echo $level2[0] ?>">
-                                        <i class="fa fa-reply g-pos-rel g-top-1 g-mr-3"></i>
-                                        Reply
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <?php if ($username != null && $userId != null): ?>
-                        <div class="col-md-12 replyShow" id="reply<?php echo $level2[0] ?>"
-                             style="display: none; position: relative; width: 100%;padding: 0px;">
-                            <div style="background-color: #fafafa;display: flex;">
-                                <form action="comment/sendComment" method="post" style="width: 100%">
-                                    <div class="form-group">
-                                        <input type="hidden" name="uId" value="<?php echo $userId ?>">
-                                        <input type="hidden" name="pId" value="<?php echo $productId ?>">
-                                        <input type="hidden" name="parentId" value="<?php echo $level2[0] ?>">
-                                        <label for="comment"><i class="fa fa-comment"> </i>ارسال
-                                            جواب <?php echo $level2['name'] ?>:</label>
-                                        <textarea class="form-control" id="comment" name="comment"></textarea>
-                                    </div>
-                                    <div style="float: left;">
-                                        <button class="btn btn-primary" id="replyCommnet" name="sendCommnet">ارسال
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <?php endif;?>
-                            <?php endforeach;?>
-                        <?php endif; ?>
-                    <?php endif; ?>
-                </div>
-
-
-            </div>
-        <?php endforeach; ?>
-
-
-    </div>
-</div>
 <!--endcomment-->
 
 
@@ -552,108 +388,254 @@ $productId = $data['productId'];
                         <div class="container">
                             <div class="row">
                                 <!--comment send-->
-                                <div class="col-md-8">
-                                    <div style="background-color: #fafafa;display: flex;">
-                                        <form action="#" method="post" style="width: 100%">
-                                            <div class="form-group">
-                                                <label for="comment"><i class="fa fa-comment"> </i>ارسال نظر:</label>
-                                                <textarea class="form-control" id="comment" name="comment"></textarea>
-                                            </div>
-                                            <div style="float: left;">
-                                                <button class="btn btn-primary">ارسال</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <!--commets show-->
-                                <div class="col-md-8">
-                                    <div class="media g-mb-30 media-comment">
-                                        <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15"
-                                             src="https://bootdey.com/img/Content/avatar/avatar7.png"
-                                             alt="Image Description">
-                                        <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
-                                            <div class="g-mb-15">
-                                                <h5 class="h5 g-color-gray-dark-v1 mb-0">John Doe</h5>
-                                                <span class="g-color-gray-dark-v4 g-font-size-12">5 days ago</span>
-                                            </div>
-                                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-                                                ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus
-                                                viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.
-                                                Donec lacinia congue
-                                                felis in faucibus ras purus odio, vestibulum in vulputate at, tempus
-                                                viverra turpis.</p>
-
-                                            <ul class="list-inline d-sm-flex my-0">
-                                                <li class="list-inline-item g-mr-20">
-                                                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover"
-                                                       href="#!">
-                                                        <i class="fa fa-thumbs-up g-pos-rel g-top-1 g-mr-3"></i>
-                                                        178
-                                                    </a>
-                                                </li>
-                                                <li class="list-inline-item g-mr-20">
-                                                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover"
-                                                       href="#!">
-                                                        <i class="fa fa-thumbs-down g-pos-rel g-top-1 g-mr-3"></i>
-                                                        34
-                                                    </a>
-                                                </li>
-                                                <li class="list-inline-item ml-auto">
-                                                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover"
-                                                       href="#!">
-                                                        <i class="fa fa-reply g-pos-rel g-top-1 g-mr-3"></i>
-                                                        Reply
-                                                    </a>
-                                                </li>
-                                            </ul>
+                                <?php
+                                $username = $data['username'];
+                                $userId = $data['id'];
+                                $productId = $data['productId'];
+                                ?>
+                                <?php if ($username != null && $userId != null):?>
+                                    <div class="col-md-8">
+                                        <div style="background-color: #fafafa;display: flex;flex-direction: column;">
+                                            <span style="content: none;"><?php echo $username?></span>
+                                            <form action="comment/sendComment" method="post" style="width: 100%;">
+                                                <div class="form-group">
+                                                    <input type="hidden" name="uId" value="<?php echo $userId ?>">
+                                                    <input type="hidden" name="pId" value="<?php echo $productId ?>">
+                                                    <input type="hidden" name="parentId" value="0">
+                                                    <label for="comment"><i class="fa fa-comment"> </i>ارسال نظر:</label>
+                                                    <textarea class="form-control" id="comment" name="comment" required></textarea>
+                                                </div>
+                                                <div style="float: left;">
+                                                    <button class="btn btn-primary" id="sendCommnet" name="sendCommnet">ارسال</button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
+                                <?php endif; ?>
+                                <div class="container">
+                                    <div class="row">
+                                        <!--comment send-->
+                                        <!--commets show-->
+                                        <!--commets show-->
+                                        <?php
+                                        //print_r($comments);
+                                        $comments = $data['comments'];
+                                        foreach ($comments as $level1):
+                                            ?>
+                                            <div class="col-md-8" style="background-color: #3c763d">
+                                                <div class="media g-mb-30 media-comment" style="display: flex;flex-direction: column;">
+
+                                                    <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15"
+                                                         src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                                                         alt="Image Description">
+                                                    <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30 col-md-12">
+                                                        <div class="g-mb-15">
+                                                            <h5 class="h5 g-color-gray-dark-v1 mb-0"><?php echo $level1 ['name'] ?></h5>
+                                                            <span class="g-color-gray-dark-v4 g-font-size-12"><?php echo $level1 ['created_at'] ?></span>
+                                                        </div>
+                                                        <p><?php echo $level1['description'] ?></p>
+
+                                                        <ul class="list-inline d-sm-flex my-0">
+                                                            <li class="list-inline-item g-mr-20">
+                                                                <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover"
+                                                                   href="#!">
+                                                                    <i class="fa fa-thumbs-up g-pos-rel g-top-1 g-mr-3"></i>
+                                                                    178
+                                                                </a>
+                                                            </li>
+                                                            <li class="list-inline-item g-mr-20">
+                                                                <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover"
+                                                                   href="#!">
+                                                                    <i class="fa fa-thumbs-down g-pos-rel g-top-1 g-mr-3"></i>
+                                                                    33
+
+                                                                </a>
+                                                            </li>
+                                                            <li class="list-inline-item ml-auto">
+                                                                <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover reply"
+                                                                   href="#!" id="<?php echo $level1[0] ?>">
+                                                                    <i class="fa fa-reply g-pos-rel g-top-1 g-mr-3"></i>
+                                                                    Reply
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <?php if ($username != null && $userId != null): ?>
+                                                        <div class="col-md-12 replyShow" id="reply<?php echo $level1[0] ?>"
+                                                             style="display: none; position: relative; width: 100%;padding: 0px;">
+                                                            <div style="background-color: #fafafa;display: flex;">
+                                                                <form action="comment/sendComment" method="post" style="width: 100%">
+                                                                    <div class="form-group">
+                                                                        <input type="hidden" name="uId" value="<?php echo $userId ?>">
+                                                                        <input type="hidden" name="pId" value="<?php echo $productId ?>">
+                                                                        <input type="hidden" name="parentId" value="<?php echo $level1[0] ?>">
+                                                                        <label for="comment"><i class="fa fa-comment"> </i>ارسال
+                                                                            جواب <?php echo $level1['name'] ?>:</label>
+                                                                        <textarea class="form-control" id="comment" name="comment"></textarea>
+                                                                    </div>
+                                                                    <div style="float: left;">
+                                                                        <button class="btn btn-primary" id="replyCommnet" name="sendCommnet">ارسال
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                    <?php if (!empty($level1['children'])): ?>
+                                                        <?php $child1 = $level1['children']; ?>
+                                                        <div class="col-md-12"
+                                                             style="position: relative;background-color: #d43f3a;top: -10%;padding: 0px;top:5px;right: 5%">
+                                                            <?php foreach ($child1 as $level2): ?>
+
+                                                                <div class="media g-mb-30 media-comment" style="display: flex;flex-direction: column;">
+
+                                                                    <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15"
+                                                                         src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                                                                         alt="Image Description">
+                                                                    <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30 col-md-12">
+                                                                        <div class="g-mb-15">
+                                                                            <h5 class="h5 g-color-gray-dark-v1 mb-0"><?php echo $level2 ['name'] ?></h5>
+                                                                            <span class="g-color-gray-dark-v4 g-font-size-12">پاسخ <i class="fa fa-reply"></i><?php echo $level1 ['name'] ?></span><br>
+                                                                            <span class="g-color-gray-dark-v4 g-font-size-12"><?php echo $level2 ['created_at'] ?></span>
+                                                                        </div>
+                                                                        <p><?php echo $level2['description'] ?></p>
+
+                                                                        <ul class="list-inline d-sm-flex my-0">
+                                                                            <li class="list-inline-item g-mr-20">
+                                                                                <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover"
+                                                                                   href="#!">
+                                                                                    <i class="fa fa-thumbs-up g-pos-rel g-top-1 g-mr-3"></i>
+                                                                                    178
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="list-inline-item g-mr-20">
+                                                                                <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover"
+                                                                                   href="#!">
+                                                                                    <i class="fa fa-thumbs-down g-pos-rel g-top-1 g-mr-3"></i>
+                                                                                    33
+
+                                                                                </a>
+                                                                            </li>
+                                                                            <li class="list-inline-item ml-auto">
+                                                                                <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover reply"
+                                                                                   href="#!" id="<?php echo $level2[0] ?>">
+                                                                                    <i class="fa fa-reply g-pos-rel g-top-1 g-mr-3"></i>
+                                                                                    Reply
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <?php if ($username != null && $userId != null): ?>
+                                                                        <div class="col-md-12 replyShow" id="reply<?php echo $level2[0] ?>"
+                                                                             style="display: none; position: relative; width: 100%;padding: 0px;">
+                                                                            <div style="background-color: #fafafa;display: flex;">
+                                                                                <form action="comment/sendComment" method="post" style="width: 100%">
+                                                                                    <div class="form-group">
+                                                                                        <input type="hidden" name="uId" value="<?php echo $userId ?>">
+                                                                                        <input type="hidden" name="pId"
+                                                                                               value="<?php echo $productId ?>">
+                                                                                        <input type="hidden" name="parentId"
+                                                                                               value="<?php echo $level2[0] ?>">
+                                                                                        <label for="comment"><i class="fa fa-comment"> </i>ارسال
+                                                                                            جواب <?php echo $level2['name'] ?>:</label>
+                                                                                        <textarea class="form-control" id="comment"
+                                                                                                  name="comment"></textarea>
+                                                                                    </div>
+                                                                                    <div style="float: left;">
+                                                                                        <button class="btn btn-primary" id="replyCommnet"
+                                                                                                name="sendCommnet">ارسال
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    <?php endif; ?>
+                                                                    <!--                                    level 3 test start-->
+                                                                    <?php if (!empty($level2['children'])): ?>
+                                                                        <?php $child2 = $level2['children']; ?>
+                                                                        <div class="col-md-12"
+                                                                             style="position: relative;background-color: #2e9ad0;top: -10%;padding: 0px;top:5px;right: 10%">
+                                                                            <?php foreach ($child2 as $level3): ?>
+
+                                                                                <div class="media g-mb-30 media-comment" style="display: flex;flex-direction: column;">
+
+                                                                                    <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15"
+                                                                                         src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                                                                                         alt="Image Description">
+                                                                                    <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30 col-md-12">
+                                                                                        <div class="g-mb-15">
+                                                                                            <h5 class="h5 g-color-gray-dark-v1 mb-0"><?php echo $level3 ['name'] ?></h5>
+                                                                                            <span class="g-color-gray-dark-v4 g-font-size-12">پاسخ <i class="fa fa-reply"></i><?php echo $level2 ['name'] ?></span><br>
+                                                                                            <span class="g-color-gray-dark-v4 g-font-size-12"><?php echo $level3 ['created_at'] ?></span>
+                                                                                        </div>
+                                                                                        <p><?php echo $level3['description'] ?></p>
+
+                                                                                        <ul class="list-inline d-sm-flex my-0">
+                                                                                            <li class="list-inline-item g-mr-20">
+                                                                                                <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover"
+                                                                                                   href="#!">
+                                                                                                    <i class="fa fa-thumbs-up g-pos-rel g-top-1 g-mr-3"></i>
+                                                                                                    178
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <li class="list-inline-item g-mr-20">
+                                                                                                <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover"
+                                                                                                   href="#!">
+                                                                                                    <i class="fa fa-thumbs-down g-pos-rel g-top-1 g-mr-3"></i>
+                                                                                                    33
+
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <li class="list-inline-item ml-auto">
+                                                                                                <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover reply"
+                                                                                                   href="#!" id="<?php echo $level3[0] ?>">
+                                                                                                    <i class="fa fa-reply g-pos-rel g-top-1 g-mr-3"></i>
+                                                                                                    Reply
+                                                                                                </a>
+                                                                                            </li>
+                                                                                        </ul>
+                                                                                    </div>
+                                                                                    <?php if ($username != null && $userId != null): ?>
+                                                                                        <div class="col-md-12 replyShow" id="reply<?php echo $level3[0] ?>"
+                                                                                             style="display: none; position: relative; width: 100%;padding: 0px;">
+                                                                                            <div style="background-color: #fafafa;display: flex;">
+                                                                                                <form action="comment/sendComment" method="post" style="width: 100%">
+                                                                                                    <div class="form-group">
+                                                                                                        <input type="hidden" name="uId" value="<?php echo $userId ?>">
+                                                                                                        <input type="hidden" name="pId"
+                                                                                                               value="<?php echo $productId ?>">
+                                                                                                        <input type="hidden" name="parentId"
+                                                                                                               value="<?php echo $level3[0] ?>">
+                                                                                                        <label for="comment"><i class="fa fa-comment"> </i>ارسال
+                                                                                                            جواب <?php echo $level3['name'] ?>:</label>
+                                                                                                        <textarea class="form-control" id="comment"
+                                                                                                                  name="comment"></textarea>
+                                                                                                    </div>
+                                                                                                    <div style="float: left;">
+                                                                                                        <button class="btn btn-primary" id="replyCommnet"
+                                                                                                                name="sendCommnet">ارسال
+                                                                                                        </button>
+                                                                                                    </div>
+                                                                                                </form>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    <?php endif; ?>
+                                                                                </div>
+                                                                            <?php endforeach; ?>
+                                                                        </div>
+                                                                    <?php endif; ?>
+                                                                    <!--                                    level 3 test end-->
+                                                                </div>
+                                                            <?php endforeach; ?>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    </div>
                                 </div>
 
-                                <!--                                <div class="col-md-8">-->
-                                <!--                                    <div class="media g-mb-30 media-comment">-->
-                                <!--                                        <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15"-->
-                                <!--                                             src="https://bootdey.com/img/Content/avatar/avatar1.png"-->
-                                <!--                                             alt="Image Description">-->
-                                <!--                                        <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">-->
-                                <!--                                            <div class="g-mb-15">-->
-                                <!--                                                <h5 class="h5 g-color-gray-dark-v1 mb-0">John Doe</h5>-->
-                                <!--                                                <span class="g-color-gray-dark-v4 g-font-size-12">5 days ago</span>-->
-                                <!--                                            </div>-->
-                                <!---->
-                                <!--                                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque-->
-                                <!--                                                ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus-->
-                                <!--                                                viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.-->
-                                <!--                                                Donec lacinia congue-->
-                                <!--                                                felis in faucibus ras purus odio, vestibulum in vulputate at, tempus-->
-                                <!--                                                viverra turpis.</p>-->
-                                <!---->
-                                <!--                                            <ul class="list-inline d-sm-flex my-0">-->
-                                <!--                                                <li class="list-inline-item g-mr-20">-->
-                                <!--                                                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover"-->
-                                <!--                                                       href="#!">-->
-                                <!--                                                        <i class="fa fa-thumbs-up g-pos-rel g-top-1 g-mr-3"></i>-->
-                                <!--                                                        178-->
-                                <!--                                                    </a>-->
-                                <!--                                                </li>-->
-                                <!--                                                <li class="list-inline-item g-mr-20">-->
-                                <!--                                                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover"-->
-                                <!--                                                       href="#!">-->
-                                <!--                                                        <i class="fa fa-thumbs-down g-pos-rel g-top-1 g-mr-3"></i>-->
-                                <!--                                                        34-->
-                                <!--                                                    </a>-->
-                                <!--                                                </li>-->
-                                <!--                                                <li class="list-inline-item ml-auto">-->
-                                <!--                                                    <a class="u-link-v5 g-color-gray-dark-v4 g-color-primary--hover"-->
-                                <!--                                                       href="#!">-->
-                                <!--                                                        <i class="fa fa-reply g-pos-rel g-top-1 g-mr-3"></i>-->
-                                <!--                                                        Reply-->
-                                <!--                                                    </a>-->
-                                <!--                                                </li>-->
-                                <!--                                            </ul>-->
-                                <!--                                        </div>-->
-                                <!--                                    </div>-->
-                                <!--                                </div>-->
+<!--end comment-->
                             </div>
                         </div>
                     </div>
@@ -734,8 +716,9 @@ $productId = $data['productId'];
         $('.reply').click(function (e) {
             e.preventDefault();
             var id = $(this).attr('id');
-            $('.replyShow').css('display', 'none');
-            $('#reply' + id).css('display', 'block');
+            // $('.replyShow').css('display', 'none');
+            // $('#reply' + id).css('display', 'block');
+            $('#reply' + id).toggle();
         })
         // register news//
         $('#regEmail').submit(function (e) {
