@@ -10,6 +10,14 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="slider/index">تگ ها
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="<?php echo URL ?>tags/index">وارد کردن اطلاعات تگ ها</a></li>
+                        <li><a href="<?php echo URL ?>tags/showTags">نمایش جزئیات تگ های موجود</a></li>
+                    </ul>
+                </li>
                 <li class="">
                     <a class="" data-toggle="" href="comment/index">کامنت ها</a>
                 </li>
