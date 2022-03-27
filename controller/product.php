@@ -49,7 +49,8 @@ class product extends controller
     public function getProduct($id)
     {
         $query = $this->modelDb->getProduct($id);
-        $data = ['product' => $query];
+        $tags=$this->modelDb->getTags();
+        $data = ['product' => $query,'tags'=>$tags];
         $this->view('Admin/product/show', $data);
     }
 

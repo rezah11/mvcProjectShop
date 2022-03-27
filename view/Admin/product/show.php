@@ -42,6 +42,30 @@
         height: 40px;
         background-color: #d43f3a;
     }
+    .dropdown-content {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        background-color: #f6f6f6;
+        /*min-width: 230px;*/
+        border: 1px solid #ddd;
+        z-index: 1;
+        padding: 0;
+    }
+    .dropdown-content a {
+        color: black;
+        /*padding: 12px 16px;*/
+        text-decoration: none;
+        height: 30px;
+        font-family: 'Vazir';
+        font-size: 15px;
+        display: inline-block;
+    }
+    .hidden{
+        display: none;
+    }
+    .dropdown-content a:hover {background-color: #c3c3c3}
+    /*#myInput:focus {outline: 3px solid #ddd;}*/
 </style>
 <body>
 <?php require 'view/Admin/menu.php';
@@ -55,16 +79,17 @@ if (!empty($data['product'])){
     <table class="table table-striped">
         <thead>
         <tr>
-            <th style="width: 25%;">title</th>
-            <th style="width: 25%;">summary</th>
-            <th style="width: 25%;">price</th>
-            <th style="width: 25%;">discription</th>
-            <th style="width: 25%">imageBig</th>
-            <th style="width: 25%">image1</th>
-            <th style="width: 25%">image2</th>
-            <th style="width: 25%">image3</th>
-            <th style="width: 25%">image4</th>
-            <th style="width: 25%" class="text-center">oparations</th>
+            <th style="">title</th>
+            <th style="">summary</th>
+            <th style="">price</th>
+            <th style="">discription</th>
+            <th style="">imageBig</th>
+            <th style="">image1</th>
+            <th style="">image2</th>
+            <th style="">image3</th>
+            <th style="">image4</th>
+            <th style="width: 9.09%">meta</th>
+            <th style="" class="text-center">oparations</th>
             <!--            <th>oparation</th>-->
         </tr>
         </thead>
@@ -97,6 +122,21 @@ if (!empty($data['product'])){
                 <td><img src="view/Admin/product/fancy/<?php echo $value['image2'];?>" width="50px" height="50px"/></td>
                 <td><img src="view/Admin/product/fancy/<?php echo $value['image3'];?>" width="50px" height="50px"/></td>
                 <td><img src="view/Admin/product/fancy/<?php echo $value['image4'];?>" width="50px" height="50px"/></td>
+                <td>
+                    <div class="dropdown">
+<!--                        <button onclick="myFunction()" class="dropbtn">Dropdown</button>-->
+                        <input type="text" class="form-control searchTag" placeholder="Search.." onkeyup="">
+                        <div  class="dropdown-content hidden col-xs-12">
+                            <a href="#about">About</a>
+                            <a href="#base">Base</a>
+                            <a href="#blog">Blog</a>
+                            <a href="#contact">Contact</a>
+                            <a href="#custom">Custom</a>
+                            <a href="#support">Support</a>
+                            <a href="#tools">Tools</a>
+                        </div>
+                    </div>
+                </td>
                 <td class="text-center" style="display: flex;justify-content: space-evenly;">
                     <!--                    <a href="slider/--><?PHP //echo $value['id']; ?><!--" class="btn btn-success">update</a>-->
                     <!--                        <input type="hidden" value="--><?PHP //echo $value['id']; ?><!--" name="id">-->
@@ -133,5 +173,30 @@ if (!empty($data['product'])){
     function closeModal(){
         $('.modal').fadeOut(300);
     }
+    $(document).ready(function (){
+        $('.searchTag').click(function (){
+            $(this).next().toggleClass('hidden');
+        });
+        $('.searchTag').keyup(function (){
+            // $(this).css('color','red');
+            var input, filter, ul, li, a, i,div;
+            input =$(this);
+            filter = input.val().toUpperCase();
+            div = $(this).parent('.dropdown');
+            a = div.children(".dropdown-content").children('a');
+            // alert(filter);
+            for (i = 0; i < a.length; i++) {
+                txtValue = a.eq(i).text();
+                    // || a[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    a.eq(i).css('display','');
+                } else {
+                    a.eq(i).css('display','none');
+                }
+            }
+        })
+    });
+
+
 </script>
 </html>

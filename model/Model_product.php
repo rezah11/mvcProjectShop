@@ -59,4 +59,8 @@ class Model_product extends Model
         $sql='UPDATE `product` SET `title`=?,`summary`=?,`price`=?,`discription`=?,`imageBig`=?,`image1`=?,`image2`=?,`image3`=?,`image4`=?,`categoryId`=? WHERE `id`=?';
         $this->doQuery($sql,[$title,$summary,$price,$discription,$imageBigNew,$image1New,$image2New,$image3New,$image4New,$categoryId,$id]);
     }
+    public function getTags(){
+        $sql='SELECT * FROM `tags`';
+        return $this->doSelect($sql,[]);
+    }
 }
