@@ -49,8 +49,9 @@ class product extends controller
     public function getProduct($id)
     {
         $query = $this->modelDb->getProduct($id);
-        $tags=$this->modelDb->getTags();
-        $data = ['product' => $query,'tags'=>$tags];
+        $tags = $this->modelDb->getTags();
+        $tagsProduct = $this->modelDb->getTagsProduct($id);
+        $data = ['product' => $query, 'tags' => $tags, 'tagsProduct' => $tagsProduct];
         $this->view('Admin/product/show', $data);
     }
 
@@ -87,5 +88,19 @@ class product extends controller
         $id = $_POST['id'];
         $this->modelDb->updateProduct($id, $title, $summary, $price, $discription, $imageBigNew, $image1New, $image2New, $image3New, $image4New, $categoryId);
         Model::backUrl('product/getProduct/' . $categoryId);
+    }
+
+    public function insertTagPost()
+    {
+        if (isset($_POST['pId']) && isset($_POST['tId'])) {
+            try {
+                $this->modelDb->insertTagPost($_POST['pId'], $_POST['tId']);
+                echo 1;
+            } catch (Exception $e) {
+                echo 0;
+            }
+        } else {
+            Model::backUrl('Admin/index');
+        }
     }
 }
