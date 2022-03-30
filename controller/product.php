@@ -51,6 +51,7 @@ class product extends controller
         $query = $this->modelDb->getProduct($id);
         $tags = $this->modelDb->getTags();
         $tagsProduct = $this->modelDb->getTagsProduct($id);
+//        print_r($tagsProduct);
         $data = ['product' => $query, 'tags' => $tags, 'tagsProduct' => $tagsProduct];
         $this->view('Admin/product/show', $data);
     }
@@ -100,6 +101,18 @@ class product extends controller
                 echo 0;
             }
         } else {
+            Model::backUrl('Admin/index');
+        }
+    }
+    public function deleteTag(){
+        if(isset($_POST['pId']) && isset($_POST['tId'])){
+            try {
+                $this->modelDb->deleteTag($_POST['pId'],$_POST['tId']);
+                echo 1;
+            }catch (Exception $e){
+                echo 0;
+            }
+        }else{
             Model::backUrl('Admin/index');
         }
     }

@@ -79,14 +79,29 @@ class Model_product extends Model
         $sql = 'SELECT * FROM `tags`';
         return $this->doSelect($sql, []);
     }
-
+    public function cheakRepeat($pId,$tId){
+        $sql='SELECT * FROM `tagproduct` WHERE `tagId`=? AND `productId`=?';
+        $query=$this->doSelect($sql,[$tId,$pId],'rowCount');
+        if($query>0){
+            return false;
+        }else{
+            return true;
+        }
+    }
     public function insertTagPost($pId, $tId)
     {
+        if($this->cheakRepeat($pId,$tId)){
         $sql='INSERT INTO `tagproduct`(`tagId`,`productId`) VALUES (?,?)';
         $query=$this->doQuery($sql,[$tId,$pId]);
+        }
     }
     public function getTagsProduct($id){
         $sql='SELECT * FROM ((`tagproduct` INNER JOIN `tags` on `tagproduct`.`tagId`=`tags`.Id) INNER join `product` on `tagproduct`.`productId`=`product`.`id`) WHERE `product`.`categoryId`=?';
         return $this->doSelect($sql,[$id]);
+    }
+    public function deleteTag($pId,$tId)
+    {
+        $sql='DELETE FROM `tagproduct` WHERE `tagId`=? AND `productId`=?';
+        $this->doQuery($sql,[$tId,$pId]);
     }
 }

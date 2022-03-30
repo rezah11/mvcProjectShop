@@ -694,7 +694,6 @@ $carts = $data['carts'];
         $.post(url,data,function (msg){
             if(msg==1){
                 // alert('yeah');
-
                 var priceProductTmp=$('#priceProduct'+id).text();
                 var priceProduct=priceProductTmp.replace(' x هزینه','');//price productDelete
                 // console.log(parseInt(priceProduct));
@@ -709,7 +708,6 @@ $carts = $data['carts'];
                 // $('#tax').text(totalP * 0.09);
                 // $('#tt').text(totalP + parseInt($('#tax').text()));
                 // toastr.success('رکورد با موفقیت حذف شد');
-
             }else if(msg==0){
                 toastr.error('عملیات حذف ناموفق بود');
             }
@@ -761,7 +759,22 @@ $carts = $data['carts'];
     //       // if()
     //   })
     //})
-
+    (function($) {
+        $.fn.inputFilter = function(inputFilter) {
+            return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
+                if (inputFilter(this.value)) {
+                    this.oldValue = this.value;
+                    this.oldSelectionStart = this.selectionStart;
+                    this.oldSelectionEnd = this.selectionEnd;
+                } else if (this.hasOwnProperty("oldValue")) {
+                    this.value = this.oldValue;
+                    this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+                } else {
+                    this.value = "";
+                }
+            });
+        };
+    }(jQuery));
 </script>
 
 </html>

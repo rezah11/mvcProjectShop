@@ -10,6 +10,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="public/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="public/css/admin.css">
+    <link rel="stylesheet" href="public/css/toastr.min.css" type="text/css">
 </head>
 <style>
 
@@ -124,9 +125,9 @@ if (!empty($data['product'])) {
 } else {
     Model::backUrl('category/showCategoryAdmin');
 }
-var_dump($data['tagsProduct']);
-?>
+//var_dump($data['tagsProduct']);
 
+?>
 <section class="container" style="direction: ltr;">
     <table class="table table-striped">
         <thead>
@@ -146,7 +147,6 @@ var_dump($data['tagsProduct']);
         </tr>
         </thead>
         <tbody>
-
         <?php
         foreach ($product as $value):?>
             <section class="modal">
@@ -188,13 +188,27 @@ var_dump($data['tagsProduct']);
                             <?php if (!empty($data['tags'])): ?>
                                 <?php $tags = $data['tags']; ?>
                                 <?php foreach ($tags as $item): ?>
-                                    <a class="text-center"><?php echo $item['name']; ?><input type="hidden" class="tId" value="<?php echo $item['id']; ?>"></a>
+                                    <a class="text-center"><?php echo $item['name']; ?><input type="hidden" class="tId"
+                                                                                              value="<?php echo $item['id']; ?>"></a>
                                 <?php endforeach; ?>
                             <?php endif; ?>
                         </div>
                     </div>
                     <!--                    tag show-->
-
+                    <?php
+                    if (!empty($data['tagsProduct'])):?><?php $tagsProduct = $data['tagsProduct'];
+                        foreach ($tagsProduct as $values):?>
+                            <?php if ($values['productId'] == $value['id']): ?>
+                                <span class="tag label label-info">
+                                <input type="hidden" class="pId form-control"
+                                       value="<?php echo $values['productId'] ?>"/>
+                                <input type="hidden" class="tId form-control" value="<?php echo $values['tagId'] ?>"/>
+                    <span><?php echo $values['name'] ?></span>
+                    <a class="remove"><i class="fa fa-remove glyphicon-white"></i></a>
+                </span>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                     <!--                    tag show end-->
                 </td>
                 <td class="text-center" style="display: flex;justify-content: space-evenly;">
@@ -224,6 +238,7 @@ var_dump($data['tagsProduct']);
 </body>
 <script src="public/javaScript/jquery-3.6.0.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="public/javaScript/toastr.min.js"></script>
 <script>
     function showModal(id, imageBig, image1, image2, image3, image4, catId) {
         var modal = $('.modal');
@@ -265,42 +280,51 @@ var_dump($data['tagsProduct']);
         $(this).next().toggleClass('hidden');
     });
     $(document).on('click', 'a.remove', function () {
+        // console.log($(this).closest('span').attr('class'));
+        var pId = $(this).closest('span').children('.pId').val();
+        var tId = $(this).closest('span').children('.tId').val();
+        var url = '<?= URL . 'product/deleteTag'?>';
+        var data = {'pId': pId, 'tId': tId};
+        $.post(url, data, function (msg) {
+            if (msg == 1) {
+                toastr.success('عملیات موفقیت آمیز بود');
+            } else if (msg == 0) {
+                toastr.error('متاسفانه عملیات انجام نشد');
+            }
+        });
+        console.log(url);
         $(this).parent().remove();
     });
-    // function crateTag(name,pId,tId){
-    //
-    // }
     $(document).on('click', '.dropdown-content a', function () {
-        // <span class="tag label label-info">
-        //             <span></span>
-        //             <a class="remove"><i class="fa fa-remove glyphicon-white"></i></a>
-        //         </span>
+
         // var tId = $(this).attr('id');
         var pId = $(this).parent().children('input.pId').val();
         var tId = $(this).children('input.tId').val();
         var spanTagname = $("<span>").text($(this).text());
         var a = $("<a>", {"class": "remove"}).append($("<i>", {"class": "fa fa-remove glyphicon-white"}));
         var spanParant = $("<span>", {'class': 'tag label label-info'});
-        var inputpId=$("<input>",{"class":"pId","value":pId,"type":"hidden"});
-        var inputtId=$("<input>",{"class":"tId","value":tId,"type":"hidden"});
+        var inputpId = $("<input>", {"class": "pId", "value": pId, "type": "hidden"});
+        var inputtId = $("<input>", {"class": "tId", "value": tId, "type": "hidden"});
         var tag = $(this).text();
-        var url='<?php echo URL."product/insertTagPost"?>';
-        var data={'pId':pId,'tId':tId};
-        console.log(inputpId);
-        console.log(inputtId);
+        var url = '<?php echo URL . "product/insertTagPost"?>';
+        var data = {'pId': pId, 'tId': tId};
+        // console.log(inputpId);
+        // console.log(inputtId);
         if ($(this).closest('td').children('.tag').length > 0) {
             $(this).closest('td').children('.tag').each(function () {
-                if ($(this).text() != tag) {
+                console.log($(this).children('span').text());
+                // if ($(this).text() != tag) {
+                if ($(this).children('span').text() != tag) {
                     spanParant.append(spanTagname);
                     spanParant.append(a);
                     spanParant.append(inputpId);
                     spanParant.append(inputtId);
                     $(this).closest('td').append(spanParant);
-                    $.post(url,data,function (msg){
-                        if(msg==1){
-                            alert('data sent');
-                        }else if(msg==0){
-                            alert('sorry you have problem!');
+                    $.post(url, data, function (msg) {
+                        if (msg == 1) {
+                            toastr.success('عملیات موفقیت آمیز بود');
+                        } else if (msg == 0) {
+                            toastr.error('متاسفانه تگ اضافه نشد');
                         }
                     });
                 }
@@ -312,11 +336,11 @@ var_dump($data['tagsProduct']);
             spanParant.append(inputtId);
             // spanParant.append($("input"),{"class":"pId","value":pId,"type":"hidden"});
             $(this).closest('td').append(spanParant);
-            $.post(url,data,function (msg){
-                if(msg==1){
-                    alert('data sent');
-                }else if(msg==0){
-                    alert('sorry you have problem!');
+            $.post(url, data, function (msg) {
+                if (msg == 1) {
+                    toastr.success('عملیات موفقیت آمیز بود');
+                } else if (msg == 0) {
+                    toastr.error('متاسفانه تگ اضافه نشد');
                 }
             });
         }
@@ -324,6 +348,13 @@ var_dump($data['tagsProduct']);
     // $('a.remove').click(function () {
     // });
 
+    $(document).ready(function () {
+        $('.searchTag').mouseleave(function (){
+            $(this).next().addClass('hidden');
+        })
+
+
+    })
 
     function insertTag(pId, tId) {
         console.log($(this).html());

@@ -67,8 +67,12 @@ class cart extends controller
             try {
                 $id = $_POST['rowId'];
                 $count = $_POST['count'];
+                if ($count>0){
                 $this->modelDb->updateCart($id, $count);
-                echo 1;
+                echo 1;}else{
+                    echo -1;
+                }
+
             } catch (Exception $e) {
                 echo 0;
             }

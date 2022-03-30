@@ -595,8 +595,6 @@ require 'view/menuIndex.php';?>
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                &copy;&nbsp;&nbsp;طراحی و کدنویسی سئو 90&nbsp;&nbsp;&nbsp;&nbsp;
-                <span>info@seo90.ir</span>
             </div>
         </div>
     </div>
