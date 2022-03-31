@@ -1,17 +1,15 @@
 <!doctype html>
 <html>
 <head>
-    <?php
 
-    $meta=$data['meta'];
-//    var_dump($meta);
-    ?>
     <base href="<?php echo URL?>">
     <meta charset="utf-8">
+    <?php if(!empty($data['meta'])):?>
     <title><?php echo $meta['title'];?></title>
     <meta name="description" content="<?php echo $meta['discription'];?>">
     <meta name="keywords" content="<?php echo $meta['keywords'];?>">
     <meta name="author" content="<?php echo $meta['author'];?>">
+    <?php endif;?>
     <link href="public/css/font-awesome.css" rel="stylesheet" type="text/css">
     <link href="public/css/bootstrap.css" rel="stylesheet" type="text/css">
     <link href="public/css/owl.carousel.css" rel="stylesheet" type="text/css">

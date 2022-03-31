@@ -13,7 +13,7 @@ class Model_cart extends Model
         $state='notPaid';
         $sql = 'SELECT * FROM `cart` WHERE `userId`=? AND `productId`=? AND `state`=?';
         $query = $this->doSelect($sql, [$uId, $pId,$state], true);
-        var_dump($query);
+//        var_dump($query);
         if (!empty($query)){
             $result = false;
             $count = $query['count'];
@@ -31,9 +31,11 @@ class Model_cart extends Model
             $count = 1;
             $sql = 'INSERT INTO `cart`(`userId`,`productId`,`count`,`state`,`created_at`,`updated_at`) VALUES (?,?,?,?,now(),now())';
             $this->doQuery($sql, [$userId, $productId, $count, $state]);
+//            return 1;
         } else {
             $count = $result[1] + 1;
             $this->updateCount($userId, $productId, $count);
+//            return 1;
         }
     }
 

@@ -26,21 +26,21 @@ class cart extends controller
 
     public function insertCart()
     {
-        var_dump($_POST);
+//        var_dump($_POST);
 //        echo $_POST['productId'];
-//        if (isset($_POST['productId'])){
-        try {
-            $productId = $_POST['productId'];
-            $userId = $this->id;
-            $this->modelDb->insertCart($userId, $productId);
-            echo 1;
-        } catch (Exception $e) {
+        if (isset($_POST['productId'])) {
+            try {
+                $productId = $_POST['productId'];
+                $userId = $this->id;
+                $this->modelDb->insertCart($userId, $productId);
+                echo 1;
+            } catch (Exception $e) {
+                echo 0;
+            }
+        } else {
+            Model::backUrl('index/index');
             echo 0;
         }
-//        }else {
-//            Model::backUrl('index/index');
-//            echo 0;
-//        }
     }
 
     public function delCart()
@@ -67,9 +67,10 @@ class cart extends controller
             try {
                 $id = $_POST['rowId'];
                 $count = $_POST['count'];
-                if ($count>0){
-                $this->modelDb->updateCart($id, $count);
-                echo 1;}else{
+                if ($count > 0) {
+                    $this->modelDb->updateCart($id, $count);
+                    echo 1;
+                } else {
                     echo -1;
                 }
 

@@ -19,6 +19,7 @@ Model::initSession();
         <div class="row">
             <div class="col-md-6">
                 <div class="login">
+                    <a class="mybtn" href="<?= URL?>">خانه</a>
                     <?php if (!empty(Model::getSession('userLogined'))):?>
                         <?php $user=Model::getSession('userName');
 //                        echo Model::getSession('userLogined');
@@ -53,24 +54,29 @@ require 'view/menuIndex.php';?>
             <div class="slider-box">
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        <?php if (!empty($data['sliderCount'])):?>
+                        <?php $sliderCount=$data['sliderCount'] ;
+                        for ($i=0 ; $i<$sliderCount;$i++):?>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="<?=$i?>" class="<?=($i==0) ? 'active' : '' ;?>"></li>
+<!--                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>-->
+<!--                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>-->
+<?php endfor;?>
+                        <?php endif;?>
                     </ol>
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="col-md-6" style="padding-top: 20px;">
-                                <h4>Canon 638044</h4>
-                                <span>دوربین کانن سری 6</span>
-                                <p>دوربین کانن از سری 6 با لنز همراه.قابلیت تصویر برداری اچ دی.قابلیت تنظیم در حالت شب .
-                                    دارای دو عدد باتری اضافی</p>
-                            </div>
-                            <div class="col-md-6">
-                                <img src="public/images/template/p20lite-listimage-black.png" class="w-75">
-                            </div>
-                        </div>
+<!--                        <div class="carousel-item active">-->
+<!--                            <div class="col-md-6" style="padding-top: 20px;">-->
+<!--                                <h4>Canon 638044</h4>-->
+<!--                                <span>دوربین کانن سری 6</span>-->
+<!--                                <p>دوربین کانن از سری 6 با لنز همراه.قابلیت تصویر برداری اچ دی.قابلیت تنظیم در حالت شب .-->
+<!--                                    دارای دو عدد باتری اضافی</p>-->
+<!--                            </div>-->
+<!--                            <div class="col-md-6">-->
+<!--                                <img src="public/images/template/p20lite-listimage-black.png" class="w-75">-->
+<!--                            </div>-->
+<!--                        </div>-->
                         <?php foreach ($slider as $item => $value): ?>
-                            <div class="carousel-item">
+                            <div class="carousel-item <?= ($item==0) ? 'active' : '' ;?>">
                                 <div class="col-md-6" style="padding-top: 20px;">
                                     <h4><?php echo $value['caption'] ?></h4>
                                     <span><a href="<?php echo $value['link'] ?>"><?php echo $value['link'] ?></a></span>

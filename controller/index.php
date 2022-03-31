@@ -20,10 +20,12 @@ class index extends controller
 //    $x=10;
 //    $data=['x'=>$x];
 //        var_dump($this->username);
+        $sliderCount=$this->modelDb->sliderCount();
+//        print_r($sliderCount) ;
         $query = $this->modelDb->getMeta();
         $querySlider = $this->modelDb->getSlider();
         $querycategory = $this->modelDb->getCategory();
-            $data = ['meta' => $query, 'slider' => $querySlider, 'category' => $querycategory,'id'=>$id,'name'=>$name];
+            $data = ['meta' => $query, 'slider' => $querySlider, 'category' => $querycategory,'id'=>$id,'name'=>$name,'sliderCount'=>$sliderCount];
 //    var_dump($data['slider']);
         $this->Header('index/header', $data);
         $this->view('index/view', $data);
@@ -43,11 +45,13 @@ class index extends controller
         $this->view('index/category', $data);
     }
     public function showProduct($id,$catTitle){
-        $query=$product=$this->modelDb->showProduct($id);
+        $query=$this->modelDb->showProduct($id);
 //        var_dump($this->username);
         $comments=$this->modelDb->commentsProduct($id,$level=0);
+        $tags=$this->modelDb->tagsProduct($id);
+
 //        var_dump($comments);
-        $data=['product'=>$query,'catTitle'=>$catTitle,'productId'=>$id,'username'=>$this->username,'id'=>$this->id,'comments'=>$comments];
+        $data=['product'=>$query,'catTitle'=>$catTitle,'productId'=>$id,'username'=>$this->username,'id'=>$this->id,'comments'=>$comments,'tags'=>$tags];
         $this->view('index/product',$data);
     }
 }

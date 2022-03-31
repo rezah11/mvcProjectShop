@@ -40,11 +40,11 @@ class Model
 //        else if ($fetch==true){
 //            return $query->fetch();
 //        }
-        if ($fetch == true) {
+        if ($fetch === true) {
             return $query->fetch();
-        } elseif ($fetch == 'rowCount') {
+        } elseif ($fetch === 'rowCount') {
             return $query->rowCount();
-        } else {
+        } elseif($fetch === false) {
             return $query->fetchAll();
         }
 

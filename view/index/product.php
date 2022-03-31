@@ -7,13 +7,14 @@
         $catTitle = $data['catTitle'];
     }
 
-    //    var_dump($meta);
+//        var_dump($data['tags']);
     ?>
     <base href="<?php echo URL ?>">
     <meta charset="utf-8">
     <title><?php echo $product['title']; ?></title>
     <meta name="description" content="">
-    <meta name="keywords" content="">
+
+    <meta name="keywords" content="<?php if (!empty($data['tags'])):?><?php $tags=$data['tags'];foreach ($tags as $keys=>$val):?><?= (!empty($tags[$keys+1][0])) ? $val['name'].',' : $val['name'];?><?php endforeach;?><?php endif;?>">
     <meta name="author" content="">
     <link href="public/css/font-awesome.css" rel="stylesheet" type="text/css">
     <link href="public/css/bootstrap.css" rel="stylesheet" type="text/css">
@@ -130,6 +131,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="login">
+                    <a class="mybtn" href="<?= URL?>">خانه</a>
                     <?php if (!empty(Model::getSession('userLogined'))):?>
                         <?php $user=Model::getSession('userName');
 //                        echo Model::getSession('userLogined');
@@ -216,7 +218,7 @@
                             <form action="cart/insertCart" name="insertCart" method="post">
                                 <div class="btn-single">
                                     <input type="hidden" name="productId" value="<?php echo $product['id'] ?>"/>
-                                    <a href="" style="font-size: 15px" id="insertCart"><i class="fa fa-cart-plus"></i>اضافه
+                                    <a href="#" style="font-size: 15px" id="insertCart"><i class="fa fa-cart-plus"></i>اضافه
                                         کردن به سبد
                                         خرید</a>
                                 </div>
@@ -744,10 +746,20 @@
             e.preventDefault();
             var idproduct = $('input[name=productId]').val();
             console.log(idproduct);
-            var url = "<?php echo URL . 'cart/insertCart'?>";
+            var url = '<?php echo URL . 'cart/insertCart'?>';
             console.log(url);
             var data = {'productId': idproduct};
-            $.post(url, data, function (msg) {
+            $.post(url, data, function () {
+                // if (msg == 1) {
+                //     // console.log('true');
+                //     toastr.success('محصول به سبد اضافه شد');
+                // } else if (msg == 0) {
+                //     // console.log('false');
+                //     toastr.warning('عملیات ناموفق بود');
+                // } else {
+                //     toastr.error('شما وارد سایت نشده اید');
+                // }
+            }).done(function (msg){
                 if (msg == 1) {
                     // console.log('true');
                     toastr.success('محصول به سبد اضافه شد');
@@ -755,7 +767,7 @@
                     // console.log('false');
                     toastr.warning('عملیات ناموفق بود');
                 } else {
-                    toastr.error('test');
+                    toastr.error('شما وارد سایت نشده اید');
                 }
             });
             //     .done(function( msg ) {

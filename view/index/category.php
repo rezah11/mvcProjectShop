@@ -87,6 +87,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="login">
+                    <a class="mybtn" href="<?= URL?>">خانه</a>
                     <?php if (!empty(Model::getSession('userLogined'))):?>
                         <?php $user=Model::getSession('userName');
 //                        echo Model::getSession('userLogined');
