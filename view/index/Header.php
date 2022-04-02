@@ -5,6 +5,7 @@
     <base href="<?php echo URL?>">
     <meta charset="utf-8">
     <?php if(!empty($data['meta'])):?>
+    <?php $meta=$data['meta'];?>
     <title><?php echo $meta['title'];?></title>
     <meta name="description" content="<?php echo $meta['discription'];?>">
     <meta name="keywords" content="<?php echo $meta['keywords'];?>">
