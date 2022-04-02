@@ -35,8 +35,8 @@ Model::initSession();
                 </div>
             </div>
             <div class="col-md-6">
-                <form action="">
-                    <input type="text" placeholder="کالای مورد نظر را جستجو کنید">
+                <form action="<?= URL.'search/index'?>" method="post">
+                    <input type="text" name="textSearch" placeholder="کالای مورد نظر را جستجو کنید">
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
             </div>

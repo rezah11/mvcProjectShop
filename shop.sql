@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2022 at 10:38 AM
+-- Generation Time: Apr 02, 2022 at 02:36 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -42,18 +42,20 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `userId`, `productId`, `count`, `state`, `created_at`, `updated_at`) VALUES
-(54, 2, 19, 2, 'paid', '2022-03-21 16:01:02', '2022-03-21 22:22:04'),
-(55, 2, 18, 2, 'paid', '2022-03-21 16:24:19', '2022-03-21 22:23:31'),
-(56, 2, 18, 2, 'paid', '2022-03-21 16:24:19', '2022-03-21 22:23:31'),
-(73, 2, 19, 2, 'paid', '2022-03-21 16:56:09', '2022-03-21 22:22:04'),
-(74, 2, 19, 2, 'paid', '2022-03-21 16:56:21', '2022-03-21 22:22:04'),
-(75, 2, 18, 2, 'paid', '2022-03-21 16:58:27', '2022-03-21 22:23:31'),
-(76, 2, 19, 2, 'paid', '2022-03-21 16:58:28', '2022-03-21 22:22:04'),
-(77, 2, 19, 2, 'paid', '2022-03-21 16:59:00', '2022-03-21 22:22:04'),
-(78, 2, 18, 2, 'paid', '2022-03-21 16:59:02', '2022-03-21 22:23:31'),
-(83, 2, 17, 1, 'paid', '2022-03-21 21:39:58', '2022-03-21 21:40:48'),
-(84, 2, 19, 2, 'notPaid', '2022-03-21 22:20:05', '2022-03-21 22:22:04'),
-(85, 2, 18, 2, 'notPaid', '2022-03-21 22:22:20', '2022-03-21 22:23:31');
+(54, 2, 19, 5, 'paid', '2022-03-21 16:01:02', '2022-03-31 20:58:43'),
+(55, 2, 18, 2, 'paid', '2022-03-21 16:24:19', '2022-03-30 15:09:24'),
+(56, 2, 18, 2, 'paid', '2022-03-21 16:24:19', '2022-03-30 15:09:24'),
+(73, 2, 19, 5, 'paid', '2022-03-21 16:56:09', '2022-03-31 20:58:43'),
+(74, 2, 19, 5, 'paid', '2022-03-21 16:56:21', '2022-03-31 20:58:43'),
+(75, 2, 18, 2, 'paid', '2022-03-21 16:58:27', '2022-03-30 15:09:24'),
+(76, 2, 19, 5, 'paid', '2022-03-21 16:58:28', '2022-03-31 20:58:43'),
+(77, 2, 19, 5, 'paid', '2022-03-21 16:59:00', '2022-03-31 20:58:43'),
+(78, 2, 18, 2, 'paid', '2022-03-21 16:59:02', '2022-03-30 15:09:24'),
+(83, 2, 17, 1, 'paid', '2022-03-21 21:39:58', '2022-03-30 15:09:24'),
+(84, 2, 19, 5, 'paid', '2022-03-21 22:20:05', '2022-03-31 20:58:43'),
+(85, 2, 18, 0, 'paid', '2022-03-21 22:22:20', '2022-03-30 15:09:24'),
+(86, 2, 19, 5, 'paid', '2022-03-30 15:08:40', '2022-03-31 20:58:43'),
+(89, 2, 19, 5, 'notPaid', '2022-03-31 20:55:21', '2022-03-31 20:58:43');
 
 -- --------------------------------------------------------
 
@@ -75,6 +77,50 @@ INSERT INTO `category` (`id`, `title`, `image`) VALUES
 (5, 'لوازم خانه', '5563676.jpg'),
 (6, 'لوازم ورزشی', 'Sporting-Goods-1024x576.jpg'),
 (7, 'لوازم دیجیتال', 'downloنعلاتلad.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comment`
+--
+
+CREATE TABLE `comment` (
+  `id` int(11) NOT NULL,
+  `description` text COLLATE utf8_persian_ci NOT NULL,
+  `status` varchar(100) COLLATE utf8_persian_ci NOT NULL,
+  `parentId` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `productId` int(11) NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`id`, `description`, `status`, `parentId`, `userId`, `productId`, `created_at`) VALUES
+(3, 'a', 'confirm', 0, 2, 19, '2022-03-23 22:57:41'),
+(4, 'dfgdsfg', 'confirm', 0, 2, 19, '2022-03-24 20:53:47'),
+(5, 'dfg', 'confirm', 3, 2, 19, '2022-03-24 21:25:45'),
+(6, 'dfg', 'confirm', 3, 2, 19, '2022-03-24 22:08:28'),
+(7, 'سلام ', 'confirm', 3, 3, 19, '2022-03-26 21:22:03'),
+(8, 'سلام', 'confirm', 0, 3, 19, '2022-03-26 21:22:26'),
+(9, 'سلام حالتون خوبه؟', 'confirm', 5, 3, 19, '2022-03-26 21:43:17'),
+(10, 'درسته! دمت گرم', 'confirm', 5, 3, 19, '2022-03-26 21:44:47'),
+(11, 'ادامه داره!!', 'confirm', 7, 3, 19, '2022-03-26 21:45:24');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `like`
+--
+
+CREATE TABLE `like` (
+  `id` int(11) NOT NULL,
+  `isLike` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `commentId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
 
 -- --------------------------------------------------------
 
@@ -226,6 +272,43 @@ INSERT INTO `slider` (`id`, `caption`, `link`, `image`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tagproduct`
+--
+
+CREATE TABLE `tagproduct` (
+  `id` int(11) NOT NULL,
+  `tagId` int(11) NOT NULL,
+  `productId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+
+--
+-- Dumping data for table `tagproduct`
+--
+
+INSERT INTO `tagproduct` (`id`, `tagId`, `productId`) VALUES
+(14, 2, 17);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tags`
+--
+
+CREATE TABLE `tags` (
+  `id` int(11) NOT NULL,
+  `name` varchar(150) COLLATE utf8_persian_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_persian_ci;
+
+--
+-- Dumping data for table `tags`
+--
+
+INSERT INTO `tags` (`id`, `name`) VALUES
+(2, 'برنامه نویسی');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -243,7 +326,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `tel`, `password`) VALUES
 (2, 'rezahosseini', 'reza_h11@yahoo.com', '23424', '$2y$10$F9KuyBuGAwWI.sQ.ZNy5a.kKP6hpP8esiiGSrYI.7EN/J.9njafG2'),
-(3, 'reza', 'reza_h1211@yahoo.com', '654654', '$2y$10$Q4Pxq/K6.cksDIJtSmvnSeqxs610hRWSZwRzJRu9b5a4LT3q4tdya');
+(3, 'arman', 'reza_h1211@yahoo.com', '2323323232', '$2y$10$WemiFT0V4KuCWmCaZ8yzbeXgwzN7YOIt9bcJ56mVMnkDrqAvulxMW');
 
 --
 -- Indexes for dumped tables
@@ -262,6 +345,22 @@ ALTER TABLE `cart`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `userId` (`userId`,`productId`),
+  ADD KEY `productId` (`productId`);
+
+--
+-- Indexes for table `like`
+--
+ALTER TABLE `like`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `userId` (`userId`,`commentId`),
+  ADD KEY `commentId` (`commentId`);
 
 --
 -- Indexes for table `login`
@@ -302,6 +401,20 @@ ALTER TABLE `slider`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tagproduct`
+--
+ALTER TABLE `tagproduct`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tagId` (`tagId`,`productId`),
+  ADD KEY `productId` (`productId`);
+
+--
+-- Indexes for table `tags`
+--
+ALTER TABLE `tags`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -315,13 +428,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `login`
@@ -360,6 +479,18 @@ ALTER TABLE `slider`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
+-- AUTO_INCREMENT for table `tagproduct`
+--
+ALTER TABLE `tagproduct`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `tags`
+--
+ALTER TABLE `tags`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
@@ -377,10 +508,31 @@ ALTER TABLE `cart`
   ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`productId`) REFERENCES `product` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Constraints for table `comment`
+--
+ALTER TABLE `comment`
+  ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`productId`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `like`
+--
+ALTER TABLE `like`
+  ADD CONSTRAINT `like_ibfk_1` FOREIGN KEY (`commentId`) REFERENCES `comment` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `like_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `product`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`categoryId`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `tagproduct`
+--
+ALTER TABLE `tagproduct`
+  ADD CONSTRAINT `tagproduct_ibfk_1` FOREIGN KEY (`productId`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tagproduct_ibfk_2` FOREIGN KEY (`tagId`) REFERENCES `tags` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

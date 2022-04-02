@@ -2,16 +2,16 @@
 <html>
 <head>
     <?php
-    $catTitle = $data['catTitle'];
-    $products = $data['products'];
+//    $catTitle = $data['catTitle'];
+
     //    print_r($data['catId']);
     //    var_dump($meta);
     //    print_r($data['products']);
     //    print_r($data['catTitle']);
     ?>
-    <base href="<?php echo URL ?>">
+    <base href="<?=URL ?>">
     <meta charset="utf-8">
-    <title><?php echo $catTitle; ?></title>
+    <title><?php ?></title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
@@ -103,9 +103,11 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <form action="<?= URL.'search/index'?>" method="post">
-                    <input type="text" name="textSearch" placeholder="کالای مورد نظر را جستجو کنید">
-                    <button type="submit"><i class="fa fa-search"></i></button>
+                <form action="">
+                    <form action="<?= URL.'search/index'?>" method="post">
+                        <input type="text" name="textSearch" placeholder="کالای مورد نظر را جستجو کنید">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
                 </form>
             </div>
         </div>
@@ -150,76 +152,44 @@
 </div>
 <div class="pages-bnaer text-center">
     <div class="container">
-        <span><?php echo $catTitle ?></span>
+        <span><?php  ?></span>
     </div>
 </div>
-<div class="container" style="direction: ltr;">
+<div class="container" style="direction: rtl;">
     <div class="row" style="">
-        <?php foreach ($products as $value): ?>
+        <?php if(!empty($data['result'])):?>
+<!--        --><?php
+$result=$data['result'];
+        foreach ($result as $value):?>
             <div class="col-md-4">
                 <div class="blog-content">
                     <figure>
-                        <img height="300px" src="view/Admin/product/imageBig/<?php echo $value['imageBig'] ?>"
+                        <img height="300px" src="view/Admin/product/imageBig/<?php
+                        echo $value['imageBig']
+                        ?>"
                              class="w-100">
                     </figure>
-                    <h5><i class="fa fa-title"></i><?php echo $value['title'] ?></h5>
-                    <p><?php echo $value['summary'] ?></p>
+                    <h5><i class="fa fa-title"></i><?php
+                        echo $value['title']
+                        ?></h5>
+                    <p><?php
+                        echo $value['summary']
+                        ?></p>
                     <ul>
-                        <li><i class="fa fa-bars"></i>دسته بندی : <?php echo $catTitle ?></li>
+                        <li><i class="fa fa-bars"></i>دسته بندی :
+<!--                            --><?= $value['title'] ?>
+                        </li>
                         <!--                    <li><i class="fa fa-calendar-o"></i></li>-->
                         <!--                    <li><i class="fa fa-user-o"></i>نویسنده : سئو 90</li>-->
                     </ul>
-                    <a href="index/showProduct/<?php echo $value['id'] ?>/<?php echo $catTitle ?>" class="mybtn"><i
-                                class="fa fa-continuous"></i>ادامه مطلب&raquo;</a>
+                    <a href="index/showProduct/<?php echo $value['productId'] ?>/<?=$value['title'] ?>" class="mybtn"><i
+                            class="fa fa-continuous"></i>ادامه مطلب&raquo;</a>
                 </div>
             </div>
         <?php endforeach; ?>
-
-    </div>
-    <div>
-
-        <ul style="display: flex; width:20%;justify-content: space-between;margin-left: 15px; ">
-            <?php $totalPages = $data['totalPages'];
-            //            var_dump($products['id']);
-            $catId = $data['catId'];
-            $pageOn = $data['pageOn'];
-            $prev=$pageOn-1;
-            $next=$pageOn+1;
-            ?>
-            <ul>
-                <?php if($prev<1):?>
-                <li style=" text-align: center;color:#9d9d9d;">
-                    <a>prev</a>
-                </li>
-                <?php else:?>
-                    <li style=" text-align: center;color:#2e9ad0;">
-                        <a href="index/products/<?php echo $catId ?>/<?php echo $catTitle ?>/<?php echo $prev ?>">prev</a>
-                    </li>
-                <?php endif;?>
-            </ul>
-            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                <?php if ($i == $pageOn):?>
-                    <li style="border: black solid 1px; width:20px; text-align: center;color:black;background-color: #3c763d">
-                    <a href="index/products/<?php echo $catId ?>/<?php echo $catTitle ?>/<?php echo $i ?>"><?php echo $i ?></a>
-                </li>
-                <?php else:?>
-                <li style="border: black solid 1px; width:20px; text-align: center">
-                    <a href="index/products/<?php echo $catId ?>/<?php echo $catTitle ?>/<?php echo $i ?>"><?php echo $i ?></a>
-                </li>
-                <?php endif; ?>
-            <?php endfor; ?>
-            <ul>
-                <?php if($next>$totalPages):?>
-                    <li style=" text-align: center;color:#9d9d9d;">
-                        <a>next</a>
-                    </li>
-                <?php else:?>
-                    <li style=" text-align: center;color:#2e9ad0;">
-                        <a href="index/products/<?php echo $catId ?>/<?php echo $catTitle ?>/<?php echo $next ?>">next</a>
-                    </li>
-                <?php endif;?>
-            </ul>
-        </ul>
+        <?php else:?>
+        <h5 class="h5">متاسفانه موردی یافت نشد.</h5>
+<?php   endif;?>
     </div>
 </div>
 <div class="footer">
@@ -264,7 +234,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-
+                <span>info@seo90.ir</span>
             </div>
         </div>
     </div>
@@ -296,3 +266,4 @@
     })
 </script>
 </html>
+<?php
