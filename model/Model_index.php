@@ -55,7 +55,7 @@ class Model_index extends Model
     public function commentsProduct($id, $level = 0)
     {
         $status = 'confirm';
-        $sql = 'SELECT * FROM ((`comment` INNER JOIN `users` on `comment`.`userId`=`users`.`id`)INNER JOIN `product` on `comment`.`productId`=`product`.`id`) where `comment`.`productId`=? AND `comment`.`status`=? AND `comment`.`parentId`=?';
+        $sql = 'SELECT * FROM ((`comment` INNER JOIN `users` on `comment`.`userId`=`users`.`id`)INNER JOIN `product` on `comment`.`productId`=`product`.`id`) where `comment`.`productId`=? AND `comment`.`status`=? AND `comment`.`parentId`=یخچال';
         $query = $this->doSelect($sql, [$id, $status, $level]);
         foreach ($query as $value) {
             $children = $this->commentsProduct($value['id'], $value[0]);
@@ -74,5 +74,10 @@ class Model_index extends Model
     public function sliderCount(){
         $sql='SELECT * FROM `slider`';
         return $this->doSelect($sql,[],'rowCount');
+    }
+    public function getHashtag(){
+        $string='';
+        $sql = 'SELECT * FROM `tagproduct` INNER JOIN `tags` on `tagproduct`.`tagId`=`tags`.`id` INNER JOIN `product` on `tagproduct`.`productId`=`product`.`id` INNER JOIN `category` on `product`.`categoryId`=`category`.`id` WHERE `tags`.`name` LIKE ?';
+        return $this->doSelect($sql,[$string]);
     }
 }

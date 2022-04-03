@@ -22,10 +22,13 @@ class index extends controller
 //        var_dump($this->username);
         $sliderCount=$this->modelDb->sliderCount();
 //        print_r($sliderCount) ;
+        $hashtag1=$this->modelDb->getHashtag();
+        $hashtag2=$this->modelDb->getHashtag('موبایل');
+        var_dump($hashtag1);
         $query = $this->modelDb->getMeta();
         $querySlider = $this->modelDb->getSlider();
         $querycategory = $this->modelDb->getCategory();
-            $data = ['meta' => $query, 'slider' => $querySlider, 'category' => $querycategory,'id'=>$id,'name'=>$name,'sliderCount'=>$sliderCount];
+        $data = ['meta' => $query, 'slider' => $querySlider, 'category' => $querycategory,'id'=>$id,'name'=>$name,'sliderCount'=>$sliderCount,'hashtag1'=>$hashtag1,'hashtag2'=>$hashtag2];
 //    var_dump($data['slider']);
         $this->Header('index/header', $data);
         $this->view('index/view', $data);

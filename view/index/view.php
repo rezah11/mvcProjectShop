@@ -14,6 +14,9 @@ Model::initSession();
     </ul>
 </div>
 <!---------------------------------->
+<?php
+//var_dump($data['hashtag2']);
+?>
 <div class="top2">
     <div class="container">
         <div class="row">

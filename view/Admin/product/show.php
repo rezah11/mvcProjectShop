@@ -296,8 +296,6 @@ if (!empty($data['product'])) {
         $(this).parent().remove();
     });
     $(document).on('click', '.dropdown-content a', function () {
-
-        // var tId = $(this).attr('id');
         var pId = $(this).parent().children('input.pId').val();
         var tId = $(this).children('input.tId').val();
         var spanTagname = $("<span>").text($(this).text());
@@ -347,13 +345,16 @@ if (!empty($data['product'])) {
     });
     // $('a.remove').click(function () {
     // });
-
     $(document).ready(function () {
         $('.searchTag').mouseleave(function (){
             $(this).next().addClass('hidden');
-        })
-
-
+        });
+        $('.dropdown-content').mouseenter(function (){
+           $(this).removeClass('hidden');
+        });
+        $('.dropdown-content').mouseleave(function (){
+            $(this).addClass('hidden');
+        });
     })
 
     function insertTag(pId, tId) {
